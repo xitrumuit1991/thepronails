@@ -41,6 +41,9 @@ RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
 # 3. Set max upload file size. Most hosts will limit this and not allow it to be overridden but you can try
 # php_value upload_max_filesize 999M
 
+#
+#
+
 # 4. set max post size. uncomment this line if you have a lot of product options or are getting errors where forms are not saving all fields
 # php_value post_max_size 999M
 
