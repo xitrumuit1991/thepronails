@@ -1,0 +1,15 @@
+./image/cache/*
+image/cache/*
+/image/cache/*
+
+./image/cache/**
+image/cache/**
+/image/cache/**
+
+
+./system/storage/cache/*
+system/storage/cache/*
+/system/storage/cache/*
+./system/storage/cache/**
+system/storage/cache/**
+/system/storage/cache/**
