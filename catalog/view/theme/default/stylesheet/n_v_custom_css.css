@@ -2,3 +2,16 @@
 file custom css cho project này
 vui lòng chi edit o day
 */
+body{
+	background:transparent url(image/bg.jpg) repeat;
+	color:#292929;
+	font:14px/22px 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+#menu {
+	background-color: #ed2a7b;
+	background-image: linear-gradient(to bottom, #d5256e, #f05495);
+	background-repeat: repeat-x;
+	border-color: #1f90bb #1f90bb #145e7a;
+	min-height: 40px;
+}
