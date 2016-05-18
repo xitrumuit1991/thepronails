@@ -1,22 +1,22 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://localhost/opencart/');
+define('HTTP_SERVER', 'http://localhost/thepronails/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://localhost/opencart/');
+define('HTTPS_SERVER', 'http://localhost/thepronails/');
 
 // DIR
-define('DIR_APPLICATION', 'C:/xampp/htdocs/opencart/catalog/');
-define('DIR_SYSTEM', 'C:/xampp/htdocs/opencart/system/');
-define('DIR_IMAGE', 'C:/xampp/htdocs/opencart/image/');
-define('DIR_LANGUAGE', 'C:/xampp/htdocs/opencart/catalog/language/');
-define('DIR_TEMPLATE', 'C:/xampp/htdocs/opencart/catalog/view/theme/');
-define('DIR_CONFIG', 'C:/xampp/htdocs/opencart/system/config/');
-define('DIR_CACHE', 'C:/xampp/htdocs/opencart/system/storage/cache/');
-define('DIR_DOWNLOAD', 'C:/xampp/htdocs/opencart/system/storage/download/');
-define('DIR_LOGS', 'C:/xampp/htdocs/opencart/system/storage/logs/');
-define('DIR_MODIFICATION', 'C:/xampp/htdocs/opencart/system/storage/modification/');
-define('DIR_UPLOAD', 'C:/xampp/htdocs/opencart/system/storage/upload/');
+define('DIR_APPLICATION', 		'catalog/');
+define('DIR_SYSTEM', 			'system/');
+define('DIR_IMAGE',  			'image/');
+define('DIR_LANGUAGE', 			'catalog/language/');
+define('DIR_TEMPLATE', 			'catalog/view/theme/');
+define('DIR_CONFIG', 			'system/config/');
+define('DIR_CACHE', 				'system/storage/cache/');
+define('DIR_DOWNLOAD', 			'system/storage/download/');
+define('DIR_LOGS', 				'system/storage/logs/');
+define('DIR_MODIFICATION', 	'system/storage/modification/');
+define('DIR_UPLOAD', 			'system/storage/upload/');
 
 // DB
 define('DB_DRIVER', 'mysqli');
