@@ -1,0 +1,1 @@
+UPDATE `thepronails`.`oc_setting` SET `value` = 'http://localhost/thepronails/' WHERE `oc_setting`.`setting_id` = 315;
