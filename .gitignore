@@ -13,3 +13,4 @@ system/storage/cache/*
 ./system/storage/cache/**
 system/storage/cache/**
 /system/storage/cache/**
+/image/cache
