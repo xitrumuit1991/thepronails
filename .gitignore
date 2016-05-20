@@ -14,3 +14,8 @@ system/storage/cache/*
 system/storage/cache/**
 /system/storage/cache/**
 /image/cache
+
+
+config.php
+admin/config.php
+/admin/config.php
