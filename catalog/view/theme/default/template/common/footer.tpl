@@ -38,10 +38,15 @@
         </ul>
       </div>
     </div>
-    <hr>
-    <p><?php echo $powered; ?></p>
+    <!-- <hr> -->
+    <!-- <p><?php echo $powered; ?></p> -->
+  </div>
+
+  <div class="container-fluid footer-custom">
+      <p><?php echo $powered; ?></p>
   </div>
 </footer>
+
 
 <!--
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
