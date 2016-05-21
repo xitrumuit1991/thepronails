@@ -5,7 +5,7 @@ vui lòng chi edit o day
 body{
 	background:transparent url(image/bg.jpg) repeat;
 	color:#292929;
-	font:12px/22px 'Open Sans', Arial, Helvetica, sans-serif;
+	font:14px/22px 'Open Sans', Arial, Helvetica, sans-serif;
 }
 #cart > .btn {
 	line-height: 18px;
@@ -83,7 +83,7 @@ body{
 }
 .product-thumb .button-group button + button {
 	width: 20%;
-	border-left: 1px solid #673695;
+	border-left: 1px solid #888;
 }
 .product-thumb .button-group button:hover {
 	color: #673695;
