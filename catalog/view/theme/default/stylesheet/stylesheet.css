@@ -555,7 +555,9 @@ footer h5 {
 }
 .product-thumb .caption {
 	padding: 0 20px;
-	min-height: 180px;
+
+	/*bo description cua san pham*/
+	/*min-height: 180px;*/
 }
 .product-list .product-thumb .caption {
 	margin-left: 230px;
