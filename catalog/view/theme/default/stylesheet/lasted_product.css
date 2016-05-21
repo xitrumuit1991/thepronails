@@ -1,0 +1,24 @@
+
+/*-----------------san pham moi nhat*/
+.lasted-product{
+    padding-bottom: 1px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #da5ca3;
+    text-transform: uppercase;
+    border-bottom: 1px solid #292929;
+}
+.lasted-product a{
+	cursor: default;
+}
+.lasted-product a i{
+	color: #da5ca3; font-size:38px;
+}
+
+.lasted-product:after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #292929;
+    padding-top: 14px;
+}
