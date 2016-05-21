@@ -5,7 +5,7 @@ vui lòng chi edit o day
 body{
 	background:transparent url(image/bg.jpg) repeat;
 	color:#292929;
-	font:14px/22px 'Open Sans', Arial, Helvetica, sans-serif;
+	font:12px/22px 'Open Sans', Arial, Helvetica, sans-serif;
 }
 #cart > .btn {
 	line-height: 18px;
@@ -68,4 +68,26 @@ body{
 }
 .product-grid .product-thumb .image {
 	float: none;
+}
+.product-thumb .button-group button {
+	width: 60%;
+	border: none;
+	display: inline-block;
+	float: left;
+	background-color: #fff;
+	color: #673695;
+	line-height: 38px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+}
+.product-thumb .button-group button + button {
+	width: 20%;
+	border-left: 1px solid #673695;
+}
+.product-thumb .button-group button:hover {
+	color: #673695;
+	background-color: #ddd;
+	text-decoration: none;
+	cursor: pointer;
 }
