@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<code>Automaticimagemanager</code>
+    <name>Automatic image manager for Opencart 2.0.2.0</name>
+    <version>1.2</version>
+    <author>abda11ah</author>
+    <link>https://bitbucket.org/abda11ah/opencart2-autoimg-mod</link>
+    <file path="admin/controller/catalog/product.php">
+		<operation>
+			<search regex="false"><![CDATA[if (isset($this->request->post['image']))]]></search>
+			<add position="before"><![CDATA[/*]]></add>
+		</operation>
+        <operation>
+			<search regex="false"><![CDATA[if (isset($this->request->post['model']))]]></search>
+            <add position="before"><![CDATA[*/]]></add>
+        </operation>
+        <operation>
+			<search regex="false"><![CDATA[if (isset($this->request->post['product_image']))]]></search>
+			<add position="before"><![CDATA[// ***AUTOIMG-MOD >>>
+                $data['image'] = array();
+                $this->load->model('tool/image');
+                $data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+                // After "save" with form validation errors
+                if (isset($this->request->post['image'])) {
+                    $image = $this->request->post['image'];
+                    foreach ($image as $k => $v) {
+                            $data['image'][] = array(
+                                'thumb' => (!empty($v['thumb']) ? $v['thumb'] : $data['placeholder']),
+                                'id' => (!empty($v['id']) ? $v['id'] : ''),
+                                'create' => (!empty($v['create']) ? $v['create'] : ''),
+                                'file' => (!empty($v['file']) ? $v['file'] : ''),
+                                'delete' => (!empty($v['delete']) ? $v['delete'] : 'false'),
+                                'sort_order' => (!empty($v['sort_order']) ? $v['sort_order'] : 0)
+                            );
+                    }
+                    // Edit page
+                } elseif (isset($this->request->get['product_id']) && !empty($product_info)) {
+                    // Init main image
+                    $data['image'][0] = array(
+                        'thumb' => $this->model_tool_image->resize((!empty($product_info['image']) ? $product_info['image'] : 'no_image.png'), 100, 100),
+                        'create' => true,
+                        'file' => $product_info['image'],
+                        'delete' => 'false'
+                    );
+                    // Init other images
+                    $image = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
+                    foreach ($image as $k => $v) {
+                        $data['image'][] = array(
+                            'thumb' => $this->model_tool_image->resize($v['image'], 100, 100),
+                            'id' => $v['product_image_id'],
+                            'create' => true,
+                            'file' => $v['image'],
+                            'delete' => 'false',
+                            'sort_order' => $v['sort_order']
+                        );
+                    }
+                } else {
+                    // New product page
+                    $data['image'][] = array(
+                        'thumb' => $this->model_tool_image->resize('no_image.png', 100, 100),
+                        'create' => '',
+                        'file' => '',
+                        'delete' => 'false',
+                    );
+                }
+                // ***AUTOIMG-MOD <<<
+                /*]]></add>
+        </operation>
+        <operation>
+			<search regex="false"><![CDATA[$this->load->model('catalog/download');]]></search>
+			<add position="before"><![CDATA[*/ ]]></add>
+        </operation>
+        <operation>
+			<search regex="true"><![CDATA[/\$this->response->setOutput\(json_encode\(\$json\)\);\s*}/m]]></search>
+			<add><![CDATA[$this->response->setOutput(json_encode($json));
+	}
+        
+        // ***AUTOIMG-MOD >>>
+        private function resize($filename, $width, $height) {
+            if (file_exists($filename)) {
+                $info = pathinfo($filename);
+                $fn = 'cache/'.$info['filename'].'-'.$width.'x'.$height.'.'.$info['extension'];
+                $image = new Image($filename);
+                $image->resize($width, $height);
+                $image->save(DIR_IMAGE.$fn);
+                if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+                    return HTTPS_CATALOG.'image/'.$fn;
+                } else {
+                    return HTTP_CATALOG.'image/'.$fn;
+                }
+            }
+            return false;
+        }
+
+        public function ajaxThumb() {
+            if (empty($_FILES)) {
+                header('HTTP/1.1 400 Bad Request');
+                die('Bad Request');
+            }
+            $filetypes = array('jpg', 'jpeg', 'png', 'gif');
+            $ext = strtolower(pathinfo($_FILES['file-0']['name'], PATHINFO_EXTENSION));
+            if (!in_array($ext, $filetypes)) {
+                header('HTTP/1.1 400 Bad Request');
+                die('Bad Request');
+            }
+            $cache = DIR_IMAGE.'cache/';
+            if (!file_exists($cache)) {
+                mkdir($cache, 0777, true);
+            }
+            $tmp_name = $_FILES['file-0']['tmp_name'];
+            $fn = $_FILES['file-0']['name'];
+            $dest = $cache.$fn;
+            if (is_uploaded_file($tmp_name) && strpos($_FILES['file-0']['type'], 'image/') !== false) {
+                move_uploaded_file($tmp_name, $dest);
+                $thumb = $this->resize($dest, 100, 100);
+                if ($thumb !== false) {
+                    $a = array('create' => 'cache/'.$fn, 'thumb' => $thumb);
+                    echo json_encode($a);
+                }
+            } else {
+                header('HTTP/1.1 400 Bad Request');
+                die('Bad Request');
+            }
+        }
+        // ***AUTOIMG-MOD <<<]]></add>
+        </operation>
+	</file>
+	<file path="admin/model/catalog/product.php">
+        <operation>
+			<search regex="false"><![CDATA[$product_id = $this->db->getLastId();]]></search>
+			<add position="after"><![CDATA[if (isset($data['image'])) {
+                    $this->addImages($data['image'], $product_id);
+                }/*]]></add>
+        </operation>
+        <operation>
+			<search regex="true"><![CDATA[/\$data\['image']\) \. "' WHERE product_id = '" \. \(int\)\$product_id \. "'"\);\s*}\s*foreach \(\$data\['product_description'/m]]></search>
+			<add><![CDATA[$data['image']) . "' WHERE product_id = '" . (int)$product_id . "'");
+		}*/
+
+		foreach ($data['product_description']]></add>
+        </operation>
+        <operation>
+			<search regex="false"><![CDATA[date_modified = NOW() WHERE product_id = '" . (int)$product_id . "'");]]></search>
+			<add position="after"><![CDATA[if (isset($data['image'])) {
+                        $this->editImages($data['image'], $product_id);
+                }/*]]></add>
+        </operation>
+        <operation>
+			<search regex="true"><![CDATA[/\$this->db->escape\(\$data\['image']\) \. "' WHERE product_id = '" \. \(int\)\$product_id \. "'"\);\s*}\s*\$this->db->query\("DELETE FROM " \. DB_PREFIX \. "product_description/m]]></search>
+			<add><![CDATA[*/$this->db->query("DELETE FROM " . DB_PREFIX . "product_description]]></add>
+        </operation>
+        <operation>
+			<search regex="true"><![CDATA[/}\s*}\s*\$this->db->query\("DELETE FROM " \. DB_PREFIX \. "product_image/m]]></search>
+			<add><![CDATA[}	} /* $this->db->query("DELETE FROM " . DB_PREFIX . "product_image]]></add>
+        </operation>
+        <operation>
+			<search regex="true"><![CDATA[/}\s*}\s*\$this->db->query\("DELETE FROM " \. DB_PREFIX \. "product_to_download/m]]></search>
+			<add><![CDATA[}	} */ $this->db->query("DELETE FROM " . DB_PREFIX . "product_to_download]]></add>
+        </operation>
+        <operation>
+			<search regex="false"><![CDATA[pre.admin.product.delete', $product_id);]]></search>
+			<add position="after"><![CDATA[// ***AUTOIMG-MOD >>>
+                // Delete related images
+                $q1 = $this->db->query("SELECT `image` FROM `".DB_PREFIX."product` WHERE `product_id` = '".(int) $product_id."';");
+                $q2 = $this->db->query("SELECT `image` FROM `".DB_PREFIX."product_image` WHERE `product_id` = '".(int) $product_id."';");
+                $images = array_merge($q1->rows, $q2->rows);
+                foreach ($images as $v) {
+                    $this->deleteFile(DIR_IMAGE.$v['image']);
+                }
+                $this->removeDir(DIR_IMAGE.'cache/products/'.$product_id);
+                $this->removeDir(DIR_IMAGE.'/products/'.$product_id);
+                // ***AUTOIMG-MOD <<<]]></add>
+        </operation>
+        <operation>
+			<search regex="true"><![CDATA[/layout_id = '" \. \(int\)\$layout_id \. "'"\);\s*return \$query->row\['total'];\s*\}/m]]></search>
+			<add><![CDATA[layout_id = '" . (int)$layout_id . "'");
+
+		return $query->row['total'];
+	} // ***AUTOIMG-MOD >>>
+        private function randomString($chars = 8) {
+        $letters = 'abcefghijklmnopqrstuvwxyz0123456789';
+        return substr(str_shuffle($letters), 0, $chars);
+        }
+
+        private function moveImage($param, $dest) {
+            $file = DIR_IMAGE.$param;
+            if (file_exists($file)) {
+                $newdir = DIR_IMAGE.$dest;
+                if (!file_exists($newdir)) {
+                    mkdir($newdir, 0777, true);
+                }
+                $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                while (true) {
+                    $fn = $this->randomString().'.'.$ext;
+                    $out = $newdir.'/'.$fn;
+                    if (!file_exists($out)) {
+                        break;
+                    }
+                }
+                rename($file, $out);
+                return $dest.'/'.$fn;
+            }
+            return false;
+        }
+
+        private function addImages($param, $product_id) {
+            foreach ($param as $k => $v) {
+                switch ($k) {
+                    // Process main image
+                    case 0 :
+                        // File to add
+                        if (strlen($v['create']) > 1) {
+                            $image = $this->moveImage($v['create'], 'products/'.$product_id);
+                            if ($image !== false) {
+                                $this->db->query('UPDATE `'.DB_PREFIX."product` SET `image` = '{$this->db->escape($image)}' WHERE `product_id` = '".(int)$product_id."';");
+                            }
+                            break;
+                        }
+                    // Process other images
+                    default :
+                        // File to add
+                        if (strlen($v['create']) > 1) {
+                            $image = $this->moveImage($v['create'], 'products/'.$product_id);
+                            if ($image !== false) {
+                                $sort_order = (!empty($v['sort_order']) ? $v['sort_order'] : 0 );
+                                $this->db->query('INSERT INTO `'.DB_PREFIX."product_image` (`product_id`, `image`, `sort_order`) VALUES ('".(int)$product_id."', '{$this->db->escape($image)}', '".(int)$sort_order."');");
+                            }
+                            break;
+                        }
+                }
+            }
+        }
+
+        private function editImages($param, $product_id) {
+            foreach ($param as $k => $v) {
+                // Process main image
+                switch ($k) {
+                    case 0 :
+                        // File to delete
+                        if (!empty($v['file']) && $v['delete'] == 'true') {
+                            $this->deleteFile(DIR_IMAGE.$v['file']);
+                            $this->db->query('UPDATE `'.DB_PREFIX."product` SET `image`='' WHERE `product_id`='".(int)$product_id."';");
+                        }
+                        // File to add
+                        if (isset($v['create'])) {
+                            if (strlen($v['create']) > 1) {
+                                $image = $this->moveImage($v['create'], 'products/'.$product_id);
+                                if ($image !== false) {
+                                    $this->db->query('UPDATE `'.DB_PREFIX."product` SET `image` = '{$this->db->escape($image)}' WHERE `product_id` = '".(int)$product_id."';");
+                                }
+                            }
+                        }
+                        break;
+                    // Process other images
+                    default :
+                        // File to delete
+                        if (!empty($v['file']) && $v['delete'] == 'true') {
+                            $this->deleteFile(DIR_IMAGE.$v['file']);
+                            $this->db->query('DELETE FROM `'.DB_PREFIX."product_image` WHERE `image` = '{$v['file']}';");
+                        }
+                        // File to add
+                        if (isset($v['create'])) {
+                            if (strlen($v['create']) > 1) {
+                                $image = $this->moveImage($v['create'], 'products/'.$product_id);
+                                if ($image !== false) {
+                                    $sort_order = (!empty($v['sort_order']) ? $v['sort_order'] : 0 );
+                                    $this->db->query('INSERT INTO `'.DB_PREFIX."product_image` (`product_id`, `image`, `sort_order`) VALUES ('".(int)$product_id."', '{$this->db->escape($image)}', '".(int)$sort_order."');");
+                                }
+                            }
+                        }
+                        // Set sort order
+                        if ((!empty($v['sort_order']) && !empty($v['id']) && $v['delete'] != 'true')) {
+                            $this->db->query('UPDATE `'.DB_PREFIX."product_image` SET `sort_order`='{$v['sort_order']}' WHERE `product_image_id`='{$v['id']}';");
+                        }
+                        break;
+                }
+            }
+        }
+
+        public function deleteFile($file, $rmdir = true) {
+            if (file_exists($file) && is_file($file)) {
+                unlink($file);
+            }
+            if ($rmdir != false) {
+                $dir = dirname($file);
+                if (count(scandir($dir)) == 2) {
+                    rmdir($dir);
+                }
+            }
+        }
+
+        public function removeDir($dir) {
+            if (is_dir($dir)) {
+                $objects = scandir($dir);
+                foreach ($objects as $object) {
+                    if ($object != '.' && $object != '..') {
+                        if (filetype($dir.'/'.$object) == 'dir') {
+                            $this->removeDir($dir.'/'.$object);
+                        } else {
+                            unlink($dir.'/'.$object);
+                        }
+                    }
+                }
+                reset($objects);
+                rmdir($dir);
+            }
+        }
+
+        // ***AUTOIMG-MOD <<<]]></add>
+        </operation>
+    </file>
+        <file path="admin/view/template/catalog/product_form.tpl">
+        <operation>
+			<search regex="false"><![CDATA[<label class="col-sm-2 control-label" for="input-image">]]></search>
+			<add position="before"><![CDATA[<!--]]></add>
+        </operation>
+        <operation>
+			<search regex="true"><![CDATA[/id="input-image" \/>\s*<\/div>/m]]></search>
+			<add><![CDATA[id="input-image" />
+                </div>--><label class="col-sm-2 control-label" for="image-thumb-0"><?php echo $entry_image; ?></label>
+                <div class="col-sm-10">
+                    <a href="" data-toggle="image-mod" class="img-thumbnail" id="image-event-0">
+                        <img src="<?php echo $image[0]['thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" id="thumb-0"/>
+                    </a>
+                    <input type="file" style="display: none;" id="input-file-0"/>
+                    <input type="hidden" name="image[0][thumb]" id="image-thumb-0" value="<?php echo $image[0]['thumb']; ?>">
+                    <input type="hidden" name="image[0][create]" id="image-create-0" value="<?php echo $image[0]['create']; ?>">
+                    <input type="hidden" name="image[0][file]" id="image-file-0" value="<?php echo $image[0]['file']; ?>">
+                    <input type="hidden" name="image[0][delete]" id="image-delete-0" value="<?php echo $image[0]['delete'];?>">
+                </div>]]></add>
+        </operation>
+		<operation>
+			<search regex="true"><![CDATA[/<\?php\s+echo\s+\$image;\s+\?>/m]]></search>
+			<add><![CDATA[]]></add>
+        </operation>
+		<operation>
+			<search regex="true"><![CDATA[/<\?php\s+echo\s+\$thumb;\s+\?>/m]]></search>
+			<add><![CDATA[]]></add>
+        </operation>
+        <operation>
+			<search regex="true"><![CDATA[/<\?php\s+\$image_row = 0;\s+\?>/m]]></search>
+			<add><![CDATA[<?php $image_row = 1;$product_images = array(); ?><!--]]></add>
+        </operation>
+        <operation>
+			<search regex="true"><![CDATA[/<\?php \$image_row\+\+; \?>\s*<\?php } \?>/m]]></search>
+			<add><![CDATA[<?php } ?> -->
+                      <?php while (!empty($image[$image_row])): ?>
+                      <tr style="display: none;">
+                          <td>
+                              <input type="hidden" name="image[<?php echo $image_row; ?>][id]" id="image-id-<?php echo $image_row; ?>" value="<?php echo $image[$image_row]['id']; ?>">
+                              <input type="hidden" name="image[<?php echo $image_row; ?>][file]" id="image-file-<?php echo $image_row; ?>" value="<?php echo $image[$image_row]['file']; ?>">
+                              <input type="hidden" name="image[<?php echo $image_row; ?>][delete]" id="image-delete-<?php echo $image_row; ?>" value="<?php echo $image[$image_row]['delete'];?>">
+                          </td>
+                      </tr>
+                      <?php if ($image[$image_row]['delete'] == 'true' || empty($image[$image_row]['create'])) {$image_row++;continue;} ?>
+                      <tr id="image-row-<?php echo $image_row; ?>">
+                          <td class="text-left">
+                              <a href="" data-toggle="image-mod" class="img-thumbnail" id="image-event-<?php echo $image_row; ?>">
+                                  <img src="<?php echo $image[$image_row]['thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" id="thumb-<?php echo $image_row; ?>"/>
+                              </a>
+                                  <input type="file" style="display: none;" id="input-file-<?php echo $image_row; ?>"/>
+                                  <input type="hidden" name="image[<?php echo $image_row; ?>][thumb]" id="image-thumb-<?php echo $image_row; ?>" value="<?php echo $image[$image_row]['thumb']; ?>">
+                                  <input type="hidden" name="image[<?php echo $image_row; ?>][create]" id="image-create-<?php echo $image_row; ?>" value="<?php echo $image[$image_row]['create']; ?>">
+                          </td>
+                          <td class="text-right"><input type="text" name="image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $image[$image_row]['sort_order']; ?>" class="form-control" /></td>
+                          <td class="text-left"><button type="button" onclick="markDeletion(<?php echo $image_row; ?>);$('#image-row-<?php echo $image_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
+                      </tr>
+                      <?php $image_row++; ?>
+                      <?php endwhile; ?>]]></add>
+        </operation>
+        <operation>
+			<search regex="false"><![CDATA[addImage();]]></search>
+			<add position="Replace"><![CDATA[addImageMod();]]></add>
+        </operation>
+        <operation>
+			<search regex="false" index="1"><![CDATA[<script type="text/javascript"><!--]]></search>
+			<add position="after"><![CDATA[// ***AUTOIMG-MOD >>>
+// Image Manager
+$(document).on('click','a[data-toggle=\'image-mod\']', function(e) {
+    e.preventDefault();
+    
+    $('.popover').popover('hide', function() {
+            $('.popover').remove();
+    });
+
+    var element = this;
+    var n = element.id.split('-');
+    $(element).popover({
+            html: true,
+            placement: 'right',
+            trigger: 'manual',
+            content: function() {
+                if (n[2] == 0) {
+                    return '<button type="button" onclick="$(\'#input-file-' + n[2] + '\').trigger(\'click\');" id="button-image" class="btn btn-primary"><i class="fa fa-pencil"></i></button> <button onclick="markDeletion(' + n[2] + ')" type="button" id="button-clear" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>';
+                } else {
+                    return '<button type="button" onclick="$(\'#input-file-' + n[2] + '\').trigger(\'click\');" id="button-image" class="btn btn-primary"><i class="fa fa-pencil"></i></button>';
+                }
+            }
+    });
+
+    $(element).popover('show');
+});
+//
+
+$('body').on('change','input[type=file]',null,function(e) {
+    var n = this.id.split('-');
+    $('#thumb-' + n[2]).attr('src','view/image/loading.gif');
+    ajaxThumb(n[2]);
+});
+
+function ajaxThumb(n) {
+
+    var data = new FormData();
+    jQuery.each($('#input-file-' + n)[0].files, function(i, file) {
+        data.append('file-' + i, file);
+    });
+
+    $.ajax({
+        url: 'index.php?route=catalog/product/ajaxThumb&token=<?php echo $token; ?>',
+        type: 'POST',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(json) {
+            try {
+                var obj = $.parseJSON(json);
+            } catch(err) {
+                alert(err);
+            }
+            markDeletion(n);
+            $('#thumb-' + n).attr('src', obj.thumb);
+            $('#image-thumb-' + n).val(obj.thumb);
+            $('#image-thumb-' + n).prop('disabled', false);
+            $('#image-create-' + n).prop('disabled',false);
+            $('#image-create-' + n).val(obj.create);
+        },
+    });
+}
+
+function markDeletion(n) {
+    $('#thumb-' + n).attr('src', '<?php echo $placeholder; ?>');
+    $('#image-thumb-' + n).prop('disabled',true);
+    $('#image-create-' + n).prop('disabled',true);
+    $('#input-file-' + n).val('');
+    $('#image-delete-' + n).val('true');
+    
+    $('.popover').popover('hide', function() {
+            $('.popover').remove();
+    });
+}
+
+var row = <?php echo $image_row; ?>;
+
+function addImageMod() {
+    html = '<tr id="image-row-' + row + '">';
+    html += '   <td class="text-left">';
+    html += '       <a href="" data-toggle="image-mod" class="img-thumbnail" id="image-event-' + row + '">';
+    html += '           <img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" id="thumb-' + row + '"/>';
+    html += '       </a>';
+    html += '       <input type="file" style="display: none;" id="input-file-' + row + '"/>';
+    html += '       <input type="hidden" name="image[' + row + '][thumb]" id="image-thumb-' + row + '" value="">';
+    html += '       <input type="hidden" name="image[' + row + '][create]" id="image-create-' + row + '" value="">';
+    html += '   </td>';
+    html += '   <td class="text-right"><input type="text" name="image[' + row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+    html += '   <td class="text-left"><button type="button" onclick="$(this).tooltip(\'destroy\');markDeletion(' + row + ');$(\'#image-row-' + row  + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+    html += '</tr>';
+    $('#images tbody').append(html);                
+    row++;
+}
+// ***AUTOIMG-MOD <<<]]></add>
+        </operation>
+	</file>
+</modification>
