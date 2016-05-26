@@ -31,4 +31,4 @@ $_['text_wishlist']     = 'Danh sách yêu thích';
 $_['text_newsletter']   = 'Thư thông báo';
 
 // $_['text_powered']      = 'Bản quyền <a href="http://www.opencart.vn">OpenCart</a><br /> %s &copy; %s';
-$_['text_powered']      = '© 2016 The Pro Nails, LLC All Rights Reserved. <a href="#">The Pronails</a> <br/> %s &copy; %s';
+$_['text_powered']      = 'Bản quyền © 2016 The Pro Nails, LLC All Rights Reserved. <a href="#">The Pronails</a> <br/> %s &copy; %s';

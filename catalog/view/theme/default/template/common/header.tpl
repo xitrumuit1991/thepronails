@@ -99,25 +99,51 @@
     <div class="container">
       <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding: 0;">
         <ul class="nav navbar-nav">
-          <?php foreach ($categories as $category) { ?>
-          <?php if ($category['children']) { ?>
-          <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
-            <div class="dropdown-menu">
-              <div class="dropdown-inner">
-                <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
-                <ul class="list-unstyled">
-                  <?php foreach ($children as $child) { ?>
-                  <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
-                  <?php } ?>
-                </ul>
-                <?php } ?>
-              </div>
-              <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
-          </li>
-          <?php } else { ?>
-          <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-          <?php } ?>
-          <?php } ?>
+
+
+
+          <!-- nguyen add them menu ngang -->
+          <li><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li>
+          <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+          <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
+          <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
+
+          <?php if( !empty($informations) && count($informations) > 0  )
+                { 
+                  foreach ($informations as $information) { ?>
+                    <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
+          <?php   } 
+                } ?>
+          <!-- End nguyen add them vao -->
+
+
+          <?php
+          //Nguyen remove category 
+          /*
+          foreach ($categories as $category) 
+          { 
+             if ($category['children']) 
+            { ?>
+                  <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
+                    <div class="dropdown-menu">
+                      <div class="dropdown-inner">
+                        <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
+                        <ul class="list-unstyled">
+                          <?php foreach ($children as $child) { ?>
+                          <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                          <?php } ?>
+                        </ul>
+                        <?php } ?>
+                      </div>
+                      <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
+                  </li>
+            <?php } else { ?>
+                  <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+            <?php } 
+          } 
+          */ 
+          ?>
+          
         </ul>
       </div>
     </div>

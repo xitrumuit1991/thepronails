@@ -22,3 +22,13 @@ define('DB_PASSWORD', '');
 define('DB_DATABASE', 'thepronails');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');
+
+
+
+// define('DB_DRIVER', 'mysqli');
+// define('DB_HOSTNAME', '107.180.27.158'); // define('DB_HOSTNAME', 'localhost'); 
+// define('DB_USERNAME', 'thepronails');
+// define('DB_PASSWORD', 'thepronails@123');
+// define('DB_DATABASE', 'thepronails');
+// define('DB_PORT', '3306');
+// define('DB_PREFIX', 'oc_');

@@ -85,6 +85,28 @@ class ControllerCommonHeader extends Controller {
 		$data['contact'] = $this->url->link('information/contact');
 		$data['telephone'] = $this->config->get('config_telephone');
 
+
+		// Nguyen add them vao
+		$this->load->model('catalog/information');
+		$data['informations'] = array();
+		foreach ($this->model_catalog_information->getInformations() as $result) {
+			if ($result['bottom']) {
+				$data['informations'][] = array(
+					'title' => $result['title'],
+					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
+				);
+			}
+		}
+
+		$data['text_contact'] = $this->language->get('text_contact');
+		$data['text_return'] = $this->language->get('text_return');
+		$data['text_sitemap'] = $this->language->get('text_sitemap');
+		$data['contact'] = $this->url->link('information/contact');
+		$data['return'] = $this->url->link('account/return/add', '', true);
+		$data['sitemap'] = $this->url->link('information/sitemap');
+		//End nguyen add 
+
+
 		// Menu
 		$this->load->model('catalog/category');
 
