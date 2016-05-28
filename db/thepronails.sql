@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2016 at 11:22 AM
--- Server version: 5.6.24
--- PHP Version: 5.6.8
+-- Generation Time: May 28, 2016 at 09:50 AM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `thepronails`
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `oc_address`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_address` (
+CREATE TABLE `oc_address` (
   `address_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `firstname` varchar(32) NOT NULL,
@@ -39,14 +39,15 @@ CREATE TABLE IF NOT EXISTS `oc_address` (
   `country_id` int(11) NOT NULL DEFAULT '0',
   `zone_id` int(11) NOT NULL DEFAULT '0',
   `custom_field` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_address`
 --
 
 INSERT INTO `oc_address` (`address_id`, `customer_id`, `firstname`, `lastname`, `company`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `custom_field`) VALUES
-(1, 1, 'Vincent', 'Truong', '', 'Pheonix', '', 'Arizona', '78910', 223, 3616, '');
+(1, 1, 'Vincent', 'Truong', '', 'Pheonix', '', 'Arizona', '78910', 223, 3616, ''),
+(2, 2, 'Vincent', 'Vincnet', '', 'Arizona', '', 'Arizona', '1234567', 223, 3616, '');
 
 -- --------------------------------------------------------
 
@@ -54,7 +55,7 @@ INSERT INTO `oc_address` (`address_id`, `customer_id`, `firstname`, `lastname`, 
 -- Table structure for table `oc_affiliate`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_affiliate` (
+CREATE TABLE `oc_affiliate` (
   `affiliate_id` int(11) NOT NULL,
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
@@ -94,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `oc_affiliate` (
 -- Table structure for table `oc_affiliate_activity`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_affiliate_activity` (
+CREATE TABLE `oc_affiliate_activity` (
   `affiliate_activity_id` int(11) NOT NULL,
   `affiliate_id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL,
@@ -109,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `oc_affiliate_activity` (
 -- Table structure for table `oc_affiliate_login`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_affiliate_login` (
+CREATE TABLE `oc_affiliate_login` (
   `affiliate_login_id` int(11) NOT NULL,
   `email` varchar(96) NOT NULL,
   `ip` varchar(40) NOT NULL,
@@ -124,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `oc_affiliate_login` (
 -- Table structure for table `oc_affiliate_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_affiliate_transaction` (
+CREATE TABLE `oc_affiliate_transaction` (
   `affiliate_transaction_id` int(11) NOT NULL,
   `affiliate_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -139,14 +140,14 @@ CREATE TABLE IF NOT EXISTS `oc_affiliate_transaction` (
 -- Table structure for table `oc_api`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_api` (
+CREATE TABLE `oc_api` (
   `api_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `key` text NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_api`
@@ -161,11 +162,11 @@ INSERT INTO `oc_api` (`api_id`, `name`, `key`, `status`, `date_added`, `date_mod
 -- Table structure for table `oc_api_ip`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_api_ip` (
+CREATE TABLE `oc_api_ip` (
   `api_ip_id` int(11) NOT NULL,
   `api_id` int(11) NOT NULL,
   `ip` varchar(40) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_api_ip`
@@ -180,7 +181,7 @@ INSERT INTO `oc_api_ip` (`api_ip_id`, `api_id`, `ip`) VALUES
 -- Table structure for table `oc_api_session`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_api_session` (
+CREATE TABLE `oc_api_session` (
   `api_session_id` int(11) NOT NULL,
   `api_id` int(11) NOT NULL,
   `token` varchar(32) NOT NULL,
@@ -189,19 +190,18 @@ CREATE TABLE IF NOT EXISTS `oc_api_session` (
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_api_session`
 --
 
 INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `token`, `session_id`, `session_name`, `ip`, `date_added`, `date_modified`) VALUES
-(12, 1, 'a9a2QFEFmoqKOFzI62sGQZfNoF5VyOrL', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57406dc95471f', '::1', '2016-05-21 21:16:41', '2016-05-21 21:16:41'),
-(11, 1, 'Lc8BygF6fhjPfEGR5JPFkd0eZUZHvsEJ', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57406d3b76e06', '::1', '2016-05-21 21:14:19', '2016-05-21 21:14:19'),
-(10, 1, 'ihQVgEMl8O0S9Q4hg3qst0zqlPCPIR14', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57406d33ea0ca', '::1', '2016-05-21 21:14:11', '2016-05-21 21:14:11'),
-(9, 1, 'V2Z4eyuVHWW2q9jKG1smXNZtGLbDjDA5', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57406d2634501', '::1', '2016-05-21 21:13:58', '2016-05-21 21:14:10'),
-(7, 1, 'NY44IxqyicP2fbK21mYxB61FoQTxkeSt', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57406cf8b7e86', '::1', '2016-05-21 21:13:12', '2016-05-21 21:13:12'),
-(8, 1, 'DQduxgDa4ZHYw0svDRESc22KdzbKkRH2', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57406cfe6dba9', '::1', '2016-05-21 21:13:18', '2016-05-21 21:13:40');
+(14, 1, 'MP44NgVZ431FOSb1zeOsHvfH82B0lbWW', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57408e234e67c', '::1', '2016-05-21 23:34:43', '2016-05-21 23:34:54'),
+(13, 1, 'ZWSTRLKXez9SocJxjTJRNYYKQjGeLtQr', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57408e19d298f', '::1', '2016-05-21 23:34:33', '2016-05-21 23:34:33'),
+(17, 1, 'wSg90rygFMO3hs3hsjQWGPUytF141yNS', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_5740914e086d6', '::1', '2016-05-21 23:48:14', '2016-05-21 23:48:14'),
+(16, 1, 'raMOwbtA0m1EItnmIFtOeNommjON5bxj', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57409016a7e5e', '::1', '2016-05-21 23:43:02', '2016-05-21 23:43:02'),
+(15, 1, 'tn4dzkGN7xmbt1NVJ2OESmwQMGT0Eg6w', 'ubdkb67m5vqsel0ivh8scf1an4', 'temp_session_57408e37b0d5b', '::1', '2016-05-21 23:35:03', '2016-05-21 23:35:03');
 
 -- --------------------------------------------------------
 
@@ -209,11 +209,11 @@ INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `token`, `session_id`,
 -- Table structure for table `oc_attribute`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_attribute` (
+CREATE TABLE `oc_attribute` (
   `attribute_id` int(11) NOT NULL,
   `attribute_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_attribute`
@@ -238,7 +238,7 @@ INSERT INTO `oc_attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) 
 -- Table structure for table `oc_attribute_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_attribute_description` (
+CREATE TABLE `oc_attribute_description` (
   `attribute_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -278,10 +278,10 @@ INSERT INTO `oc_attribute_description` (`attribute_id`, `language_id`, `name`) V
 -- Table structure for table `oc_attribute_group`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_attribute_group` (
+CREATE TABLE `oc_attribute_group` (
   `attribute_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_attribute_group`
@@ -299,7 +299,7 @@ INSERT INTO `oc_attribute_group` (`attribute_group_id`, `sort_order`) VALUES
 -- Table structure for table `oc_attribute_group_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_attribute_group_description` (
+CREATE TABLE `oc_attribute_group_description` (
   `attribute_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -325,18 +325,18 @@ INSERT INTO `oc_attribute_group_description` (`attribute_group_id`, `language_id
 -- Table structure for table `oc_banner`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_banner` (
+CREATE TABLE `oc_banner` (
   `banner_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `status` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_banner`
 --
 
 INSERT INTO `oc_banner` (`banner_id`, `name`, `status`) VALUES
-(6, 'HP Products', 1),
+(6, 'Banner_PR', 1),
 (7, 'Home Page Slideshow', 1),
 (8, 'Manufacturers', 1);
 
@@ -346,13 +346,13 @@ INSERT INTO `oc_banner` (`banner_id`, `name`, `status`) VALUES
 -- Table structure for table `oc_banner_image`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_banner_image` (
+CREATE TABLE `oc_banner_image` (
   `banner_image_id` int(11) NOT NULL,
   `banner_id` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=152 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_banner_image`
@@ -360,7 +360,6 @@ CREATE TABLE IF NOT EXISTS `oc_banner_image` (
 
 INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, `sort_order`) VALUES
 (149, 7, 'index.php?route=product/product&amp;path=57&amp;product_id=49', 'catalog/demo/banners/slide/manicures-milwaukee-wi-relax-nails-spa-h2.jpg', 0),
-(127, 6, 'index.php?route=product/manufacturer/info&amp;manufacturer_id=7', 'catalog/demo/product/New_demo/PP_Trial-Kit-275x263.png', 0),
 (141, 8, '', 'catalog/demo/banners/Logo_slide/il_fullxfull.694833951_l18w.jpg', 0),
 (140, 8, '', 'catalog/demo/banners/Logo_slide/HarmonyLogoLARGE.jpg', 0),
 (139, 8, '', 'catalog/demo/banners/Logo_slide/8f4adadee3fa095d1fd94ce225ac8aa8.jpg', 0),
@@ -377,6 +376,7 @@ INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, 
 (130, 8, '', 'catalog/demo/banners/Logo_slide/199813_bliss_700.jpg', 0),
 (129, 8, '', 'catalog/demo/banners/Logo_slide/12-nail-salon-secrets-03.jpg', 0),
 (128, 8, '', 'catalog/demo/banners/Logo_slide/43026962-Nail-Salon-logo-Nail-polish-a-symbol-of-manicure-Design-sign-nail-care--Stock-Vector.jpg', 0),
+(152, 6, 'index.php?route=product/manufacturer/info&amp;manufacturer_id=7', 'catalog/demo/product/New_demo/PP_Trial-Kit-275x263.png', 0),
 (142, 8, '', 'catalog/demo/banners/Logo_slide/kn0003.jpg', 0),
 (143, 8, '', 'catalog/demo/banners/Logo_slide/gloss1.jpg', 0),
 (144, 8, '', 'catalog/demo/banners/Logo_slide/bridal_hair_accessoires_logo_by_haneynozuka-d4uzzt0.jpg', 0),
@@ -391,7 +391,7 @@ INSERT INTO `oc_banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, 
 -- Table structure for table `oc_banner_image_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_banner_image_description` (
+CREATE TABLE `oc_banner_image_description` (
   `banner_image_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `banner_id` int(11) NOT NULL,
@@ -403,7 +403,7 @@ CREATE TABLE IF NOT EXISTS `oc_banner_image_description` (
 --
 
 INSERT INTO `oc_banner_image_description` (`banner_image_id`, `language_id`, `banner_id`, `title`) VALUES
-(127, 2, 6, 'HP Banner'),
+(152, 2, 6, 'HP Banner'),
 (143, 1, 8, 'Nintendo5'),
 (142, 2, 8, 'Nintendo3'),
 (151, 1, 7, 'MacBookAir23'),
@@ -424,7 +424,7 @@ INSERT INTO `oc_banner_image_description` (`banner_image_id`, `language_id`, `ba
 (136, 2, 8, 'Disney'),
 (136, 1, 8, 'Disney'),
 (149, 1, 7, 'iPhone 6'),
-(127, 1, 6, 'HP Banner'),
+(152, 1, 6, 'HP Banner'),
 (135, 2, 8, 'Dell'),
 (135, 1, 8, 'Dell'),
 (134, 2, 8, 'Harley Davidson'),
@@ -460,8 +460,8 @@ INSERT INTO `oc_banner_image_description` (`banner_image_id`, `language_id`, `ba
 -- Table structure for table `oc_cart`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_cart` (
-  `cart_id` int(11) unsigned NOT NULL,
+CREATE TABLE `oc_cart` (
+  `cart_id` int(11) UNSIGNED NOT NULL,
   `customer_id` int(11) NOT NULL,
   `session_id` varchar(32) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -469,7 +469,7 @@ CREATE TABLE IF NOT EXISTS `oc_cart` (
   `option` text NOT NULL,
   `quantity` int(5) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -477,7 +477,7 @@ CREATE TABLE IF NOT EXISTS `oc_cart` (
 -- Table structure for table `oc_category`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_category` (
+CREATE TABLE `oc_category` (
   `category_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `parent_id` int(11) NOT NULL DEFAULT '0',
@@ -487,51 +487,43 @@ CREATE TABLE IF NOT EXISTS `oc_category` (
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_category`
 --
 
 INSERT INTO `oc_category` (`category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `date_added`, `date_modified`) VALUES
-(25, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1.jpg', 0, 1, 1, 3, 1, '2009-01-31 01:04:25', '2016-05-21 20:40:04'),
-(27, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_ToeNails11.jpg', 20, 0, 0, 2, 1, '2009-01-31 01:55:34', '2016-05-21 20:44:29'),
-(20, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_safe_image(9).jpg', 0, 1, 1, 1, 1, '2009-01-05 21:49:43', '2016-05-21 20:43:58'),
-(24, '', 0, 1, 1, 5, 1, '2009-01-20 02:36:26', '2016-05-19 00:15:56'),
 (18, 'catalog/demo/hp_2.jpg', 0, 1, 0, 2, 1, '2009-01-05 21:49:15', '2016-05-19 00:16:37'),
-(17, '', 0, 1, 1, 4, 1, '2009-01-03 21:08:57', '2016-05-19 00:16:05'),
-(28, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_safe_image(8).jpg', 25, 0, 0, 1, 1, '2009-02-02 13:11:12', '2016-05-21 20:40:29'),
-(26, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_nailsnew48.jpg', 20, 0, 0, 1, 1, '2009-01-31 01:55:14', '2016-05-21 20:45:05'),
-(29, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_Manicures18.jpg', 25, 0, 0, 1, 1, '2009-02-02 13:11:37', '2016-05-21 20:40:17'),
-(30, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_Manicures74.jpg', 25, 0, 0, 1, 1, '2009-02-02 13:11:59', '2016-05-21 20:42:43'),
-(31, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_safe_image(32).jpg', 25, 0, 0, 1, 1, '2009-02-03 14:17:24', '2016-05-21 20:43:17'),
-(32, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_GelNails37.jpg', 25, 0, 0, 1, 1, '2009-02-03 14:17:34', '2016-05-21 20:43:43'),
-(33, 'catalog/demo/product/New_demo/1_119.jpg', 0, 1, 1, 6, 1, '2009-02-03 14:17:55', '2016-05-21 20:35:23'),
-(34, 'catalog/demo/product/New_demo/1_1_1_1_facials8.jpg', 0, 1, 4, 7, 1, '2009-02-03 14:18:11', '2016-05-21 20:45:32'),
-(35, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_AcrylicNails13.jpg', 28, 0, 0, 0, 1, '2010-09-17 10:06:48', '2016-05-21 20:41:55'),
-(36, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_AcrylicNails6.jpg', 28, 0, 0, 0, 1, '2010-09-17 10:07:13', '2016-05-21 20:42:11'),
-(37, '', 34, 0, 0, 0, 1, '2010-09-18 14:03:39', '2011-04-22 01:55:08'),
-(38, '', 34, 0, 0, 0, 1, '2010-09-18 14:03:51', '2010-09-18 14:03:51'),
-(39, '', 34, 0, 0, 0, 1, '2010-09-18 14:04:17', '2011-04-22 01:55:20'),
-(40, '', 34, 0, 0, 0, 1, '2010-09-18 14:05:36', '2010-09-18 14:05:36'),
-(41, '', 34, 0, 0, 0, 1, '2010-09-18 14:05:49', '2011-04-22 01:55:30'),
-(42, '', 34, 0, 0, 0, 1, '2010-09-18 14:06:34', '2010-11-07 20:31:04'),
-(43, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_Manicures17.jpg', 34, 0, 0, 0, 1, '2010-09-18 14:06:49', '2016-05-21 20:46:04'),
-(44, 'catalog/demo/product/New_demo/1_1_1_1_safeimage50.jpg', 34, 0, 0, 0, 1, '2010-09-21 15:39:21', '2016-05-21 20:46:39'),
-(45, '', 18, 0, 0, 0, 1, '2010-09-24 18:29:16', '2011-04-26 08:52:11'),
-(46, '', 18, 0, 0, 0, 1, '2010-09-24 18:29:31', '2011-04-26 08:52:23'),
-(47, 'catalog/demo/product/New_demo/1_1_1_Manicures5.jpg', 34, 0, 0, 0, 1, '2010-11-07 11:13:16', '2016-05-21 20:47:17'),
-(48, '', 34, 0, 0, 0, 1, '2010-11-07 11:13:33', '2010-11-07 11:13:33'),
-(49, '', 34, 0, 0, 0, 1, '2010-11-07 11:14:04', '2010-11-07 11:14:04'),
-(50, '', 34, 0, 0, 0, 1, '2010-11-07 11:14:23', '2011-04-22 01:16:01'),
-(51, '', 34, 0, 0, 0, 1, '2010-11-07 11:14:38', '2011-04-22 01:16:13'),
-(52, '', 34, 0, 0, 0, 1, '2010-11-07 11:16:09', '2011-04-22 01:54:57'),
-(53, '', 34, 0, 0, 0, 1, '2010-11-07 11:28:53', '2011-04-22 01:14:36'),
-(54, '', 34, 0, 0, 0, 1, '2010-11-07 11:29:16', '2011-04-22 01:16:50'),
-(55, '', 34, 0, 0, 0, 1, '2010-11-08 10:31:32', '2010-11-08 10:31:32'),
-(56, '', 34, 0, 0, 0, 1, '2010-11-08 10:31:50', '2011-04-22 01:16:37'),
-(57, '', 0, 1, 1, 3, 1, '2011-04-26 08:53:16', '2016-05-19 00:16:12'),
-(58, '', 52, 0, 0, 0, 1, '2011-05-08 13:44:16', '2011-05-08 13:44:16');
+(60, '', 0, 0, 1, 2, 1, '2016-05-28 13:32:18', '2016-05-28 13:32:18'),
+(61, '', 0, 0, 3, 0, 1, '2016-05-28 13:34:31', '2016-05-28 13:34:31'),
+(62, '', 0, 0, 4, 0, 1, '2016-05-28 13:35:18', '2016-05-28 13:35:18'),
+(63, '', 0, 0, 5, 0, 1, '2016-05-28 13:35:44', '2016-05-28 13:35:44'),
+(64, '', 0, 0, 6, 0, 1, '2016-05-28 13:36:08', '2016-05-28 13:36:08'),
+(65, '', 0, 0, 7, 0, 1, '2016-05-28 13:36:36', '2016-05-28 13:36:36'),
+(66, '', 0, 0, 8, 0, 1, '2016-05-28 13:36:58', '2016-05-28 13:36:58'),
+(67, '', 0, 0, 9, 0, 1, '2016-05-28 13:37:21', '2016-05-28 13:37:21'),
+(68, '', 0, 0, 10, 0, 1, '2016-05-28 13:37:48', '2016-05-28 13:37:48'),
+(69, '', 0, 0, 11, 0, 1, '2016-05-28 13:38:13', '2016-05-28 13:38:13'),
+(70, '', 0, 0, 12, 0, 1, '2016-05-28 13:38:35', '2016-05-28 13:38:35'),
+(71, '', 0, 0, 13, 0, 1, '2016-05-28 13:38:57', '2016-05-28 13:38:57'),
+(72, '', 0, 0, 14, 0, 1, '2016-05-28 13:39:22', '2016-05-28 13:39:22'),
+(73, '', 0, 0, 15, 0, 1, '2016-05-28 13:39:49', '2016-05-28 13:39:49'),
+(74, '', 0, 0, 16, 0, 1, '2016-05-28 13:40:17', '2016-05-28 13:40:17'),
+(75, '', 0, 0, 17, 0, 1, '2016-05-28 13:40:51', '2016-05-28 13:40:51'),
+(76, '', 0, 0, 17, 0, 1, '2016-05-28 13:41:12', '2016-05-28 13:41:12'),
+(77, '', 0, 0, 18, 0, 1, '2016-05-28 13:41:46', '2016-05-28 13:41:46'),
+(78, '', 0, 0, 19, 0, 1, '2016-05-28 13:42:12', '2016-05-28 13:42:12'),
+(79, '', 0, 0, 20, 0, 1, '2016-05-28 13:42:32', '2016-05-28 13:42:32'),
+(80, '', 0, 0, 21, 0, 1, '2016-05-28 13:42:59', '2016-05-28 13:42:59'),
+(81, '', 0, 0, 22, 0, 1, '2016-05-28 13:43:31', '2016-05-28 13:43:31'),
+(82, '', 0, 0, 23, 0, 1, '2016-05-28 13:43:56', '2016-05-28 13:43:56'),
+(83, '', 0, 0, 24, 0, 1, '2016-05-28 13:44:20', '2016-05-28 13:44:20'),
+(84, '', 0, 0, 25, 0, 1, '2016-05-28 13:44:44', '2016-05-28 13:44:44'),
+(85, '', 0, 0, 26, 0, 1, '2016-05-28 13:45:06', '2016-05-28 13:45:06'),
+(86, '', 0, 0, 27, 0, 1, '2016-05-28 13:45:35', '2016-05-28 13:45:35'),
+(87, '', 0, 0, 28, 0, 1, '2016-05-28 13:46:17', '2016-05-28 13:46:17'),
+(59, '', 0, 0, 1, 1, 1, '2016-05-28 13:31:44', '2016-05-28 13:31:44');
 
 -- --------------------------------------------------------
 
@@ -539,7 +531,7 @@ INSERT INTO `oc_category` (`category_id`, `image`, `parent_id`, `top`, `column`,
 -- Table structure for table `oc_category_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_category_description` (
+CREATE TABLE `oc_category_description` (
   `category_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -554,82 +546,66 @@ CREATE TABLE IF NOT EXISTS `oc_category_description` (
 --
 
 INSERT INTO `oc_category_description` (`category_id`, `language_id`, `name`, `description`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
-(33, 2, 'Acrylic Nails', '', 'Cameras', '', ''),
-(32, 1, 'Hair', '', 'Hair', '', ''),
-(31, 1, 'Gels', '', 'Gels', '', ''),
-(30, 1, 'Dipping Powder', '', 'Dipping Powder', '', ''),
-(29, 1, 'Arilyc Liquid', '', 'Arilyc Liquid', '', ''),
-(17, 1, 'Spa', '', 'Software', '', ''),
-(25, 2, 'Eyeflash Extension', '', 'Components', '', ''),
-(24, 1, 'Pedicures', '', 'Phones &amp; PDAs', '', ''),
-(20, 2, 'Facial Services', '&lt;p&gt;\r\n	Example of category description text&lt;/p&gt;\r\n', 'Desktops', 'Example of category description', ''),
-(35, 1, 'Arilyc Art 1', '', 'Arilyc Art 1', '', ''),
-(36, 1, 'Arilyc Art 2', '', 'Arilyc Art 2', '', ''),
-(37, 1, 'test 5', '', 'test 5', '', ''),
-(38, 1, 'test 4', '', 'test 4', '', ''),
-(39, 1, 'test 6', '', 'test 6', '', ''),
-(40, 1, 'test 7', '', 'test 7', '', ''),
-(41, 1, 'test 8', '', 'test 8', '', ''),
-(42, 1, 'test 9', '', 'test 9', '', ''),
-(34, 2, 'Manicures', '&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n', 'Manicures', '', ''),
+(87, 2, 'Packaging Supply', '', 'Packaging Supply', '', ''),
+(86, 2, 'Disposable Product', '', 'Disposable Product', '', ''),
+(87, 1, 'Packaging Supply', '', 'Packaging Supply', '', ''),
+(63, 2, 'Disinfectants', '', 'Disinfectants', '', ''),
+(66, 1, 'Files', '', 'Files', '', ''),
+(66, 2, 'Files', '', 'Files', '', ''),
+(67, 1, 'Nail Accessories', '', 'Nail Accessories', '', ''),
+(67, 2, 'Nail Accessories', '', 'Nail Accessories', '', ''),
+(68, 1, 'Nail Brush', '', 'Nail Brush', '', ''),
+(68, 2, 'Nail Brush', '', 'Nail Brush', '', ''),
+(69, 1, 'Nail Machines', '', 'Nail Machines', '', ''),
+(71, 2, 'Art Tips', '', 'Art Tips', '', ''),
+(72, 1, 'Nail Implements', '', 'Nail Implements', '', ''),
+(72, 2, 'Nail Implements', '', 'Nail Implements', '', ''),
+(73, 1, 'Nail Filling Bits', '', 'Nail Filling Bits', '', ''),
+(73, 2, 'Nail Filling Bits', '', 'Nail Filling Bits', '', ''),
+(74, 1, 'Paraffin', '', 'Paraffin', '', ''),
+(74, 2, 'Paraffin', '', 'Paraffin', '', ''),
+(75, 1, 'Spa Manicure &amp; Pedicure', '', 'Spa Manicure &amp; Pedicure', '', ''),
+(75, 2, 'Spa Manicure &amp; Pedicure', '', 'Spa Manicure &amp; Pedicure', '', ''),
 (18, 1, 'Nails Art', '&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n', 'Laptops &amp; Notebooks', '', ''),
-(45, 1, 'Windows', '', 'Windows', '', ''),
-(46, 1, 'Macs', '', 'Macs', '', ''),
-(48, 1, 'test 16', '', 'test 16', '', ''),
-(49, 1, 'test 17', '', 'test 17', '', ''),
-(50, 1, 'test 18', '', 'test 18', '', ''),
-(51, 1, 'test 19', '', 'test 19', '', ''),
-(52, 1, 'test 20', '', 'test 20', '', ''),
-(53, 1, 'test 21', '', 'test 21', '', ''),
-(54, 1, 'test 22', '', 'test 22', '', ''),
-(55, 1, 'test 23', '', 'test 23', '', ''),
-(56, 1, 'test 24', '', 'test 24', '', ''),
-(57, 1, 'Waxing', '', 'Tablets', '', ''),
-(58, 1, 'test 25', '', 'test 25', '', ''),
-(28, 2, 'Arilyc Powder', '', 'Arilyc Powder', '', ''),
-(33, 1, 'Acrylic Nails', '', 'Cameras', '', ''),
-(32, 2, 'Hair', '', 'Hair', '', ''),
-(31, 2, 'Gels', '', 'Gels', '', ''),
-(29, 2, 'Arilyc Liquid', '', 'Arilyc Liquid', '', ''),
-(27, 1, 'Lotion', '', 'Lotion', '', ''),
-(26, 1, 'Nail Tip', '', 'Nail Tip', '', ''),
-(17, 2, 'Spa', '', 'Software', '', ''),
-(25, 1, 'Eyeflash Extension', '', 'Components', '', ''),
-(24, 2, 'Pedicures', '', 'Phones &amp; PDAs', '', ''),
-(20, 1, 'Facial Services', '&lt;p&gt;\r\n	Example of category description text&lt;/p&gt;\r\n', 'Desktops', 'Example of category description', ''),
-(37, 2, 'test 5', '', 'test 5', '', ''),
-(38, 2, 'test 4', '', 'test 4', '', ''),
-(39, 2, 'test 6', '', 'test 6', '', ''),
-(40, 2, 'test 7', '', 'test 7', '', ''),
-(41, 2, 'test 8', '', 'test 8', '', ''),
-(42, 2, 'test 9', '', 'test 9', '', ''),
-(43, 1, 'Spa &amp; Wax', '', 'Spa &amp; Wax', '', ''),
-(34, 1, 'Manicures', '&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n', 'Manicures', '', ''),
+(70, 2, 'Nail Lacquers', '', 'Nail Lacquers', '', ''),
+(71, 1, 'Art Tips', '', 'Art Tips', '', ''),
+(82, 1, 'Foot Files &amp; Callus', '', 'Foot Files &amp; Callus', '', ''),
+(81, 1, 'Top Coat &amp; Base Coat', '', 'Top Coat &amp; Base Coat', '', ''),
+(61, 1, 'Builder Gels', '', 'Builder Gels', '', ''),
+(61, 2, 'Builder Gels', '', 'Builder Gels', '', ''),
+(62, 1, 'Acrylic Powder &amp; Liquid', '', 'Acrylic Powder &amp; Liquid', '', ''),
+(62, 2, 'Acrylic Powder &amp; Liquid', '', 'Acrylic Powder &amp; Liquid', '', ''),
+(63, 1, 'Disinfectants', '', 'Disinfectants', '', ''),
+(64, 1, 'Eyelashes', '', 'Eyelashes', '', ''),
+(64, 2, 'Eyelashes', '', 'Eyelashes', '', ''),
+(65, 1, 'Shiny Buffer, Buffer', '', 'Shiny Buffer, Buffer', '', ''),
+(65, 2, 'Shiny Buffer, Buffer', '', 'Shiny Buffer, Buffer', '', ''),
+(86, 1, 'Disposable Product', '', 'Disposable Product', '', ''),
+(85, 2, 'New Items', '', 'New Items', '', ''),
+(85, 1, 'New Items', '', 'New Items', '', ''),
+(76, 1, 'Waxing', '', 'Waxing', '', ''),
+(76, 2, 'Waxing', '', 'Waxing', '', ''),
+(77, 1, 'Nail Treatments &amp; Enhancement', '', 'Nail Treatments &amp; Enhancement', '', ''),
+(77, 2, 'Nail Treatments &amp; Enhancement', '', 'Nail Treatments &amp; Enhancement', '', ''),
+(78, 1, 'LED Sign', '', 'LED Sign', '', ''),
+(78, 2, 'LED Sign', '', 'LED Sign', '', ''),
+(79, 1, 'Massage', '', 'Massage', '', ''),
+(79, 2, 'Massage', '', 'Massage', '', ''),
+(80, 1, 'Empty Bottles &amp; Jars', '', 'Empty Bottles &amp; Jars', '', ''),
 (18, 2, 'Nails Art', '&lt;p&gt;\r\n	Shop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n', 'Laptops &amp; Notebooks', '', ''),
-(44, 1, 'Spa &amp; Wax 2', '', 'Spa &amp; Wax 2', '', ''),
-(45, 2, 'Windows', '', 'Windows', '', ''),
-(46, 2, 'Macs', '', 'Macs', '', ''),
-(47, 1, 'Spa &amp; Wax 1', '', 'Spa &amp; Wax 1', '', ''),
-(48, 2, 'test 16', '', 'test 16', '', ''),
-(49, 2, 'test 17', '', 'test 17', '', ''),
-(50, 2, 'test 18', '', 'test 18', '', ''),
-(51, 2, 'test 19', '', 'test 19', '', ''),
-(52, 2, 'test 20', '', 'test 20', '', ''),
-(53, 2, 'test 21', '', 'test 21', '', ''),
-(54, 2, 'test 22', '', 'test 22', '', ''),
-(55, 2, 'test 23', '', 'test 23', '', ''),
-(56, 2, 'test 24', '', 'test 24', '', ''),
-(57, 2, 'Waxing', '', 'Tablets', '', ''),
-(58, 2, 'test 25', '', 'test 25', '', ''),
-(28, 1, 'Arilyc Powder', '', 'Arilyc Powder', '', ''),
-(35, 2, 'Arilyc Art 1', '', 'Arilyc Art 1', '', ''),
-(36, 2, 'Arilyc Art 2', '', 'Arilyc Art 2', '', ''),
-(30, 2, 'Dipping Powder', '', 'Dipping Powder', '', ''),
-(27, 2, 'Lotion', '', 'Lotion', '', ''),
-(26, 2, 'Nail Tip', '', 'Nail Tip', '', ''),
-(43, 2, 'Spa &amp; Wax', '', 'Spa &amp; Wax', '', ''),
-(44, 2, 'Spa &amp; Wax 2', '', 'Spa &amp; Wax 2', '', ''),
-(47, 2, 'Spa &amp; Wax 1', '', 'Spa &amp; Wax 1', '', '');
+(84, 1, 'Sample Request', '', 'Sample Request', '', ''),
+(69, 2, 'Nail Machines', '', 'Nail Machines', '', ''),
+(70, 1, 'Nail Lacquers', '', 'Nail Lacquers', '', ''),
+(82, 2, 'Foot Files &amp; Callus', '', 'Foot Files &amp; Callus', '', ''),
+(81, 2, 'Top Coat &amp; Base Coat', '', 'Top Coat &amp; Base Coat', '', ''),
+(80, 2, 'Empty Bottles &amp; Jars', '', 'Empty Bottles &amp; Jars', '', ''),
+(59, 1, 'Creation Products', '', 'Creation Products', '', ''),
+(59, 2, 'Creation Products', '', 'Creation Products', '', ''),
+(60, 1, 'Soak Off Gel', '', 'Soak Off Gel', '', ''),
+(60, 2, 'Soak Off Gel', '', 'Soak Off Gel', '', ''),
+(84, 2, 'Sample Request', '', 'Sample Request', '', ''),
+(83, 2, 'Salon Funiture', '', 'Salon Funiture', '', ''),
+(83, 1, 'Salon Funiture', '', 'Salon Funiture', '', '');
 
 -- --------------------------------------------------------
 
@@ -637,7 +613,7 @@ INSERT INTO `oc_category_description` (`category_id`, `language_id`, `name`, `de
 -- Table structure for table `oc_category_filter`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_category_filter` (
+CREATE TABLE `oc_category_filter` (
   `category_id` int(11) NOT NULL,
   `filter_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -648,7 +624,7 @@ CREATE TABLE IF NOT EXISTS `oc_category_filter` (
 -- Table structure for table `oc_category_path`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_category_path` (
+CREATE TABLE `oc_category_path` (
   `category_id` int(11) NOT NULL,
   `path_id` int(11) NOT NULL,
   `level` int(11) NOT NULL
@@ -659,77 +635,36 @@ CREATE TABLE IF NOT EXISTS `oc_category_path` (
 --
 
 INSERT INTO `oc_category_path` (`category_id`, `path_id`, `level`) VALUES
-(25, 25, 0),
-(28, 25, 0),
-(28, 28, 1),
-(35, 25, 0),
-(35, 28, 1),
-(35, 35, 2),
-(36, 25, 0),
-(36, 28, 1),
-(36, 36, 2),
-(29, 25, 0),
-(29, 29, 1),
-(30, 25, 0),
-(30, 30, 1),
-(31, 25, 0),
-(31, 31, 1),
-(32, 25, 0),
-(32, 32, 1),
-(20, 20, 0),
-(27, 20, 0),
-(27, 27, 1),
-(26, 20, 0),
-(26, 26, 1),
-(24, 24, 0),
+(61, 61, 0),
 (18, 18, 0),
-(45, 18, 0),
-(45, 45, 1),
-(46, 18, 0),
-(46, 46, 1),
-(17, 17, 0),
-(33, 33, 0),
-(34, 34, 0),
-(37, 34, 0),
-(37, 37, 1),
-(38, 34, 0),
-(38, 38, 1),
-(39, 34, 0),
-(39, 39, 1),
-(40, 34, 0),
-(40, 40, 1),
-(41, 34, 0),
-(41, 41, 1),
-(42, 34, 0),
-(42, 42, 1),
-(43, 34, 0),
-(43, 43, 1),
-(44, 34, 0),
-(44, 44, 1),
-(47, 34, 0),
-(47, 47, 1),
-(48, 34, 0),
-(48, 48, 1),
-(49, 34, 0),
-(49, 49, 1),
-(50, 34, 0),
-(50, 50, 1),
-(51, 34, 0),
-(51, 51, 1),
-(52, 34, 0),
-(52, 52, 1),
-(58, 34, 0),
-(58, 52, 1),
-(58, 58, 2),
-(53, 34, 0),
-(53, 53, 1),
-(54, 34, 0),
-(54, 54, 1),
-(55, 34, 0),
-(55, 55, 1),
-(56, 34, 0),
-(56, 56, 1),
-(57, 57, 0);
+(63, 63, 0),
+(62, 62, 0),
+(65, 65, 0),
+(64, 64, 0),
+(60, 60, 0),
+(87, 87, 0),
+(86, 86, 0),
+(85, 85, 0),
+(84, 84, 0),
+(83, 83, 0),
+(82, 82, 0),
+(81, 81, 0),
+(80, 80, 0),
+(79, 79, 0),
+(78, 78, 0),
+(77, 77, 0),
+(76, 76, 0),
+(75, 75, 0),
+(74, 74, 0),
+(73, 73, 0),
+(72, 72, 0),
+(71, 71, 0),
+(70, 70, 0),
+(69, 69, 0),
+(68, 68, 0),
+(67, 67, 0),
+(66, 66, 0),
+(59, 59, 0);
 
 -- --------------------------------------------------------
 
@@ -737,7 +672,7 @@ INSERT INTO `oc_category_path` (`category_id`, `path_id`, `level`) VALUES
 -- Table structure for table `oc_category_to_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_category_to_layout` (
+CREATE TABLE `oc_category_to_layout` (
   `category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL
@@ -748,26 +683,36 @@ CREATE TABLE IF NOT EXISTS `oc_category_to_layout` (
 --
 
 INSERT INTO `oc_category_to_layout` (`category_id`, `store_id`, `layout_id`) VALUES
-(33, 0, 0),
-(25, 0, 0),
-(20, 0, 0),
-(34, 0, 0),
-(24, 0, 0),
-(17, 0, 0),
-(57, 0, 0),
+(77, 0, 0),
+(69, 0, 0),
+(66, 0, 0),
+(62, 0, 0),
+(61, 0, 0),
+(60, 0, 0),
+(59, 0, 0),
 (18, 0, 0),
-(29, 0, 0),
-(28, 0, 0),
-(35, 0, 0),
-(36, 0, 0),
-(30, 0, 0),
-(31, 0, 0),
-(32, 0, 0),
-(27, 0, 0),
-(26, 0, 0),
-(43, 0, 0),
-(44, 0, 0),
-(47, 0, 0);
+(73, 0, 0),
+(74, 0, 0),
+(76, 0, 0),
+(75, 0, 0),
+(72, 0, 0),
+(71, 0, 0),
+(70, 0, 0),
+(68, 0, 0),
+(67, 0, 0),
+(65, 0, 0),
+(64, 0, 0),
+(63, 0, 0),
+(78, 0, 0),
+(79, 0, 0),
+(80, 0, 0),
+(81, 0, 0),
+(82, 0, 0),
+(83, 0, 0),
+(84, 0, 0),
+(85, 0, 0),
+(86, 0, 0),
+(87, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -775,7 +720,7 @@ INSERT INTO `oc_category_to_layout` (`category_id`, `store_id`, `layout_id`) VAL
 -- Table structure for table `oc_category_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_category_to_store` (
+CREATE TABLE `oc_category_to_store` (
   `category_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -785,44 +730,36 @@ CREATE TABLE IF NOT EXISTS `oc_category_to_store` (
 --
 
 INSERT INTO `oc_category_to_store` (`category_id`, `store_id`) VALUES
-(17, 0),
 (18, 0),
-(20, 0),
-(24, 0),
-(25, 0),
-(26, 0),
-(27, 0),
-(28, 0),
-(29, 0),
-(30, 0),
-(31, 0),
-(32, 0),
-(33, 0),
-(34, 0),
-(35, 0),
-(36, 0),
-(37, 0),
-(38, 0),
-(39, 0),
-(40, 0),
-(41, 0),
-(42, 0),
-(43, 0),
-(44, 0),
-(45, 0),
-(46, 0),
-(47, 0),
-(48, 0),
-(49, 0),
-(50, 0),
-(51, 0),
-(52, 0),
-(53, 0),
-(54, 0),
-(55, 0),
-(56, 0),
-(57, 0),
-(58, 0);
+(59, 0),
+(60, 0),
+(61, 0),
+(62, 0),
+(63, 0),
+(64, 0),
+(65, 0),
+(66, 0),
+(67, 0),
+(68, 0),
+(69, 0),
+(70, 0),
+(71, 0),
+(72, 0),
+(73, 0),
+(74, 0),
+(75, 0),
+(76, 0),
+(77, 0),
+(78, 0),
+(79, 0),
+(80, 0),
+(81, 0),
+(82, 0),
+(83, 0),
+(84, 0),
+(85, 0),
+(86, 0),
+(87, 0);
 
 -- --------------------------------------------------------
 
@@ -830,7 +767,7 @@ INSERT INTO `oc_category_to_store` (`category_id`, `store_id`) VALUES
 -- Table structure for table `oc_country`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_country` (
+CREATE TABLE `oc_country` (
   `country_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `iso_code_2` varchar(2) NOT NULL,
@@ -838,7 +775,7 @@ CREATE TABLE IF NOT EXISTS `oc_country` (
   `address_format` text NOT NULL,
   `postcode_required` tinyint(1) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=258 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_country`
@@ -1105,7 +1042,7 @@ INSERT INTO `oc_country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `add
 -- Table structure for table `oc_coupon`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_coupon` (
+CREATE TABLE `oc_coupon` (
   `coupon_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `code` varchar(10) NOT NULL,
@@ -1120,7 +1057,7 @@ CREATE TABLE IF NOT EXISTS `oc_coupon` (
   `uses_customer` varchar(11) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_coupon`
@@ -1137,7 +1074,7 @@ INSERT INTO `oc_coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logge
 -- Table structure for table `oc_coupon_category`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_coupon_category` (
+CREATE TABLE `oc_coupon_category` (
   `coupon_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1148,7 +1085,7 @@ CREATE TABLE IF NOT EXISTS `oc_coupon_category` (
 -- Table structure for table `oc_coupon_history`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_coupon_history` (
+CREATE TABLE `oc_coupon_history` (
   `coupon_history_id` int(11) NOT NULL,
   `coupon_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -1163,7 +1100,7 @@ CREATE TABLE IF NOT EXISTS `oc_coupon_history` (
 -- Table structure for table `oc_coupon_product`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_coupon_product` (
+CREATE TABLE `oc_coupon_product` (
   `coupon_product_id` int(11) NOT NULL,
   `coupon_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
@@ -1175,7 +1112,7 @@ CREATE TABLE IF NOT EXISTS `oc_coupon_product` (
 -- Table structure for table `oc_currency`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_currency` (
+CREATE TABLE `oc_currency` (
   `currency_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
   `code` varchar(3) NOT NULL,
@@ -1185,16 +1122,16 @@ CREATE TABLE IF NOT EXISTS `oc_currency` (
   `value` float(15,8) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_currency`
 --
 
 INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
-(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.68879998, 1, '2016-05-20 20:04:30'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2016-05-21 16:20:40'),
-(3, 'Euro', 'EUR', '', '€', '2', 0.89099997, 1, '2016-05-20 20:04:30');
+(1, 'Pound Sterling', 'GBP', '£', '', '2', 0.68390000, 1, '2016-05-28 08:29:34'),
+(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2016-05-28 08:29:34'),
+(3, 'Euro', 'EUR', '', '€', '2', 0.89960003, 1, '2016-05-28 08:29:34');
 
 -- --------------------------------------------------------
 
@@ -1202,7 +1139,7 @@ INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbo
 -- Table structure for table `oc_customer`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer` (
+CREATE TABLE `oc_customer` (
   `customer_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0',
@@ -1225,14 +1162,15 @@ CREATE TABLE IF NOT EXISTS `oc_customer` (
   `token` text NOT NULL,
   `code` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_customer`
 --
 
 INSERT INTO `oc_customer` (`customer_id`, `customer_group_id`, `store_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `password`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `status`, `approved`, `safe`, `token`, `code`, `date_added`) VALUES
-(1, 1, 0, 'Vincent', 'Truong', 'king.of.ocean4454@gmail.com', '444 444 4444', '555 555 5555', '1c32d0c284ad9e87574380a2e82b6e0cc989cda1', 'jZgeluY02', NULL, NULL, 0, 1, '', '::1', 1, 1, 0, '', '', '2016-05-21 21:11:40');
+(1, 1, 0, 'Vincent', 'Truong', 'king.of.ocean4454@gmail.com', '444 444 4444', '555 555 5555', '1c32d0c284ad9e87574380a2e82b6e0cc989cda1', 'jZgeluY02', NULL, NULL, 0, 1, '', '::1', 1, 1, 0, '', '', '2016-05-21 21:11:40'),
+(2, 1, 0, 'Vincent', 'Vincnet', 'xuanvinh.uit@gmail.com', '1234567890', '', 'd5c494c2c2759418c57e649115abb786976dd9ac', 'z5Uo75lzC', NULL, NULL, 0, 2, '', '::1', 1, 1, 0, '', '', '2016-05-21 23:33:14');
 
 -- --------------------------------------------------------
 
@@ -1240,14 +1178,14 @@ INSERT INTO `oc_customer` (`customer_id`, `customer_group_id`, `store_id`, `firs
 -- Table structure for table `oc_customer_activity`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_activity` (
+CREATE TABLE `oc_customer_activity` (
   `customer_activity_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `key` varchar(64) NOT NULL,
   `data` text NOT NULL,
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_customer_activity`
@@ -1255,7 +1193,9 @@ CREATE TABLE IF NOT EXISTS `oc_customer_activity` (
 
 INSERT INTO `oc_customer_activity` (`customer_activity_id`, `customer_id`, `key`, `data`, `ip`, `date_added`) VALUES
 (1, 1, 'register', '{"customer_id":1,"name":"Vincent Truong"}', '::1', '2016-05-21 21:11:41'),
-(2, 1, 'order_account', '{"customer_id":"1","name":"Vincent Truong","order_id":1}', '::1', '2016-05-21 21:12:36');
+(2, 1, 'order_account', '{"customer_id":"1","name":"Vincent Truong","order_id":1}', '::1', '2016-05-21 21:12:36'),
+(3, 2, 'register', '{"customer_id":2,"name":"Vincent Vincnet"}', '::1', '2016-05-21 23:33:14'),
+(4, 2, 'order_account', '{"customer_id":"2","name":"Vincent Vincnet","order_id":2}', '::1', '2016-05-21 23:33:53');
 
 -- --------------------------------------------------------
 
@@ -1263,11 +1203,11 @@ INSERT INTO `oc_customer_activity` (`customer_activity_id`, `customer_id`, `key`
 -- Table structure for table `oc_customer_group`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_group` (
+CREATE TABLE `oc_customer_group` (
   `customer_group_id` int(11) NOT NULL,
   `approval` int(1) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_customer_group`
@@ -1282,7 +1222,7 @@ INSERT INTO `oc_customer_group` (`customer_group_id`, `approval`, `sort_order`) 
 -- Table structure for table `oc_customer_group_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_group_description` (
+CREATE TABLE `oc_customer_group_description` (
   `customer_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -1303,7 +1243,7 @@ INSERT INTO `oc_customer_group_description` (`customer_group_id`, `language_id`,
 -- Table structure for table `oc_customer_history`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_history` (
+CREATE TABLE `oc_customer_history` (
   `customer_history_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `comment` text NOT NULL,
@@ -1316,19 +1256,20 @@ CREATE TABLE IF NOT EXISTS `oc_customer_history` (
 -- Table structure for table `oc_customer_ip`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_ip` (
+CREATE TABLE `oc_customer_ip` (
   `customer_ip_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_customer_ip`
 --
 
 INSERT INTO `oc_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added`) VALUES
-(1, 1, '::1', '2016-05-21 21:11:41');
+(1, 1, '::1', '2016-05-21 21:11:41'),
+(2, 2, '::1', '2016-05-21 23:33:14');
 
 -- --------------------------------------------------------
 
@@ -1336,7 +1277,7 @@ INSERT INTO `oc_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added
 -- Table structure for table `oc_customer_login`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_login` (
+CREATE TABLE `oc_customer_login` (
   `customer_login_id` int(11) NOT NULL,
   `email` varchar(96) NOT NULL,
   `ip` varchar(40) NOT NULL,
@@ -1351,7 +1292,7 @@ CREATE TABLE IF NOT EXISTS `oc_customer_login` (
 -- Table structure for table `oc_customer_online`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_online` (
+CREATE TABLE `oc_customer_online` (
   `ip` varchar(40) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `url` text NOT NULL,
@@ -1364,7 +1305,7 @@ CREATE TABLE IF NOT EXISTS `oc_customer_online` (
 --
 
 INSERT INTO `oc_customer_online` (`ip`, `customer_id`, `url`, `referer`, `date_added`) VALUES
-('::1', 0, 'http://localhost/thepronails/index.php?route=information/information&amp;information_id=4', 'http://localhost/thepronails/index.php?route=information/information&amp;information_id=6', '2016-05-26 10:37:33');
+('::1', 0, 'http://localhost/thepronails/', '', '2016-05-28 09:49:24');
 
 -- --------------------------------------------------------
 
@@ -1372,7 +1313,7 @@ INSERT INTO `oc_customer_online` (`ip`, `customer_id`, `url`, `referer`, `date_a
 -- Table structure for table `oc_customer_reward`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_reward` (
+CREATE TABLE `oc_customer_reward` (
   `customer_reward_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL DEFAULT '0',
   `order_id` int(11) NOT NULL DEFAULT '0',
@@ -1387,7 +1328,7 @@ CREATE TABLE IF NOT EXISTS `oc_customer_reward` (
 -- Table structure for table `oc_customer_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_transaction` (
+CREATE TABLE `oc_customer_transaction` (
   `customer_transaction_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -1402,7 +1343,7 @@ CREATE TABLE IF NOT EXISTS `oc_customer_transaction` (
 -- Table structure for table `oc_customer_wishlist`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_customer_wishlist` (
+CREATE TABLE `oc_customer_wishlist` (
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `date_added` datetime NOT NULL
@@ -1414,7 +1355,7 @@ CREATE TABLE IF NOT EXISTS `oc_customer_wishlist` (
 -- Table structure for table `oc_custom_field`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_custom_field` (
+CREATE TABLE `oc_custom_field` (
   `custom_field_id` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
   `value` text NOT NULL,
@@ -1430,7 +1371,7 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field` (
 -- Table structure for table `oc_custom_field_customer_group`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_custom_field_customer_group` (
+CREATE TABLE `oc_custom_field_customer_group` (
   `custom_field_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
   `required` tinyint(1) NOT NULL
@@ -1442,7 +1383,7 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field_customer_group` (
 -- Table structure for table `oc_custom_field_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_custom_field_description` (
+CREATE TABLE `oc_custom_field_description` (
   `custom_field_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL
@@ -1454,7 +1395,7 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field_description` (
 -- Table structure for table `oc_custom_field_value`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_custom_field_value` (
+CREATE TABLE `oc_custom_field_value` (
   `custom_field_value_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
@@ -1466,7 +1407,7 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field_value` (
 -- Table structure for table `oc_custom_field_value_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_custom_field_value_description` (
+CREATE TABLE `oc_custom_field_value_description` (
   `custom_field_value_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
@@ -1479,7 +1420,7 @@ CREATE TABLE IF NOT EXISTS `oc_custom_field_value_description` (
 -- Table structure for table `oc_download`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_download` (
+CREATE TABLE `oc_download` (
   `download_id` int(11) NOT NULL,
   `filename` varchar(160) NOT NULL,
   `mask` varchar(128) NOT NULL,
@@ -1492,7 +1433,7 @@ CREATE TABLE IF NOT EXISTS `oc_download` (
 -- Table structure for table `oc_download_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_download_description` (
+CREATE TABLE `oc_download_description` (
   `download_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -1504,12 +1445,12 @@ CREATE TABLE IF NOT EXISTS `oc_download_description` (
 -- Table structure for table `oc_event`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_event` (
+CREATE TABLE `oc_event` (
   `event_id` int(11) NOT NULL,
   `code` varchar(32) NOT NULL,
   `trigger` text NOT NULL,
   `action` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_event`
@@ -1527,11 +1468,11 @@ INSERT INTO `oc_event` (`event_id`, `code`, `trigger`, `action`) VALUES
 -- Table structure for table `oc_extension`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_extension` (
+CREATE TABLE `oc_extension` (
   `extension_id` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
   `code` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_extension`
@@ -1581,7 +1522,9 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (41, 'payment', 'pp_payflow_iframe'),
 (42, 'payment', 'pp_pro_iframe'),
 (43, 'payment', 'pp_pro'),
-(44, 'payment', 'pp_standard');
+(44, 'payment', 'pp_standard'),
+(45, 'shipping', 'ups'),
+(46, 'shipping', 'usps');
 
 -- --------------------------------------------------------
 
@@ -1589,7 +1532,7 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 -- Table structure for table `oc_filter`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_filter` (
+CREATE TABLE `oc_filter` (
   `filter_id` int(11) NOT NULL,
   `filter_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
@@ -1601,7 +1544,7 @@ CREATE TABLE IF NOT EXISTS `oc_filter` (
 -- Table structure for table `oc_filter_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_filter_description` (
+CREATE TABLE `oc_filter_description` (
   `filter_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `filter_group_id` int(11) NOT NULL,
@@ -1614,7 +1557,7 @@ CREATE TABLE IF NOT EXISTS `oc_filter_description` (
 -- Table structure for table `oc_filter_group`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_filter_group` (
+CREATE TABLE `oc_filter_group` (
   `filter_group_id` int(11) NOT NULL,
   `sort_order` int(3) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1625,7 +1568,7 @@ CREATE TABLE IF NOT EXISTS `oc_filter_group` (
 -- Table structure for table `oc_filter_group_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_filter_group_description` (
+CREATE TABLE `oc_filter_group_description` (
   `filter_group_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
@@ -1637,7 +1580,7 @@ CREATE TABLE IF NOT EXISTS `oc_filter_group_description` (
 -- Table structure for table `oc_g2apay_order`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_g2apay_order` (
+CREATE TABLE `oc_g2apay_order` (
   `g2apay_order_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `g2apay_transaction_id` varchar(255) NOT NULL,
@@ -1654,7 +1597,7 @@ CREATE TABLE IF NOT EXISTS `oc_g2apay_order` (
 -- Table structure for table `oc_g2apay_order_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_g2apay_order_transaction` (
+CREATE TABLE `oc_g2apay_order_transaction` (
   `g2apay_order_transaction_id` int(11) NOT NULL,
   `g2apay_order_id` int(11) NOT NULL,
   `date_added` datetime NOT NULL,
@@ -1668,13 +1611,13 @@ CREATE TABLE IF NOT EXISTS `oc_g2apay_order_transaction` (
 -- Table structure for table `oc_geo_zone`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_geo_zone` (
+CREATE TABLE `oc_geo_zone` (
   `geo_zone_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date_modified` datetime NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_geo_zone`
@@ -1690,12 +1633,12 @@ INSERT INTO `oc_geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`
 -- Table structure for table `oc_information`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_information` (
+CREATE TABLE `oc_information` (
   `information_id` int(11) NOT NULL,
   `bottom` int(1) NOT NULL DEFAULT '0',
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_information`
@@ -1713,7 +1656,7 @@ INSERT INTO `oc_information` (`information_id`, `bottom`, `sort_order`, `status`
 -- Table structure for table `oc_information_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_information_description` (
+CREATE TABLE `oc_information_description` (
   `information_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `title` varchar(64) NOT NULL,
@@ -1728,14 +1671,14 @@ CREATE TABLE IF NOT EXISTS `oc_information_description` (
 --
 
 INSERT INTO `oc_information_description` (`information_id`, `language_id`, `title`, `description`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
-(4, 2, 'Về Chúng Tôi', '&lt;p&gt;\r\n	About Us&lt;/p&gt;\r\n', 'Về Chúng Tôi', '', ''),
-(3, 2, 'Chính Sách', '&lt;p&gt;\r\n	Privacy Policy&lt;/p&gt;\r\n', 'Privacy Policy', '', ''),
-(6, 2, 'Vận Chuyển', '&lt;p&gt;\r\n	Delivery Information&lt;/p&gt;\r\n', 'Delivery Information', '', ''),
 (4, 1, 'About Us', '&lt;p&gt;\r\n	About Us&lt;/p&gt;\r\n', 'About Us', '', ''),
-(5, 2, 'Điều Khoản', '&lt;p&gt;\r\n	Terms &amp;amp; Conditions&lt;/p&gt;\r\n', 'Terms &amp; Conditions', '', ''),
+(5, 1, 'Terms &amp; Conditions', '&lt;p&gt;\r\n	Terms &amp;amp; Conditions&lt;/p&gt;\r\n', 'Terms &amp; Conditions', '', ''),
 (3, 1, 'Privacy Policy', '&lt;p&gt;\r\n	Privacy Policy&lt;/p&gt;\r\n', 'Privacy Policy', '', ''),
 (6, 1, 'Delivery Information', '&lt;p&gt;\r\n	Delivery Information&lt;/p&gt;\r\n', 'Delivery Information', '', ''),
-(5, 1, 'Terms &amp; Conditions', '&lt;p&gt;\r\n	Terms &amp;amp; Conditions&lt;/p&gt;\r\n', 'Terms &amp; Conditions', '', '');
+(4, 2, 'About Us', '&lt;p&gt;\r\n	About Us&lt;/p&gt;\r\n', 'About Us', '', ''),
+(5, 2, 'Terms &amp; Conditions', '&lt;p&gt;\r\n	Terms &amp;amp; Conditions&lt;/p&gt;\r\n', 'Terms &amp; Conditions', '', ''),
+(3, 2, 'Privacy Policy', '&lt;p&gt;\r\n	Privacy Policy&lt;/p&gt;\r\n', 'Privacy Policy', '', ''),
+(6, 2, 'Delivery Information', '&lt;p&gt;\r\n	Delivery Information&lt;/p&gt;\r\n', 'Delivery Information', '', '');
 
 -- --------------------------------------------------------
 
@@ -1743,21 +1686,11 @@ INSERT INTO `oc_information_description` (`information_id`, `language_id`, `titl
 -- Table structure for table `oc_information_to_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_information_to_layout` (
+CREATE TABLE `oc_information_to_layout` (
   `information_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `oc_information_to_layout`
---
-
-INSERT INTO `oc_information_to_layout` (`information_id`, `store_id`, `layout_id`) VALUES
-(4, 0, 0),
-(5, 0, 0),
-(3, 0, 0),
-(6, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1765,7 +1698,7 @@ INSERT INTO `oc_information_to_layout` (`information_id`, `store_id`, `layout_id
 -- Table structure for table `oc_information_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_information_to_store` (
+CREATE TABLE `oc_information_to_store` (
   `information_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1786,7 +1719,7 @@ INSERT INTO `oc_information_to_store` (`information_id`, `store_id`) VALUES
 -- Table structure for table `oc_language`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_language` (
+CREATE TABLE `oc_language` (
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `code` varchar(5) NOT NULL,
@@ -1795,7 +1728,7 @@ CREATE TABLE IF NOT EXISTS `oc_language` (
   `directory` varchar(32) NOT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_language`
@@ -1811,10 +1744,10 @@ INSERT INTO `oc_language` (`language_id`, `name`, `code`, `locale`, `image`, `di
 -- Table structure for table `oc_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_layout` (
+CREATE TABLE `oc_layout` (
   `layout_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_layout`
@@ -1842,13 +1775,13 @@ INSERT INTO `oc_layout` (`layout_id`, `name`) VALUES
 -- Table structure for table `oc_layout_module`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_layout_module` (
+CREATE TABLE `oc_layout_module` (
   `layout_module_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   `position` varchar(14) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_layout_module`
@@ -1860,15 +1793,14 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (20, 5, '0', 'column_left', 2),
 (69, 10, 'affiliate', 'column_right', 1),
 (68, 6, 'account', 'column_right', 1),
-(97, 1, 'featured.28', 'content_top', 3),
-(96, 1, 'latest.32', 'content_top', 2),
-(95, 1, 'slideshow.27', 'content_top', 0),
+(102, 1, 'latest.32', 'content_top', 2),
+(101, 1, 'bestseller.33', 'content_top', 1),
 (72, 3, 'category', 'column_left', 1),
 (73, 3, 'banner.30', 'column_left', 2),
 (75, 14, 'latest.32', 'content_top', 0),
-(94, 1, 'carousel.29', 'content_bottom', 6),
-(93, 1, 'category', 'column_left', 0),
-(98, 1, 'bestseller.33', 'content_top', 1);
+(100, 1, 'slideshow.27', 'content_top', 0),
+(99, 1, 'category', 'column_left', 0),
+(103, 1, 'featured.28', 'content_top', 3);
 
 -- --------------------------------------------------------
 
@@ -1876,12 +1808,12 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 -- Table structure for table `oc_layout_route`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_layout_route` (
+CREATE TABLE `oc_layout_route` (
   `layout_route_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `route` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_layout_route`
@@ -1891,7 +1823,7 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 (38, 6, 0, 'account/%'),
 (17, 10, 0, 'affiliate/%'),
 (44, 3, 0, 'product/category'),
-(58, 1, 0, 'common/home'),
+(59, 1, 0, 'common/home'),
 (20, 2, 0, 'product/product'),
 (24, 11, 0, 'information/information'),
 (23, 7, 0, 'checkout/%'),
@@ -1908,10 +1840,10 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 -- Table structure for table `oc_length_class`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_length_class` (
+CREATE TABLE `oc_length_class` (
   `length_class_id` int(11) NOT NULL,
   `value` decimal(15,8) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_length_class`
@@ -1928,7 +1860,7 @@ INSERT INTO `oc_length_class` (`length_class_id`, `value`) VALUES
 -- Table structure for table `oc_length_class_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_length_class_description` (
+CREATE TABLE `oc_length_class_description` (
   `length_class_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
@@ -1953,7 +1885,7 @@ INSERT INTO `oc_length_class_description` (`length_class_id`, `language_id`, `ti
 -- Table structure for table `oc_location`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_location` (
+CREATE TABLE `oc_location` (
   `location_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `address` text NOT NULL,
@@ -1971,12 +1903,12 @@ CREATE TABLE IF NOT EXISTS `oc_location` (
 -- Table structure for table `oc_manufacturer`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_manufacturer` (
+CREATE TABLE `oc_manufacturer` (
   `manufacturer_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_manufacturer`
@@ -1996,7 +1928,7 @@ INSERT INTO `oc_manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`)
 -- Table structure for table `oc_manufacturer_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_manufacturer_to_store` (
+CREATE TABLE `oc_manufacturer_to_store` (
   `manufacturer_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -2019,7 +1951,7 @@ INSERT INTO `oc_manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 -- Table structure for table `oc_marketing`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_marketing` (
+CREATE TABLE `oc_marketing` (
   `marketing_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `description` text NOT NULL,
@@ -2034,7 +1966,7 @@ CREATE TABLE IF NOT EXISTS `oc_marketing` (
 -- Table structure for table `oc_modification`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_modification` (
+CREATE TABLE `oc_modification` (
   `modification_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `code` varchar(64) NOT NULL,
@@ -2052,12 +1984,12 @@ CREATE TABLE IF NOT EXISTS `oc_modification` (
 -- Table structure for table `oc_module`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_module` (
+CREATE TABLE `oc_module` (
   `module_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `code` varchar(32) NOT NULL,
   `setting` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_module`
@@ -2078,11 +2010,11 @@ INSERT INTO `oc_module` (`module_id`, `name`, `code`, `setting`) VALUES
 -- Table structure for table `oc_option`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_option` (
+CREATE TABLE `oc_option` (
   `option_id` int(11) NOT NULL,
   `type` varchar(32) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_option`
@@ -2107,7 +2039,7 @@ INSERT INTO `oc_option` (`option_id`, `type`, `sort_order`) VALUES
 -- Table structure for table `oc_option_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_option_description` (
+CREATE TABLE `oc_option_description` (
   `option_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL
@@ -2147,12 +2079,12 @@ INSERT INTO `oc_option_description` (`option_id`, `language_id`, `name`) VALUES
 -- Table structure for table `oc_option_value`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_option_value` (
+CREATE TABLE `oc_option_value` (
   `option_value_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL,
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_option_value`
@@ -2180,7 +2112,7 @@ INSERT INTO `oc_option_value` (`option_value_id`, `option_id`, `image`, `sort_or
 -- Table structure for table `oc_option_value_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_option_value_description` (
+CREATE TABLE `oc_option_value_description` (
   `option_value_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
@@ -2227,7 +2159,7 @@ INSERT INTO `oc_option_value_description` (`option_value_id`, `language_id`, `op
 -- Table structure for table `oc_order`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order` (
+CREATE TABLE `oc_order` (
   `order_id` int(11) NOT NULL,
   `invoice_no` int(11) NOT NULL DEFAULT '0',
   `invoice_prefix` varchar(26) NOT NULL,
@@ -2289,14 +2221,15 @@ CREATE TABLE IF NOT EXISTS `oc_order` (
   `accept_language` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_order`
 --
 
 INSERT INTO `oc_order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, `store_name`, `store_url`, `customer_id`, `customer_group_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `custom_field`, `payment_firstname`, `payment_lastname`, `payment_company`, `payment_address_1`, `payment_address_2`, `payment_city`, `payment_postcode`, `payment_country`, `payment_country_id`, `payment_zone`, `payment_zone_id`, `payment_address_format`, `payment_custom_field`, `payment_method`, `payment_code`, `shipping_firstname`, `shipping_lastname`, `shipping_company`, `shipping_address_1`, `shipping_address_2`, `shipping_city`, `shipping_postcode`, `shipping_country`, `shipping_country_id`, `shipping_zone`, `shipping_zone_id`, `shipping_address_format`, `shipping_custom_field`, `shipping_method`, `shipping_code`, `comment`, `total`, `order_status_id`, `affiliate_id`, `commission`, `marketing_id`, `tracking`, `language_id`, `currency_id`, `currency_code`, `currency_value`, `ip`, `forwarded_ip`, `user_agent`, `accept_language`, `date_added`, `date_modified`) VALUES
-(1, 1, 'INV-2013-00', 0, 'Thepronails', 'http://localhost/thepronails/', 1, 1, 'Vincent', 'Truong', 'king.of.ocean4454@gmail.com', '444 444 4444', '555 555 5555', '', 'Vincent', 'Truong', '', 'Pheonix', '', 'Arizona', '78910', 'United States', 223, 'Arizona', 3616, '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}', '[]', 'Thu tiền khi giao hàng', 'cod', 'Vincent', 'Truong', '', 'Pheonix', '', 'Arizona', '78910', 'United States', 223, 'Arizona', 3616, '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}', '[]', 'Phí vận chuyển cố định', 'flat.flat', 'ABC DEF GHI JKL MNO PQR\nASDFGHJKLABC DEF GHI JKL MNO PQR\nASDFGHJKLABC DEF GHI JKL MNO PQR\nASDFGHJKLABC DEF GHI JKL MNO PQR\nASDFGHJKLABC DEF GHI JKL MNO PQR\nASDFGHJKL', '204.9900', 5, 0, '0.0000', 0, '', 2, 2, 'USD', '1.00000000', '::1', '', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36', 'en-US,en;q=0.8,vi;q=0.6', '2016-05-21 21:12:31', '2016-05-21 21:13:40');
+(1, 1, 'INV-2013-00', 0, 'Thepronails', 'http://localhost/thepronails/', 1, 1, 'Vincent', 'Truong', 'king.of.ocean4454@gmail.com', '444 444 4444', '555 555 5555', '', 'Vincent', 'Truong', '', 'Pheonix', '', 'Arizona', '78910', 'United States', 223, 'Arizona', 3616, '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}', '[]', 'Thu tiền khi giao hàng', 'cod', 'Vincent', 'Truong', '', 'Pheonix', '', 'Arizona', '78910', 'United States', 223, 'Arizona', 3616, '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}', '[]', 'Phí vận chuyển cố định', 'flat.flat', 'ABC DEF GHI JKL MNO PQR\nASDFGHJKLABC DEF GHI JKL MNO PQR\nASDFGHJKLABC DEF GHI JKL MNO PQR\nASDFGHJKLABC DEF GHI JKL MNO PQR\nASDFGHJKLABC DEF GHI JKL MNO PQR\nASDFGHJKL', '204.9900', 5, 0, '0.0000', 0, '', 2, 2, 'USD', '1.00000000', '::1', '', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36', 'en-US,en;q=0.8,vi;q=0.6', '2016-05-21 21:12:31', '2016-05-21 21:13:40'),
+(2, 0, 'INV-2013-00', 0, 'Thepronails', 'http://localhost/thepronails/', 2, 1, 'Vincent', 'Vincnet', 'xuanvinh.uit@gmail.com', '1234567890', '', '', 'Vincent', 'Vincnet', '', 'Arizona', '', 'Arizona', '1234567', 'United States', 223, 'Arizona', 3616, '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}', '[]', 'Thu tiền khi giao hàng', 'cod', 'Vincent', 'Vincnet', '', 'Arizona', '', 'Arizona', '1234567', 'United States', 223, 'Arizona', 3616, '{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}', '[]', 'Phí vận chuyển cố định', 'flat.flat', 'rugiuregaivyrenhueaoingiwttueangvi;ravadhjkl;ytuiltytaeeqfrtyeitoplhkgjgzfdc', '105.0000', 5, 0, '0.0000', 0, '', 2, 2, 'USD', '1.00000000', '::1', '', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36', 'en-US,en;q=0.8,vi;q=0.6', '2016-05-21 23:33:43', '2016-05-21 23:34:54');
 
 -- --------------------------------------------------------
 
@@ -2304,7 +2237,7 @@ INSERT INTO `oc_order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, 
 -- Table structure for table `oc_order_custom_field`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order_custom_field` (
+CREATE TABLE `oc_order_custom_field` (
   `order_custom_field_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `custom_field_id` int(11) NOT NULL,
@@ -2321,14 +2254,14 @@ CREATE TABLE IF NOT EXISTS `oc_order_custom_field` (
 -- Table structure for table `oc_order_history`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order_history` (
+CREATE TABLE `oc_order_history` (
   `order_history_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_status_id` int(11) NOT NULL,
   `notify` tinyint(1) NOT NULL DEFAULT '0',
   `comment` text NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_order_history`
@@ -2336,7 +2269,9 @@ CREATE TABLE IF NOT EXISTS `oc_order_history` (
 
 INSERT INTO `oc_order_history` (`order_history_id`, `order_id`, `order_status_id`, `notify`, `comment`, `date_added`) VALUES
 (1, 1, 1, 0, '', '2016-05-21 21:12:35'),
-(2, 1, 5, 1, '', '2016-05-21 21:13:40');
+(2, 1, 5, 1, '', '2016-05-21 21:13:40'),
+(3, 2, 1, 0, '', '2016-05-21 23:33:53'),
+(4, 2, 5, 0, '', '2016-05-21 23:34:54');
 
 -- --------------------------------------------------------
 
@@ -2344,7 +2279,7 @@ INSERT INTO `oc_order_history` (`order_history_id`, `order_id`, `order_status_id
 -- Table structure for table `oc_order_option`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order_option` (
+CREATE TABLE `oc_order_option` (
   `order_option_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_product_id` int(11) NOT NULL,
@@ -2355,13 +2290,20 @@ CREATE TABLE IF NOT EXISTS `oc_order_option` (
   `type` varchar(32) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `oc_order_option`
+--
+
+INSERT INTO `oc_order_option` (`order_option_id`, `order_id`, `order_product_id`, `product_option_id`, `product_option_value_id`, `name`, `value`, `type`) VALUES
+(1, 2, 2, 225, 0, 'Delivery Date', '2011-04-22', 'date');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `oc_order_product`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order_product` (
+CREATE TABLE `oc_order_product` (
   `order_product_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -2372,14 +2314,15 @@ CREATE TABLE IF NOT EXISTS `oc_order_product` (
   `total` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `tax` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `reward` int(8) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_order_product`
 --
 
 INSERT INTO `oc_order_product` (`order_product_id`, `order_id`, `product_id`, `name`, `model`, `quantity`, `price`, `total`, `tax`, `reward`) VALUES
-(1, 1, 49, 'Arylic Art', 'SAM1', 1, '199.9900', '199.9900', '0.0000', 1000);
+(1, 1, 49, 'Arylic Art', 'SAM1', 1, '199.9900', '199.9900', '0.0000', 1000),
+(2, 2, 47, 'Pedicure Waxing', 'Product 21', 1, '100.0000', '100.0000', '0.0000', 300);
 
 -- --------------------------------------------------------
 
@@ -2387,7 +2330,7 @@ INSERT INTO `oc_order_product` (`order_product_id`, `order_id`, `product_id`, `n
 -- Table structure for table `oc_order_recurring`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order_recurring` (
+CREATE TABLE `oc_order_recurring` (
   `order_recurring_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `reference` varchar(255) NOT NULL,
@@ -2416,7 +2359,7 @@ CREATE TABLE IF NOT EXISTS `oc_order_recurring` (
 -- Table structure for table `oc_order_recurring_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order_recurring_transaction` (
+CREATE TABLE `oc_order_recurring_transaction` (
   `order_recurring_transaction_id` int(11) NOT NULL,
   `order_recurring_id` int(11) NOT NULL,
   `reference` varchar(255) NOT NULL,
@@ -2431,11 +2374,11 @@ CREATE TABLE IF NOT EXISTS `oc_order_recurring_transaction` (
 -- Table structure for table `oc_order_status`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order_status` (
+CREATE TABLE `oc_order_status` (
   `order_status_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_order_status`
@@ -2477,14 +2420,14 @@ INSERT INTO `oc_order_status` (`order_status_id`, `language_id`, `name`) VALUES
 -- Table structure for table `oc_order_total`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order_total` (
+CREATE TABLE `oc_order_total` (
   `order_total_id` int(10) NOT NULL,
   `order_id` int(11) NOT NULL,
   `code` varchar(32) NOT NULL,
   `title` varchar(255) NOT NULL,
   `value` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `sort_order` int(3) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_order_total`
@@ -2493,7 +2436,10 @@ CREATE TABLE IF NOT EXISTS `oc_order_total` (
 INSERT INTO `oc_order_total` (`order_total_id`, `order_id`, `code`, `title`, `value`, `sort_order`) VALUES
 (1, 1, 'sub_total', 'Thành tiền', '199.9900', 1),
 (2, 1, 'shipping', 'Phí vận chuyển cố định', '5.0000', 3),
-(3, 1, 'total', 'Tổng cộng ', '204.9900', 9);
+(3, 1, 'total', 'Tổng cộng ', '204.9900', 9),
+(4, 2, 'sub_total', 'Thành tiền', '100.0000', 1),
+(5, 2, 'shipping', 'Phí vận chuyển cố định', '5.0000', 3),
+(6, 2, 'total', 'Tổng cộng ', '105.0000', 9);
 
 -- --------------------------------------------------------
 
@@ -2501,7 +2447,7 @@ INSERT INTO `oc_order_total` (`order_total_id`, `order_id`, `code`, `title`, `va
 -- Table structure for table `oc_order_voucher`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_order_voucher` (
+CREATE TABLE `oc_order_voucher` (
   `order_voucher_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `voucher_id` int(11) NOT NULL,
@@ -2522,7 +2468,7 @@ CREATE TABLE IF NOT EXISTS `oc_order_voucher` (
 -- Table structure for table `oc_paypal_iframe_order`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_paypal_iframe_order` (
+CREATE TABLE `oc_paypal_iframe_order` (
   `paypal_iframe_order_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `date_added` datetime NOT NULL,
@@ -2539,7 +2485,7 @@ CREATE TABLE IF NOT EXISTS `oc_paypal_iframe_order` (
 -- Table structure for table `oc_paypal_iframe_order_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_paypal_iframe_order_transaction` (
+CREATE TABLE `oc_paypal_iframe_order_transaction` (
   `paypal_iframe_order_transaction_id` int(11) NOT NULL,
   `paypal_iframe_order_id` int(11) NOT NULL,
   `transaction_id` char(20) NOT NULL,
@@ -2563,7 +2509,7 @@ CREATE TABLE IF NOT EXISTS `oc_paypal_iframe_order_transaction` (
 -- Table structure for table `oc_paypal_order`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_paypal_order` (
+CREATE TABLE `oc_paypal_order` (
   `paypal_order_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `date_added` datetime NOT NULL,
@@ -2580,7 +2526,7 @@ CREATE TABLE IF NOT EXISTS `oc_paypal_order` (
 -- Table structure for table `oc_paypal_order_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_paypal_order_transaction` (
+CREATE TABLE `oc_paypal_order_transaction` (
   `paypal_order_transaction_id` int(11) NOT NULL,
   `paypal_order_id` int(11) NOT NULL,
   `transaction_id` char(20) NOT NULL,
@@ -2604,7 +2550,7 @@ CREATE TABLE IF NOT EXISTS `oc_paypal_order_transaction` (
 -- Table structure for table `oc_paypal_payflow_iframe_order`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_paypal_payflow_iframe_order` (
+CREATE TABLE `oc_paypal_payflow_iframe_order` (
   `order_id` int(11) NOT NULL,
   `secure_token_id` varchar(255) NOT NULL,
   `transaction_reference` varchar(255) DEFAULT NULL,
@@ -2618,7 +2564,7 @@ CREATE TABLE IF NOT EXISTS `oc_paypal_payflow_iframe_order` (
 -- Table structure for table `oc_paypal_payflow_iframe_order_transaction`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_paypal_payflow_iframe_order_transaction` (
+CREATE TABLE `oc_paypal_payflow_iframe_order_transaction` (
   `order_id` int(11) NOT NULL,
   `transaction_reference` varchar(255) NOT NULL,
   `transaction_type` char(1) NOT NULL,
@@ -2632,7 +2578,7 @@ CREATE TABLE IF NOT EXISTS `oc_paypal_payflow_iframe_order_transaction` (
 -- Table structure for table `oc_product`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product` (
+CREATE TABLE `oc_product` (
   `product_id` int(11) NOT NULL,
   `model` varchar(64) NOT NULL,
   `sku` varchar(64) NOT NULL,
@@ -2664,7 +2610,7 @@ CREATE TABLE IF NOT EXISTS `oc_product` (
   `viewed` int(5) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_product`
@@ -2673,7 +2619,7 @@ CREATE TABLE IF NOT EXISTS `oc_product` (
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`) VALUES
 (28, 'Product 1', '', '', '', '', '', '', '', 939, 7, 'catalog/demo/product/New_demo/LineOut-275x263.png', 5, 1, '100.0000', 200, 9, '2009-02-03', '146.40000000', 2, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 16:06:50', '2016-05-21 20:54:09'),
 (29, 'Product 2', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/palm_treo_pro_1.jpg', 6, 1, '279.9900', 0, 9, '2009-02-03', '133.00000000', 2, '0.00000000', '0.00000000', '0.00000000', 3, 1, 1, 0, 1, 0, '2009-02-03 16:42:17', '2011-09-30 01:06:08'),
-(30, 'Product 3', '', '', '', '', '', '', '', 7, 6, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_GelNails37.jpg', 9, 1, '100.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 2, '2009-02-03 16:59:00', '2016-05-21 20:51:29'),
+(30, 'Product 3', '', '', '', '', '', '', '', 7, 6, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_GelNails37.jpg', 9, 1, '100.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 3, '2009-02-03 16:59:00', '2016-05-21 20:51:29'),
 (31, 'Product 4', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/product/New_demo/Peacock-Poster-275x263.png', 0, 1, '80.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 3, 1, 1, 0, 1, 0, '2009-02-03 17:00:10', '2016-05-21 20:55:56'),
 (32, 'Product 5', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/product/New_demo/1_1_1_Manicures5.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 17:07:26', '2016-05-21 21:02:55'),
 (33, 'Product 6', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/product/New_demo/dnd_light__39275.1459779479.168.168.gif', 0, 1, '200.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 17:08:31', '2016-05-21 20:52:32'),
@@ -2687,11 +2633,11 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (44, 'Product 17', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/product/New_demo/1_1_1_1_safeimage50.jpg', 8, 1, '1000.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:00', '2016-05-21 21:04:44'),
 (45, 'Product 18', '', '', '', '', '', '', '', 998, 5, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1.jpg', 8, 1, '2000.0000', 0, 0, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:17', '2016-05-21 21:05:47'),
 (46, 'Product 19', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_Manicures18.jpg', 10, 1, '1000.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:29', '2016-05-21 20:49:44'),
-(47, 'Product 21', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/product/New_demo/Non-Acetone-275x263.png', 7, 1, '100.0000', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 0, '2009-02-03 21:08:40', '2016-05-21 20:56:38'),
+(47, 'Product 21', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/product/New_demo/Non-Acetone-275x263.png', 7, 1, '100.0000', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 5, '2009-02-03 21:08:40', '2016-05-21 20:56:38'),
 (48, 'product 20', 'test 1', '', '', '', '', '', 'test 2', 995, 5, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_Manicures17.jpg', 8, 1, '100.0000', 0, 9, '2009-02-08', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-08 17:21:51', '2016-05-21 20:53:26'),
-(49, 'SAM1', '', '', '', '', '', '', '', -1, 8, 'catalog/demo/product/New_demo/PP_Discover-275x263.png', 0, 1, '199.9900', 0, 9, '2011-04-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2011-04-26 08:57:34', '2016-05-21 20:58:07'),
+(49, 'SAM1', '', '', '', '', '', '', '', 19, 8, 'catalog/demo/product/New_demo/PP_Discover-275x263.png', 0, 1, '199.9900', 0, 9, '2011-04-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 7, '2011-04-26 08:57:34', '2016-05-21 23:46:57'),
 (51, 'Product 17', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/product/New_demo/1_1_1_1_safeimage50.jpg', 8, 1, '1000.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 0, 0, '2016-05-21 21:05:53', '0000-00-00 00:00:00'),
-(52, 'SAM1', '', '', '', '', '', '', '', 0, 8, 'catalog/demo/product/New_demo/PP_Discover-275x263.png', 0, 1, '199.9900', 0, 9, '2011-04-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 0, 0, '2016-05-21 21:05:53', '0000-00-00 00:00:00'),
+(52, 'SAM1', '', '', '', '', '', '', '', 10, 8, 'catalog/demo/product/New_demo/PP_Discover-275x263.png', 0, 1, '199.9900', 0, 9, '2011-04-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 0, 0, '2016-05-21 21:05:53', '2016-05-21 23:47:11'),
 (53, 'Product 14', '', '', '', '', '', '', '', 977, 5, 'catalog/demo/product/New_demo/Sanipure2oz-275x263.png', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 0, 0, '2016-05-21 21:05:53', '0000-00-00 00:00:00'),
 (54, 'product 11', '', '', '', '', '', '', '', 970, 5, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1.jpg', 8, 1, '101.0000', 0, 9, '2009-02-03', '10.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 0, 0, '2016-05-21 21:05:53', '0000-00-00 00:00:00'),
 (55, 'Product 7', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_nailsnew48.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 0, 0, '2016-05-21 21:05:53', '0000-00-00 00:00:00'),
@@ -2716,7 +2662,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 -- Table structure for table `oc_product_attribute`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_attribute` (
+CREATE TABLE `oc_product_attribute` (
   `product_id` int(11) NOT NULL,
   `attribute_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
@@ -2759,7 +2705,7 @@ INSERT INTO `oc_product_attribute` (`product_id`, `attribute_id`, `language_id`,
 -- Table structure for table `oc_product_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_description` (
+CREATE TABLE `oc_product_description` (
   `product_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -2791,7 +2737,7 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (34, 2, 'Eyeflash Spa Art', '&lt;div&gt;\r\n	&lt;strong&gt;Born to be worn.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Clip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;strong&gt;Random meets rhythm.&lt;/strong&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		With iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.&lt;/p&gt;\r\n	&lt;strong&gt;Everything is easy.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Charge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', 'Eyeflash Spa Art', '', ''),
 (43, 2, 'Natural Herbs', '&lt;div&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', 'Natural Herbs', '', ''),
 (31, 2, 'Pedicure Spa', '&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n	&lt;div&gt;\r\n		Engineered with pro-level features and performance, the 12.3-effective-megapixel D300 combines brand new technologies with advanced features inherited from Nikon&amp;#39;s newly announced D3 professional digital SLR camera to offer serious photographers remarkable performance combined with agility.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		Similar to the D3, the D300 features Nikon&amp;#39;s exclusive EXPEED Image Processing System that is central to driving the speed and processing power needed for many of the camera&amp;#39;s new features. The D300 features a new 51-point autofocus system with Nikon&amp;#39;s 3D Focus Tracking feature and two new LiveView shooting modes that allow users to frame a photograph using the camera&amp;#39;s high-resolution LCD monitor. The D300 shares a similar Scene Recognition System as is found in the D3; it promises to greatly enhance the accuracy of autofocus, autoexposure, and auto white balance by recognizing the subject or scene being photographed and applying this information to the calculations for the three functions.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 reacts with lightning speed, powering up in a mere 0.13 seconds and shooting with an imperceptible 45-millisecond shutter release lag time. The D300 is capable of shooting at a rapid six frames per second and can go as fast as eight frames per second when using the optional MB-D10 multi-power battery pack. In continuous bursts, the D300 can shoot up to 100 shots at full 12.3-megapixel resolution. (NORMAL-LARGE image setting, using a SanDisk Extreme IV 1GB CompactFlash card.)&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 incorporates a range of innovative technologies and features that will significantly improve the accuracy, control, and performance photographers can get from their equipment. Its new Scene Recognition System advances the use of Nikon&amp;#39;s acclaimed 1,005-segment sensor to recognize colors and light patterns that help the camera determine the subject and the type of scene being photographed before a picture is taken. This information is used to improve the accuracy of autofocus, autoexposure, and auto white balance functions in the D300. For example, the camera can track moving subjects better and by identifying them, it can also automatically select focus points faster and with greater accuracy. It can also analyze highlights and more accurately determine exposure, as well as infer light sources to deliver more accurate white balance detection.&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;', '', 'Pedicure Spa', '', ''),
-(49, 2, 'Arylic Art', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', 'Arylic Art', '', ''),
+(49, 1, 'Arylic Art', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', 'Arylic Art', '', ''),
 (42, 2, 'Face Waxing', '&lt;p&gt;\r\n	&lt;font face=&quot;helvetica,geneva,arial&quot; size=&quot;2&quot;&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there''s no limit to what you can achieve. &lt;br&gt;\r\n	&lt;br&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it''s designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. &lt;br&gt;\r\n	&lt;br&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple''s ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. &lt;br&gt;\r\n	&lt;br&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. &lt;br&gt;\r\n	&lt;br&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.&lt;br&gt;\r\n	&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;\r\n&lt;h3&gt;\r\n	Features:&lt;/h3&gt;\r\n&lt;p&gt;\r\n	Unrivaled display performance&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Wide-format design for simultaneous display of two full pages of text and graphics.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Lightning-fast pixel response for full-motion digital video playback.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 16.7 million saturated colors, for use in all graphics-intensive applications.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Simple setup and operation&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Single cable with elegant breakout for connection to DVI, USB and FireWire ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports to support iSight and other desktop peripherals&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Sleek, elegant design&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Huge virtual workspace, very small footprint.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Narrow Bezel design to minimize visual impact of using dual displays&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Unique hinge design for effortless adjustment&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;h3&gt;\r\n	Technical specifications&lt;/h3&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen size (diagonal viewable image size)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Apple Cinema HD Display: 30 inches (29.7-inch viewable)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen type&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Thin film transistor (TFT) active-matrix liquid crystal display (AMLCD)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Resolutions&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		2560 x 1600 pixels (optimum resolution)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		2048 x 1280&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1920 x 1200&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1280 x 800&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1024 x 640&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Display colors (maximum)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16.7 million&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Viewing angle (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		170° horizontal; 170° vertical&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Brightness (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 400 cd/m2&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Contrast ratio (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		700:1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Response time (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16 ms&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Pixel pitch&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 0.250 mm&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen treatment&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Antiglare hardcoat&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;User controls (hardware and software)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Display Power,&lt;/li&gt;\r\n	&lt;li&gt;\r\n		System sleep, wake&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Brightness&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Monitor tilt&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Connectors and cables&lt;/b&gt;&lt;br&gt;\r\n	Cable&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		DVI (Digital Visual Interface)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		FireWire 400&lt;/li&gt;\r\n	&lt;li&gt;\r\n		USB 2.0&lt;/li&gt;\r\n	&lt;li&gt;\r\n		DC power (24 V)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Connectors&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Two-port, self-powered USB 2.0 hub&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Kensington security port&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;VESA mount adapter&lt;/b&gt;&lt;br&gt;\r\n	Requires optional Cinema Display VESA Mount Adapter (M9649G/A)&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Compatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Electrical requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Input voltage: 100-240 VAC 50-60Hz&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum power when operating: 150W&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Energy saver mode: 3W or less&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Environmental requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Operating temperature: 50° to 95° F (10° to 35° C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Storage temperature: -40° to 116° F (-40° to 47° C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Operating humidity: 20% to 80% noncondensing&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum operating altitude: 10,000 feet&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Agency approvals&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		FCC Part 15 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55022 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55024&lt;/li&gt;\r\n	&lt;li&gt;\r\n		VCCI Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		AS/NZS 3548 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CNS 13438 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ICES-003 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ISO 13406 part 2&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MPR II&lt;/li&gt;\r\n	&lt;li&gt;\r\n		IEC 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		UL 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CSA 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ENERGY STAR&lt;/li&gt;\r\n	&lt;li&gt;\r\n		TCO ''03&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Size and weight&lt;/b&gt;&lt;br&gt;\r\n	30-inch Apple Cinema HD Display&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Height: 21.3 inches (54.3 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Width: 27.2 inches (68.8 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Depth: 8.46 inches (21.5 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Weight: 27.5 pounds (12.5 kg)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;System Requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Mac Pro, all graphic options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MacBook Pro&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI Express), all graphics options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		PowerBook G4 with dual-link DVI support&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Windows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '', 'Face Waxing', '', ''),
 (30, 2, 'Manicure 1', '&lt;p&gt;\r\n	Canon''s press material for the EOS 5D states that it ''defines (a) new D-SLR category'', while we''re not typically too concerned with marketing talk this particular statement is clearly pretty accurate. The EOS 5D is unlike any previous digital SLR in that it combines a full-frame (35 mm sized) high resolution sensor (12.8 megapixels) with a relatively compact body (slightly larger than the EOS 20D, although in your hand it feels noticeably ''chunkier''). The EOS 5D is aimed to slot in between the EOS 20D and the EOS-1D professional digital SLR''s, an important difference when compared to the latter is that the EOS 5D doesn''t have any environmental seals. While Canon don''t specifically refer to the EOS 5D as a ''professional'' digital SLR it will have obvious appeal to professionals who want a high quality digital SLR in a body lighter than the EOS-1D. It will also no doubt appeal to current EOS 20D owners (although lets hope they''ve not bought too many EF-S lenses...) äë&lt;/p&gt;\r\n', '', 'Manicure 1', '', ''),
 (35, 1, 'Nails Spa', '&lt;p&gt;\r\n	Product 8&lt;/p&gt;\r\n', '', 'Nails Spa', '', ''),
@@ -2810,14 +2756,14 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 (34, 1, 'Eyeflash Spa Art', '&lt;div&gt;\r\n	&lt;strong&gt;Born to be worn.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Clip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;strong&gt;Random meets rhythm.&lt;/strong&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		With iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.&lt;/p&gt;\r\n	&lt;strong&gt;Everything is easy.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Charge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', 'Eyeflash Spa Art', '', ''),
 (43, 1, 'Natural Herbs', '&lt;div&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', 'Natural Herbs', '', ''),
 (31, 1, 'Pedicure Spa', '&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n	&lt;div&gt;\r\n		Engineered with pro-level features and performance, the 12.3-effective-megapixel D300 combines brand new technologies with advanced features inherited from Nikon&amp;#39;s newly announced D3 professional digital SLR camera to offer serious photographers remarkable performance combined with agility.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		Similar to the D3, the D300 features Nikon&amp;#39;s exclusive EXPEED Image Processing System that is central to driving the speed and processing power needed for many of the camera&amp;#39;s new features. The D300 features a new 51-point autofocus system with Nikon&amp;#39;s 3D Focus Tracking feature and two new LiveView shooting modes that allow users to frame a photograph using the camera&amp;#39;s high-resolution LCD monitor. The D300 shares a similar Scene Recognition System as is found in the D3; it promises to greatly enhance the accuracy of autofocus, autoexposure, and auto white balance by recognizing the subject or scene being photographed and applying this information to the calculations for the three functions.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 reacts with lightning speed, powering up in a mere 0.13 seconds and shooting with an imperceptible 45-millisecond shutter release lag time. The D300 is capable of shooting at a rapid six frames per second and can go as fast as eight frames per second when using the optional MB-D10 multi-power battery pack. In continuous bursts, the D300 can shoot up to 100 shots at full 12.3-megapixel resolution. (NORMAL-LARGE image setting, using a SanDisk Extreme IV 1GB CompactFlash card.)&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 incorporates a range of innovative technologies and features that will significantly improve the accuracy, control, and performance photographers can get from their equipment. Its new Scene Recognition System advances the use of Nikon&amp;#39;s acclaimed 1,005-segment sensor to recognize colors and light patterns that help the camera determine the subject and the type of scene being photographed before a picture is taken. This information is used to improve the accuracy of autofocus, autoexposure, and auto white balance functions in the D300. For example, the camera can track moving subjects better and by identifying them, it can also automatically select focus points faster and with greater accuracy. It can also analyze highlights and more accurately determine exposure, as well as infer light sources to deliver more accurate white balance detection.&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;', '', 'Pedicure Spa', '', ''),
-(49, 1, 'Arylic Art', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', 'Arylic Art', '', '');
+(49, 2, 'Arylic Art', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', 'Arylic Art', '', '');
 INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `description`, `tag`, `meta_title`, `meta_description`, `meta_keyword`) VALUES
 (42, 1, 'Face Waxing', '&lt;p&gt;\r\n	&lt;font face=&quot;helvetica,geneva,arial&quot; size=&quot;2&quot;&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there''s no limit to what you can achieve. &lt;br&gt;\r\n	&lt;br&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it''s designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. &lt;br&gt;\r\n	&lt;br&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple''s ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. &lt;br&gt;\r\n	&lt;br&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. &lt;br&gt;\r\n	&lt;br&gt;\r\n	&lt;/font&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.&lt;br&gt;\r\n	&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;\r\n&lt;h3&gt;\r\n	Features:&lt;/h3&gt;\r\n&lt;p&gt;\r\n	Unrivaled display performance&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Wide-format design for simultaneous display of two full pages of text and graphics.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Lightning-fast pixel response for full-motion digital video playback.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for 16.7 million saturated colors, for use in all graphics-intensive applications.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Simple setup and operation&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Single cable with elegant breakout for connection to DVI, USB and FireWire ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports to support iSight and other desktop peripherals&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Sleek, elegant design&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Huge virtual workspace, very small footprint.&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Narrow Bezel design to minimize visual impact of using dual displays&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Unique hinge design for effortless adjustment&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;h3&gt;\r\n	Technical specifications&lt;/h3&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen size (diagonal viewable image size)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Apple Cinema HD Display: 30 inches (29.7-inch viewable)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen type&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Thin film transistor (TFT) active-matrix liquid crystal display (AMLCD)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Resolutions&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		2560 x 1600 pixels (optimum resolution)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		2048 x 1280&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1920 x 1200&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1280 x 800&lt;/li&gt;\r\n	&lt;li&gt;\r\n		1024 x 640&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Display colors (maximum)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16.7 million&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Viewing angle (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		170° horizontal; 170° vertical&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Brightness (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 400 cd/m2&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Contrast ratio (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		700:1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Response time (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		16 ms&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Pixel pitch&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		30-inch Cinema HD Display: 0.250 mm&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Screen treatment&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Antiglare hardcoat&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;User controls (hardware and software)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Display Power,&lt;/li&gt;\r\n	&lt;li&gt;\r\n		System sleep, wake&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Brightness&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Monitor tilt&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Connectors and cables&lt;/b&gt;&lt;br&gt;\r\n	Cable&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		DVI (Digital Visual Interface)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		FireWire 400&lt;/li&gt;\r\n	&lt;li&gt;\r\n		USB 2.0&lt;/li&gt;\r\n	&lt;li&gt;\r\n		DC power (24 V)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	Connectors&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Two-port, self-powered USB 2.0 hub&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Two FireWire 400 ports&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Kensington security port&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;VESA mount adapter&lt;/b&gt;&lt;br&gt;\r\n	Requires optional Cinema Display VESA Mount Adapter (M9649G/A)&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Compatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Electrical requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Input voltage: 100-240 VAC 50-60Hz&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum power when operating: 150W&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Energy saver mode: 3W or less&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Environmental requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Operating temperature: 50° to 95° F (10° to 35° C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Storage temperature: -40° to 116° F (-40° to 47° C)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Operating humidity: 20% to 80% noncondensing&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Maximum operating altitude: 10,000 feet&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Agency approvals&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		FCC Part 15 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55022 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN55024&lt;/li&gt;\r\n	&lt;li&gt;\r\n		VCCI Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		AS/NZS 3548 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CNS 13438 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ICES-003 Class B&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ISO 13406 part 2&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MPR II&lt;/li&gt;\r\n	&lt;li&gt;\r\n		IEC 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		UL 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		CSA 60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		EN60950&lt;/li&gt;\r\n	&lt;li&gt;\r\n		ENERGY STAR&lt;/li&gt;\r\n	&lt;li&gt;\r\n		TCO ''03&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;Size and weight&lt;/b&gt;&lt;br&gt;\r\n	30-inch Apple Cinema HD Display&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Height: 21.3 inches (54.3 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Width: 27.2 inches (68.8 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Depth: 8.46 inches (21.5 cm)&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Weight: 27.5 pounds (12.5 kg)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n	&lt;b&gt;System Requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n	&lt;li&gt;\r\n		Mac Pro, all graphic options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		MacBook Pro&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Power Mac G5 (PCI Express), all graphics options&lt;/li&gt;\r\n	&lt;li&gt;\r\n		PowerBook G4 with dual-link DVI support&lt;/li&gt;\r\n	&lt;li&gt;\r\n		Windows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup&lt;/li&gt;\r\n&lt;/ul&gt;\r\n', '', 'Face Waxing', '', ''),
 (30, 1, 'Manicure 1', '&lt;p&gt;\r\n	Canon''s press material for the EOS 5D states that it ''defines (a) new D-SLR category'', while we''re not typically too concerned with marketing talk this particular statement is clearly pretty accurate. The EOS 5D is unlike any previous digital SLR in that it combines a full-frame (35 mm sized) high resolution sensor (12.8 megapixels) with a relatively compact body (slightly larger than the EOS 20D, although in your hand it feels noticeably ''chunkier''). The EOS 5D is aimed to slot in between the EOS 20D and the EOS-1D professional digital SLR''s, an important difference when compared to the latter is that the EOS 5D doesn''t have any environmental seals. While Canon don''t specifically refer to the EOS 5D as a ''professional'' digital SLR it will have obvious appeal to professionals who want a high quality digital SLR in a body lighter than the EOS-1D. It will also no doubt appeal to current EOS 20D owners (although lets hope they''ve not bought too many EF-S lenses...) äë&lt;/p&gt;\r\n', '', 'Manicure 1', '', ''),
 (51, 1, 'Aribrush', '&lt;div&gt;\r\n	MacBook Air is ultrathin, ultraportable, and ultra unlike anything else. But you don&amp;rsquo;t lose inches and pounds overnight. It&amp;rsquo;s the result of rethinking conventions. Of multiple wireless innovations. And of breakthrough design. With MacBook Air, mobile computing suddenly has a new standard.&lt;/div&gt;\r\n', '', 'Aribrush', '', ''),
 (51, 2, 'Aribrush', '&lt;div&gt;\r\n	MacBook Air is ultrathin, ultraportable, and ultra unlike anything else. But you don&amp;rsquo;t lose inches and pounds overnight. It&amp;rsquo;s the result of rethinking conventions. Of multiple wireless innovations. And of breakthrough design. With MacBook Air, mobile computing suddenly has a new standard.&lt;/div&gt;\r\n', '', 'Aribrush', '', ''),
-(52, 1, 'Arylic Art', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', 'Arylic Art', '', ''),
 (52, 2, 'Arylic Art', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', 'Arylic Art', '', ''),
+(52, 1, 'Arylic Art', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', 'Arylic Art', '', ''),
 (53, 1, 'Arylic Spa', '&lt;div&gt;\r\n	Just when you thought iMac had everything, now there´s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ´08, and it´s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n', '', 'Arylic Spa', '', ''),
 (53, 2, 'Arylic Spa', '&lt;div&gt;\r\n	Just when you thought iMac had everything, now there´s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ´08, and it´s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n', '', 'Arylic Spa', '', ''),
 (54, 1, 'Eyeflash Spa', '&lt;p class=&quot;intro&quot;&gt;\r\n	iPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a name or number in your address book, a favorites list, or a call log. It also automatically syncs all your contacts from a PC, Mac, or Internet service. And it lets you select and listen to voicemail messages in whatever order you want just like email.&lt;/p&gt;\r\n', '', 'Eyeflash Spa', '', ''),
@@ -2860,7 +2806,7 @@ INSERT INTO `oc_product_description` (`product_id`, `language_id`, `name`, `desc
 -- Table structure for table `oc_product_discount`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_discount` (
+CREATE TABLE `oc_product_discount` (
   `product_discount_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
@@ -2869,7 +2815,7 @@ CREATE TABLE IF NOT EXISTS `oc_product_discount` (
   `price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `date_start` date NOT NULL DEFAULT '0000-00-00',
   `date_end` date NOT NULL DEFAULT '0000-00-00'
-) ENGINE=MyISAM AUTO_INCREMENT=459 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_product_discount`
@@ -2889,7 +2835,7 @@ INSERT INTO `oc_product_discount` (`product_discount_id`, `product_id`, `custome
 -- Table structure for table `oc_product_filter`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_filter` (
+CREATE TABLE `oc_product_filter` (
   `product_id` int(11) NOT NULL,
   `filter_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -2900,12 +2846,12 @@ CREATE TABLE IF NOT EXISTS `oc_product_filter` (
 -- Table structure for table `oc_product_image`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_image` (
+CREATE TABLE `oc_product_image` (
   `product_image_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2506 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_product_image`
@@ -2937,9 +2883,8 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `sort
 (2396, 31, 'catalog/demo/product/New_demo/Nailpurplus_250mL-275x263.png', 0),
 (1987, 29, 'catalog/demo/palm_treo_pro_2.jpg', 0),
 (2369, 46, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_safe_image(8).jpg', 0),
-(2404, 49, 'catalog/demo/product/New_demo/Secrets_Bling-275x263.png', 0),
-(2403, 49, 'catalog/demo/product/New_demo/WhisperintheWind-275x263.png', 0),
-(2402, 49, 'catalog/demo/product/New_demo/PolishPro_LovePotion-275x263.png', 0),
+(2510, 49, 'catalog/demo/product/New_demo/Secrets_StilettoNailForms-1-275x263.png', 0),
+(2509, 49, 'catalog/demo/product/New_demo/TouchTabForms-275x263.png', 0),
 (2380, 42, 'catalog/demo/product/New_demo/Attract-Primer-275x263.png', 0),
 (2381, 42, 'catalog/demo/banners/Logo_slide/199813_bliss_700.jpg', 0),
 (2379, 42, 'catalog/demo/product/New_demo/Airsheild_halfoz-1-275x263.png', 0),
@@ -2960,9 +2905,10 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `sort
 (2398, 31, 'catalog/demo/product/New_demo/WhisperintheWind-275x263.png', 0),
 (2399, 31, 'catalog/demo/product/New_demo/Selini-275x263.png', 0),
 (2401, 47, 'catalog/demo/product/New_demo/PP_Discover-275x263.png', 0),
-(2405, 49, 'catalog/demo/product/New_demo/TouchTabForms-275x263.png', 0),
-(2406, 49, 'catalog/demo/product/New_demo/Secrets_StilettoNailForms-1-275x263.png', 0),
-(2407, 49, 'catalog/demo/product/New_demo/Secrets-Artiste-Sampler-Kit-275x263 (1).png', 0),
+(2511, 49, 'catalog/demo/product/New_demo/Secrets-Artiste-Sampler-Kit-275x263 (1).png', 0),
+(2508, 49, 'catalog/demo/product/New_demo/PolishPro_LovePotion-275x263.png', 0),
+(2507, 49, 'catalog/demo/product/New_demo/WhisperintheWind-275x263.png', 0),
+(2506, 49, 'catalog/demo/product/New_demo/Secrets_Bling-275x263.png', 0),
 (2409, 41, 'catalog/demo/product/New_demo/Selini-275x263.png', 0),
 (2412, 40, 'catalog/demo/product/New_demo/1_1_1_Manicures5.jpg', 0),
 (2413, 40, 'catalog/demo/product/New_demo/Secrets-Nail-Art-Trial-Kit-275x263.png', 0),
@@ -2982,12 +2928,11 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `sort
 (2439, 51, 'catalog/demo/product/New_demo/8872__16648.1418856663.168.168.jpg', 0),
 (2440, 51, 'catalog/demo/product/New_demo/CuticlePusher-1-275x263.png', 0),
 (2441, 51, 'catalog/demo/product/New_demo/Endurance_100-275x263.png', 0),
-(2442, 52, 'catalog/demo/product/New_demo/Secrets_Bling-275x263.png', 0),
-(2443, 52, 'catalog/demo/product/New_demo/WhisperintheWind-275x263.png', 0),
-(2444, 52, 'catalog/demo/product/New_demo/PolishPro_LovePotion-275x263.png', 0),
-(2445, 52, 'catalog/demo/product/New_demo/TouchTabForms-275x263.png', 0),
-(2446, 52, 'catalog/demo/product/New_demo/Secrets_StilettoNailForms-1-275x263.png', 0),
-(2447, 52, 'catalog/demo/product/New_demo/Secrets-Artiste-Sampler-Kit-275x263 (1).png', 0),
+(2516, 52, 'catalog/demo/product/New_demo/Secrets_StilettoNailForms-1-275x263.png', 0),
+(2515, 52, 'catalog/demo/product/New_demo/TouchTabForms-275x263.png', 0),
+(2514, 52, 'catalog/demo/product/New_demo/PolishPro_LovePotion-275x263.png', 0),
+(2513, 52, 'catalog/demo/product/New_demo/WhisperintheWind-275x263.png', 0),
+(2512, 52, 'catalog/demo/product/New_demo/Secrets_Bling-275x263.png', 0),
 (2448, 53, 'catalog/demo/product/New_demo/1_119.jpg', 0),
 (2449, 53, 'catalog/demo/product/New_demo/Selini-275x263.png', 0),
 (2450, 54, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_safe_image(8).jpg', 0),
@@ -3045,7 +2990,8 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `sort
 (2502, 68, 'catalog/demo/product/New_demo/1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_1_Manicures18.jpg', 0),
 (2503, 69, 'catalog/demo/product/New_demo/SRG-Sampler-275x263.png', 0),
 (2504, 69, 'catalog/demo/product/New_demo/Secrets_PrimerlessNailLiquid-275x263.png', 0),
-(2505, 69, 'catalog/demo/product/New_demo/Secrets_Bling-275x263.png', 0);
+(2505, 69, 'catalog/demo/product/New_demo/Secrets_Bling-275x263.png', 0),
+(2517, 52, 'catalog/demo/product/New_demo/Secrets-Artiste-Sampler-Kit-275x263 (1).png', 0);
 
 -- --------------------------------------------------------
 
@@ -3053,13 +2999,13 @@ INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `sort
 -- Table structure for table `oc_product_option`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_option` (
+CREATE TABLE `oc_product_option` (
   `product_option_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `value` text NOT NULL,
   `required` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=239 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_product_option`
@@ -3097,7 +3043,7 @@ INSERT INTO `oc_product_option` (`product_option_id`, `product_id`, `option_id`,
 -- Table structure for table `oc_product_option_value`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_option_value` (
+CREATE TABLE `oc_product_option_value` (
   `product_option_value_id` int(11) NOT NULL,
   `product_option_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -3111,7 +3057,7 @@ CREATE TABLE IF NOT EXISTS `oc_product_option_value` (
   `points_prefix` varchar(1) NOT NULL,
   `weight` decimal(15,8) NOT NULL,
   `weight_prefix` varchar(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_product_option_value`
@@ -3157,7 +3103,7 @@ INSERT INTO `oc_product_option_value` (`product_option_value_id`, `product_optio
 -- Table structure for table `oc_product_recurring`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_recurring` (
+CREATE TABLE `oc_product_recurring` (
   `product_id` int(11) NOT NULL,
   `recurring_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL
@@ -3169,7 +3115,7 @@ CREATE TABLE IF NOT EXISTS `oc_product_recurring` (
 -- Table structure for table `oc_product_related`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_related` (
+CREATE TABLE `oc_product_related` (
   `product_id` int(11) NOT NULL,
   `related_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -3202,12 +3148,12 @@ INSERT INTO `oc_product_related` (`product_id`, `related_id`) VALUES
 -- Table structure for table `oc_product_reward`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_reward` (
+CREATE TABLE `oc_product_reward` (
   `product_reward_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL DEFAULT '0',
   `customer_group_id` int(11) NOT NULL DEFAULT '0',
   `points` int(8) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=566 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_product_reward`
@@ -3227,10 +3173,10 @@ INSERT INTO `oc_product_reward` (`product_reward_id`, `product_id`, `customer_gr
 (562, 59, 1, 400),
 (563, 61, 1, 600),
 (565, 66, 1, 800),
-(559, 52, 1, 1000),
+(567, 52, 1, 1000),
 (560, 56, 1, 100),
 (558, 51, 1, 700),
-(554, 49, 1, 1000);
+(566, 49, 1, 1000);
 
 -- --------------------------------------------------------
 
@@ -3238,7 +3184,7 @@ INSERT INTO `oc_product_reward` (`product_reward_id`, `product_id`, `customer_gr
 -- Table structure for table `oc_product_special`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_special` (
+CREATE TABLE `oc_product_special` (
   `product_special_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL,
@@ -3246,7 +3192,7 @@ CREATE TABLE IF NOT EXISTS `oc_product_special` (
   `price` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `date_start` date NOT NULL DEFAULT '0000-00-00',
   `date_end` date NOT NULL DEFAULT '0000-00-00'
-) ENGINE=MyISAM AUTO_INCREMENT=450 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_product_special`
@@ -3266,7 +3212,7 @@ INSERT INTO `oc_product_special` (`product_special_id`, `product_id`, `customer_
 -- Table structure for table `oc_product_to_category`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_to_category` (
+CREATE TABLE `oc_product_to_category` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -3276,66 +3222,16 @@ CREATE TABLE IF NOT EXISTS `oc_product_to_category` (
 --
 
 INSERT INTO `oc_product_to_category` (`product_id`, `category_id`) VALUES
-(28, 20),
-(28, 24),
-(29, 20),
-(29, 24),
-(30, 20),
-(30, 33),
-(31, 33),
-(32, 34),
-(33, 20),
-(33, 28),
-(34, 34),
-(35, 20),
-(36, 34),
-(40, 20),
-(40, 24),
-(41, 27),
-(42, 20),
-(42, 28),
 (43, 18),
-(43, 20),
 (44, 18),
-(44, 20),
 (45, 18),
 (46, 18),
-(46, 20),
 (47, 18),
-(47, 20),
-(48, 20),
-(48, 34),
-(49, 57),
 (51, 18),
-(51, 20),
-(52, 57),
-(53, 27),
-(54, 20),
-(54, 24),
-(55, 34),
-(56, 20),
-(56, 28),
-(57, 20),
-(57, 33),
-(58, 20),
-(58, 34),
-(59, 20),
-(59, 24),
-(60, 20),
 (61, 18),
-(61, 20),
-(62, 20),
-(62, 24),
-(63, 33),
 (64, 18),
-(64, 20),
 (65, 18),
-(65, 20),
-(66, 18),
-(67, 34),
-(68, 34),
-(69, 20),
-(69, 28);
+(66, 18);
 
 -- --------------------------------------------------------
 
@@ -3343,7 +3239,7 @@ INSERT INTO `oc_product_to_category` (`product_id`, `category_id`) VALUES
 -- Table structure for table `oc_product_to_download`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_to_download` (
+CREATE TABLE `oc_product_to_download` (
   `product_id` int(11) NOT NULL,
   `download_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -3354,7 +3250,7 @@ CREATE TABLE IF NOT EXISTS `oc_product_to_download` (
 -- Table structure for table `oc_product_to_layout`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_to_layout` (
+CREATE TABLE `oc_product_to_layout` (
   `product_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL
@@ -3408,7 +3304,7 @@ INSERT INTO `oc_product_to_layout` (`product_id`, `store_id`, `layout_id`) VALUE
 -- Table structure for table `oc_product_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_product_to_store` (
+CREATE TABLE `oc_product_to_store` (
   `product_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -3463,17 +3359,17 @@ INSERT INTO `oc_product_to_store` (`product_id`, `store_id`) VALUES
 -- Table structure for table `oc_recurring`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_recurring` (
+CREATE TABLE `oc_recurring` (
   `recurring_id` int(11) NOT NULL,
   `price` decimal(10,4) NOT NULL,
   `frequency` enum('day','week','semi_month','month','year') NOT NULL,
-  `duration` int(10) unsigned NOT NULL,
-  `cycle` int(10) unsigned NOT NULL,
+  `duration` int(10) UNSIGNED NOT NULL,
+  `cycle` int(10) UNSIGNED NOT NULL,
   `trial_status` tinyint(4) NOT NULL,
   `trial_price` decimal(10,4) NOT NULL,
   `trial_frequency` enum('day','week','semi_month','month','year') NOT NULL,
-  `trial_duration` int(10) unsigned NOT NULL,
-  `trial_cycle` int(10) unsigned NOT NULL,
+  `trial_duration` int(10) UNSIGNED NOT NULL,
+  `trial_cycle` int(10) UNSIGNED NOT NULL,
   `status` tinyint(4) NOT NULL,
   `sort_order` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -3484,7 +3380,7 @@ CREATE TABLE IF NOT EXISTS `oc_recurring` (
 -- Table structure for table `oc_recurring_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_recurring_description` (
+CREATE TABLE `oc_recurring_description` (
   `recurring_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
@@ -3496,7 +3392,7 @@ CREATE TABLE IF NOT EXISTS `oc_recurring_description` (
 -- Table structure for table `oc_return`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_return` (
+CREATE TABLE `oc_return` (
   `return_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -3524,11 +3420,11 @@ CREATE TABLE IF NOT EXISTS `oc_return` (
 -- Table structure for table `oc_return_action`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_return_action` (
+CREATE TABLE `oc_return_action` (
   `return_action_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(64) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_return_action`
@@ -3548,7 +3444,7 @@ INSERT INTO `oc_return_action` (`return_action_id`, `language_id`, `name`) VALUE
 -- Table structure for table `oc_return_history`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_return_history` (
+CREATE TABLE `oc_return_history` (
   `return_history_id` int(11) NOT NULL,
   `return_id` int(11) NOT NULL,
   `return_status_id` int(11) NOT NULL,
@@ -3563,11 +3459,11 @@ CREATE TABLE IF NOT EXISTS `oc_return_history` (
 -- Table structure for table `oc_return_reason`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_return_reason` (
+CREATE TABLE `oc_return_reason` (
   `return_reason_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(128) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_return_reason`
@@ -3591,11 +3487,11 @@ INSERT INTO `oc_return_reason` (`return_reason_id`, `language_id`, `name`) VALUE
 -- Table structure for table `oc_return_status`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_return_status` (
+CREATE TABLE `oc_return_status` (
   `return_status_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_return_status`
@@ -3615,7 +3511,7 @@ INSERT INTO `oc_return_status` (`return_status_id`, `language_id`, `name`) VALUE
 -- Table structure for table `oc_review`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_review` (
+CREATE TABLE `oc_review` (
   `review_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -3633,14 +3529,14 @@ CREATE TABLE IF NOT EXISTS `oc_review` (
 -- Table structure for table `oc_setting`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_setting` (
+CREATE TABLE `oc_setting` (
   `setting_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL DEFAULT '0',
   `code` varchar(32) NOT NULL,
   `key` varchar(64) NOT NULL,
   `value` text NOT NULL,
   `serialized` tinyint(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=870 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_setting`
@@ -3803,11 +3699,11 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 -- Table structure for table `oc_stock_status`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_stock_status` (
+CREATE TABLE `oc_stock_status` (
   `stock_status_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_stock_status`
@@ -3829,7 +3725,7 @@ INSERT INTO `oc_stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
 -- Table structure for table `oc_store`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_store` (
+CREATE TABLE `oc_store` (
   `store_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `url` varchar(255) NOT NULL,
@@ -3842,13 +3738,13 @@ CREATE TABLE IF NOT EXISTS `oc_store` (
 -- Table structure for table `oc_tax_class`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_tax_class` (
+CREATE TABLE `oc_tax_class` (
   `tax_class_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
   `description` varchar(255) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_tax_class`
@@ -3864,7 +3760,7 @@ INSERT INTO `oc_tax_class` (`tax_class_id`, `title`, `description`, `date_added`
 -- Table structure for table `oc_tax_rate`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_tax_rate` (
+CREATE TABLE `oc_tax_rate` (
   `tax_rate_id` int(11) NOT NULL,
   `geo_zone_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(32) NOT NULL,
@@ -3872,7 +3768,7 @@ CREATE TABLE IF NOT EXISTS `oc_tax_rate` (
   `type` char(1) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_tax_rate`
@@ -3888,7 +3784,7 @@ INSERT INTO `oc_tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`,
 -- Table structure for table `oc_tax_rate_to_customer_group`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_tax_rate_to_customer_group` (
+CREATE TABLE `oc_tax_rate_to_customer_group` (
   `tax_rate_id` int(11) NOT NULL,
   `customer_group_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -3907,13 +3803,13 @@ INSERT INTO `oc_tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`)
 -- Table structure for table `oc_tax_rule`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_tax_rule` (
+CREATE TABLE `oc_tax_rule` (
   `tax_rule_id` int(11) NOT NULL,
   `tax_class_id` int(11) NOT NULL,
   `tax_rate_id` int(11) NOT NULL,
   `based` varchar(10) NOT NULL,
   `priority` int(5) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_tax_rule`
@@ -3931,7 +3827,7 @@ INSERT INTO `oc_tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`
 -- Table structure for table `oc_upload`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_upload` (
+CREATE TABLE `oc_upload` (
   `upload_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `filename` varchar(255) NOT NULL,
@@ -3945,11 +3841,11 @@ CREATE TABLE IF NOT EXISTS `oc_upload` (
 -- Table structure for table `oc_url_alias`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_url_alias` (
+CREATE TABLE `oc_url_alias` (
   `url_alias_id` int(11) NOT NULL,
   `query` varchar(255) NOT NULL,
   `keyword` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=923 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_url_alias`
@@ -3957,47 +3853,39 @@ CREATE TABLE IF NOT EXISTS `oc_url_alias` (
 
 INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (885, 'product_id=48', 'ipod-classic'),
-(872, 'category_id=20', 'desktops'),
-(874, 'category_id=26', 'Nail Tip'),
-(873, 'category_id=27', 'mac'),
+(946, 'category_id=86', ''),
+(947, 'category_id=87', ''),
 (730, 'manufacturer_id=8', 'apple'),
-(918, 'information_id=4', 'about_us'),
+(772, 'information_id=4', 'about_us'),
 (882, 'product_id=42', 'test'),
-(875, 'category_id=34', 'mp3-players'),
-(868, 'category_id=36', 'test2'),
+(945, 'category_id=85', ''),
 (852, 'category_id=18', 'laptop-notebook'),
-(775, 'category_id=46', 'macs'),
-(776, 'category_id=45', 'windows'),
-(859, 'category_id=25', 'component'),
-(860, 'category_id=29', 'mouse'),
-(861, 'category_id=28', 'monitor'),
-(867, 'category_id=35', 'test1'),
-(869, 'category_id=30', 'printer'),
-(870, 'category_id=31', 'scanner'),
-(871, 'category_id=32', 'web-camera'),
-(851, 'category_id=57', 'tablet'),
-(850, 'category_id=17', 'software'),
-(849, 'category_id=24', 'smartphone'),
-(858, 'category_id=33', 'camera'),
-(876, 'category_id=43', 'Spa &amp; Wax'),
-(877, 'category_id=44', 'test12'),
-(878, 'category_id=47', 'Spa &amp; Wax 1'),
-(793, 'category_id=48', 'test16'),
-(794, 'category_id=49', 'test17'),
-(795, 'category_id=50', 'test18'),
-(796, 'category_id=51', 'test19'),
-(797, 'category_id=52', 'test20'),
-(798, 'category_id=58', 'test25'),
-(799, 'category_id=53', 'test21'),
-(800, 'category_id=54', 'test22'),
-(801, 'category_id=55', 'test23'),
-(802, 'category_id=56', 'test24'),
-(803, 'category_id=38', 'test4'),
-(804, 'category_id=37', 'test5'),
-(805, 'category_id=39', 'test6'),
-(806, 'category_id=40', 'test7'),
-(807, 'category_id=41', 'test8'),
-(808, 'category_id=42', 'test9'),
+(944, 'category_id=84', ''),
+(938, 'category_id=78', ''),
+(939, 'category_id=79', ''),
+(940, 'category_id=80', ''),
+(941, 'category_id=81', ''),
+(942, 'category_id=82', ''),
+(943, 'category_id=83', ''),
+(919, 'category_id=59', ''),
+(920, 'category_id=60', ''),
+(921, 'category_id=61', ''),
+(922, 'category_id=62', ''),
+(923, 'category_id=63', ''),
+(924, 'category_id=64', ''),
+(925, 'category_id=65', ''),
+(926, 'category_id=66', ''),
+(927, 'category_id=67', ''),
+(928, 'category_id=68', ''),
+(929, 'category_id=69', ''),
+(930, 'category_id=70', ''),
+(931, 'category_id=71', ''),
+(932, 'category_id=72', ''),
+(933, 'category_id=73', ''),
+(934, 'category_id=74', ''),
+(935, 'category_id=75', ''),
+(936, 'category_id=76', ''),
+(937, 'category_id=77', ''),
 (883, 'product_id=30', 'canon-eos-5d'),
 (889, 'product_id=47', 'hp-lp3065'),
 (886, 'product_id=28', 'htc-touch-hd'),
@@ -4007,7 +3895,7 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (888, 'product_id=31', 'nikon-d300'),
 (817, 'product_id=29', 'palm-treo-pro'),
 (887, 'product_id=35', 'product-8'),
-(890, 'product_id=49', 'samsung-galaxy-tab-10-1'),
+(918, 'product_id=49', 'samsung-galaxy-tab-10-1'),
 (884, 'product_id=33', 'samsung-syncmaster-941bw'),
 (880, 'product_id=46', 'sony-vaio'),
 (891, 'product_id=41', 'imac'),
@@ -4020,11 +3908,10 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (830, 'manufacturer_id=7', 'hewlett-packard'),
 (831, 'manufacturer_id=6', 'palm'),
 (832, 'manufacturer_id=10', 'sony'),
-(921, 'information_id=6', 'delivery'),
-(920, 'information_id=3', 'privacy'),
-(922, 'information_id=5', 'terms'),
+(841, 'information_id=6', 'delivery'),
+(842, 'information_id=3', 'privacy'),
+(843, 'information_id=5', 'terms'),
 (899, 'product_id=51', ''),
-(900, 'product_id=52', ''),
 (901, 'product_id=53', ''),
 (902, 'product_id=54', ''),
 (903, 'product_id=55', ''),
@@ -4049,7 +3936,7 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 -- Table structure for table `oc_user`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_user` (
+CREATE TABLE `oc_user` (
   `user_id` int(11) NOT NULL,
   `user_group_id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
@@ -4063,7 +3950,7 @@ CREATE TABLE IF NOT EXISTS `oc_user` (
   `ip` varchar(40) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `date_added` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_user`
@@ -4078,18 +3965,18 @@ INSERT INTO `oc_user` (`user_id`, `user_group_id`, `username`, `password`, `salt
 -- Table structure for table `oc_user_group`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_user_group` (
+CREATE TABLE `oc_user_group` (
   `user_group_id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `permission` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_user_group`
 --
 
 INSERT INTO `oc_user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'Administrator', '{"access":["analytics\\/google_analytics","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/attribute","catalog\\/attribute_group","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/recurring","catalog\\/review","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","customer\\/custom_field","customer\\/customer","customer\\/customer_group","design\\/banner","design\\/language","design\\/layout","design\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/bestseller","module\\/carousel","module\\/category","module\\/ebay_listing","module\\/featured","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/pp_button","module\\/pp_login","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/slideshow","module\\/special","module\\/store","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/language","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/setting","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","user\\/api","user\\/user","user\\/user_permission","module\\/latest","module\\/pp_button","module\\/affiliate","module\\/bestseller","module\\/filter","module\\/html","module\\/laybuy_layout","module\\/information","module\\/google_hangouts","module\\/pp_login","module\\/amazon_login","module\\/amazon_pay","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/store","module\\/ebay_listing","module\\/special","payment\\/pp_express","payment\\/g2apay","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro_iframe","payment\\/pp_pro","payment\\/pp_standard"],"modify":["analytics\\/google_analytics","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/attribute","catalog\\/attribute_group","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/recurring","catalog\\/review","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","customer\\/custom_field","customer\\/customer","customer\\/customer_group","design\\/banner","design\\/language","design\\/layout","design\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/bestseller","module\\/carousel","module\\/category","module\\/ebay_listing","module\\/featured","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/pp_button","module\\/pp_login","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/slideshow","module\\/special","module\\/store","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/language","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/setting","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","user\\/api","user\\/user","user\\/user_permission","module\\/latest","module\\/pp_button","module\\/affiliate","module\\/bestseller","module\\/filter","module\\/html","module\\/laybuy_layout","module\\/information","module\\/google_hangouts","module\\/pp_login","module\\/amazon_login","module\\/amazon_pay","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/store","module\\/ebay_listing","module\\/special","payment\\/pp_express","payment\\/g2apay","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro_iframe","payment\\/pp_pro","payment\\/pp_standard"]}'),
+(1, 'Administrator', '{"access":["analytics\\/google_analytics","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/attribute","catalog\\/attribute_group","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/recurring","catalog\\/review","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","customer\\/custom_field","customer\\/customer","customer\\/customer_group","design\\/banner","design\\/language","design\\/layout","design\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/bestseller","module\\/carousel","module\\/category","module\\/ebay_listing","module\\/featured","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/pp_button","module\\/pp_login","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/slideshow","module\\/special","module\\/store","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/language","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/setting","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","user\\/api","user\\/user","user\\/user_permission","module\\/latest","module\\/pp_button","module\\/affiliate","module\\/bestseller","module\\/filter","module\\/html","module\\/laybuy_layout","module\\/information","module\\/google_hangouts","module\\/pp_login","module\\/amazon_login","module\\/amazon_pay","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/store","module\\/ebay_listing","module\\/special","payment\\/pp_express","payment\\/g2apay","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro_iframe","payment\\/pp_pro","payment\\/pp_standard","shipping\\/ups","shipping\\/usps"],"modify":["analytics\\/google_analytics","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/attribute","catalog\\/attribute_group","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/recurring","catalog\\/review","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","customer\\/custom_field","customer\\/customer","customer\\/customer_group","design\\/banner","design\\/language","design\\/layout","design\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/bestseller","module\\/carousel","module\\/category","module\\/ebay_listing","module\\/featured","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/pp_button","module\\/pp_login","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/slideshow","module\\/special","module\\/store","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/language","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/setting","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","user\\/api","user\\/user","user\\/user_permission","module\\/latest","module\\/pp_button","module\\/affiliate","module\\/bestseller","module\\/filter","module\\/html","module\\/laybuy_layout","module\\/information","module\\/google_hangouts","module\\/pp_login","module\\/amazon_login","module\\/amazon_pay","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/store","module\\/ebay_listing","module\\/special","payment\\/pp_express","payment\\/g2apay","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro_iframe","payment\\/pp_pro","payment\\/pp_standard","shipping\\/ups","shipping\\/usps"]}'),
 (10, 'Demonstration', '');
 
 -- --------------------------------------------------------
@@ -4098,7 +3985,7 @@ INSERT INTO `oc_user_group` (`user_group_id`, `name`, `permission`) VALUES
 -- Table structure for table `oc_voucher`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_voucher` (
+CREATE TABLE `oc_voucher` (
   `voucher_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `code` varchar(10) NOT NULL,
@@ -4119,7 +4006,7 @@ CREATE TABLE IF NOT EXISTS `oc_voucher` (
 -- Table structure for table `oc_voucher_history`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_voucher_history` (
+CREATE TABLE `oc_voucher_history` (
   `voucher_history_id` int(11) NOT NULL,
   `voucher_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -4133,10 +4020,10 @@ CREATE TABLE IF NOT EXISTS `oc_voucher_history` (
 -- Table structure for table `oc_voucher_theme`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_voucher_theme` (
+CREATE TABLE `oc_voucher_theme` (
   `voucher_theme_id` int(11) NOT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_voucher_theme`
@@ -4153,7 +4040,7 @@ INSERT INTO `oc_voucher_theme` (`voucher_theme_id`, `image`) VALUES
 -- Table structure for table `oc_voucher_theme_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_voucher_theme_description` (
+CREATE TABLE `oc_voucher_theme_description` (
   `voucher_theme_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL
@@ -4177,10 +4064,10 @@ INSERT INTO `oc_voucher_theme_description` (`voucher_theme_id`, `language_id`, `
 -- Table structure for table `oc_weight_class`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_weight_class` (
+CREATE TABLE `oc_weight_class` (
   `weight_class_id` int(11) NOT NULL,
   `value` decimal(15,8) NOT NULL DEFAULT '0.00000000'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_weight_class`
@@ -4198,7 +4085,7 @@ INSERT INTO `oc_weight_class` (`weight_class_id`, `value`) VALUES
 -- Table structure for table `oc_weight_class_description`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_weight_class_description` (
+CREATE TABLE `oc_weight_class_description` (
   `weight_class_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   `title` varchar(32) NOT NULL,
@@ -4225,13 +4112,13 @@ INSERT INTO `oc_weight_class_description` (`weight_class_id`, `language_id`, `ti
 -- Table structure for table `oc_zone`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_zone` (
+CREATE TABLE `oc_zone` (
   `zone_id` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `code` varchar(32) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=4232 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_zone`
@@ -8352,14 +8239,14 @@ INSERT INTO `oc_zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
 -- Table structure for table `oc_zone_to_geo_zone`
 --
 
-CREATE TABLE IF NOT EXISTS `oc_zone_to_geo_zone` (
+CREATE TABLE `oc_zone_to_geo_zone` (
   `zone_to_geo_zone_id` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
   `zone_id` int(11) NOT NULL DEFAULT '0',
   `geo_zone_id` int(11) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=110 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_zone_to_geo_zone`
@@ -8484,7 +8371,8 @@ INSERT INTO `oc_zone_to_geo_zone` (`zone_to_geo_zone_id`, `country_id`, `zone_id
 -- Indexes for table `oc_address`
 --
 ALTER TABLE `oc_address`
-  ADD PRIMARY KEY (`address_id`), ADD KEY `customer_id` (`customer_id`);
+  ADD PRIMARY KEY (`address_id`),
+  ADD KEY `customer_id` (`customer_id`);
 
 --
 -- Indexes for table `oc_affiliate`
@@ -8502,7 +8390,9 @@ ALTER TABLE `oc_affiliate_activity`
 -- Indexes for table `oc_affiliate_login`
 --
 ALTER TABLE `oc_affiliate_login`
-  ADD PRIMARY KEY (`affiliate_login_id`), ADD KEY `email` (`email`), ADD KEY `ip` (`ip`);
+  ADD PRIMARY KEY (`affiliate_login_id`),
+  ADD KEY `email` (`email`),
+  ADD KEY `ip` (`ip`);
 
 --
 -- Indexes for table `oc_affiliate_transaction`
@@ -8574,19 +8464,22 @@ ALTER TABLE `oc_banner_image_description`
 -- Indexes for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  ADD PRIMARY KEY (`cart_id`), ADD KEY `cart_id` (`customer_id`,`session_id`,`product_id`,`recurring_id`);
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `cart_id` (`customer_id`,`session_id`,`product_id`,`recurring_id`);
 
 --
 -- Indexes for table `oc_category`
 --
 ALTER TABLE `oc_category`
-  ADD PRIMARY KEY (`category_id`), ADD KEY `parent_id` (`parent_id`);
+  ADD PRIMARY KEY (`category_id`),
+  ADD KEY `parent_id` (`parent_id`);
 
 --
 -- Indexes for table `oc_category_description`
 --
 ALTER TABLE `oc_category_description`
-  ADD PRIMARY KEY (`category_id`,`language_id`), ADD KEY `name` (`name`);
+  ADD PRIMARY KEY (`category_id`,`language_id`),
+  ADD KEY `name` (`name`);
 
 --
 -- Indexes for table `oc_category_filter`
@@ -8682,13 +8575,16 @@ ALTER TABLE `oc_customer_history`
 -- Indexes for table `oc_customer_ip`
 --
 ALTER TABLE `oc_customer_ip`
-  ADD PRIMARY KEY (`customer_ip_id`), ADD KEY `ip` (`ip`);
+  ADD PRIMARY KEY (`customer_ip_id`),
+  ADD KEY `ip` (`ip`);
 
 --
 -- Indexes for table `oc_customer_login`
 --
 ALTER TABLE `oc_customer_login`
-  ADD PRIMARY KEY (`customer_login_id`), ADD KEY `email` (`email`), ADD KEY `ip` (`ip`);
+  ADD PRIMARY KEY (`customer_login_id`),
+  ADD KEY `email` (`email`),
+  ADD KEY `ip` (`ip`);
 
 --
 -- Indexes for table `oc_customer_online`
@@ -8796,7 +8692,8 @@ ALTER TABLE `oc_filter_group_description`
 -- Indexes for table `oc_g2apay_order`
 --
 ALTER TABLE `oc_g2apay_order`
-  ADD PRIMARY KEY (`g2apay_order_id`), ADD KEY `g2apay_transaction_id` (`g2apay_transaction_id`);
+  ADD PRIMARY KEY (`g2apay_order_id`),
+  ADD KEY `g2apay_transaction_id` (`g2apay_transaction_id`);
 
 --
 -- Indexes for table `oc_g2apay_order_transaction`
@@ -8838,7 +8735,8 @@ ALTER TABLE `oc_information_to_store`
 -- Indexes for table `oc_language`
 --
 ALTER TABLE `oc_language`
-  ADD PRIMARY KEY (`language_id`), ADD KEY `name` (`name`);
+  ADD PRIMARY KEY (`language_id`),
+  ADD KEY `name` (`name`);
 
 --
 -- Indexes for table `oc_layout`
@@ -8874,7 +8772,8 @@ ALTER TABLE `oc_length_class_description`
 -- Indexes for table `oc_location`
 --
 ALTER TABLE `oc_location`
-  ADD PRIMARY KEY (`location_id`), ADD KEY `name` (`name`);
+  ADD PRIMARY KEY (`location_id`),
+  ADD KEY `name` (`name`);
 
 --
 -- Indexes for table `oc_manufacturer`
@@ -8982,7 +8881,8 @@ ALTER TABLE `oc_order_status`
 -- Indexes for table `oc_order_total`
 --
 ALTER TABLE `oc_order_total`
-  ADD PRIMARY KEY (`order_total_id`), ADD KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`order_total_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `oc_order_voucher`
@@ -9018,13 +8918,15 @@ ALTER TABLE `oc_paypal_order_transaction`
 -- Indexes for table `oc_paypal_payflow_iframe_order`
 --
 ALTER TABLE `oc_paypal_payflow_iframe_order`
-  ADD PRIMARY KEY (`order_id`), ADD KEY `secure_token_id` (`secure_token_id`);
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `secure_token_id` (`secure_token_id`);
 
 --
 -- Indexes for table `oc_paypal_payflow_iframe_order_transaction`
 --
 ALTER TABLE `oc_paypal_payflow_iframe_order_transaction`
-  ADD PRIMARY KEY (`transaction_reference`), ADD KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`transaction_reference`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `oc_product`
@@ -9042,13 +8944,15 @@ ALTER TABLE `oc_product_attribute`
 -- Indexes for table `oc_product_description`
 --
 ALTER TABLE `oc_product_description`
-  ADD PRIMARY KEY (`product_id`,`language_id`), ADD KEY `name` (`name`);
+  ADD PRIMARY KEY (`product_id`,`language_id`),
+  ADD KEY `name` (`name`);
 
 --
 -- Indexes for table `oc_product_discount`
 --
 ALTER TABLE `oc_product_discount`
-  ADD PRIMARY KEY (`product_discount_id`), ADD KEY `product_id` (`product_id`);
+  ADD PRIMARY KEY (`product_discount_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `oc_product_filter`
@@ -9060,7 +8964,8 @@ ALTER TABLE `oc_product_filter`
 -- Indexes for table `oc_product_image`
 --
 ALTER TABLE `oc_product_image`
-  ADD PRIMARY KEY (`product_image_id`), ADD KEY `product_id` (`product_id`);
+  ADD PRIMARY KEY (`product_image_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `oc_product_option`
@@ -9096,13 +9001,15 @@ ALTER TABLE `oc_product_reward`
 -- Indexes for table `oc_product_special`
 --
 ALTER TABLE `oc_product_special`
-  ADD PRIMARY KEY (`product_special_id`), ADD KEY `product_id` (`product_id`);
+  ADD PRIMARY KEY (`product_special_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `oc_product_to_category`
 --
 ALTER TABLE `oc_product_to_category`
-  ADD PRIMARY KEY (`product_id`,`category_id`), ADD KEY `category_id` (`category_id`);
+  ADD PRIMARY KEY (`product_id`,`category_id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `oc_product_to_download`
@@ -9168,7 +9075,8 @@ ALTER TABLE `oc_return_status`
 -- Indexes for table `oc_review`
 --
 ALTER TABLE `oc_review`
-  ADD PRIMARY KEY (`review_id`), ADD KEY `product_id` (`product_id`);
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `oc_setting`
@@ -9222,7 +9130,9 @@ ALTER TABLE `oc_upload`
 -- Indexes for table `oc_url_alias`
 --
 ALTER TABLE `oc_url_alias`
-  ADD PRIMARY KEY (`url_alias_id`), ADD KEY `query` (`query`), ADD KEY `keyword` (`keyword`);
+  ADD PRIMARY KEY (`url_alias_id`),
+  ADD KEY `query` (`query`),
+  ADD KEY `keyword` (`keyword`);
 
 --
 -- Indexes for table `oc_user`
@@ -9292,7 +9202,7 @@ ALTER TABLE `oc_zone_to_geo_zone`
 -- AUTO_INCREMENT for table `oc_address`
 --
 ALTER TABLE `oc_address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `oc_affiliate`
 --
@@ -9317,57 +9227,57 @@ ALTER TABLE `oc_affiliate_transaction`
 -- AUTO_INCREMENT for table `oc_api`
 --
 ALTER TABLE `oc_api`
-  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `oc_api_ip`
 --
 ALTER TABLE `oc_api_ip`
-  MODIFY `api_ip_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `api_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `oc_api_session`
 --
 ALTER TABLE `oc_api_session`
-  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `oc_attribute`
 --
 ALTER TABLE `oc_attribute`
-  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `oc_attribute_group`
 --
 ALTER TABLE `oc_attribute_group`
-  MODIFY `attribute_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `attribute_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `oc_banner`
 --
 ALTER TABLE `oc_banner`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `oc_banner_image`
 --
 ALTER TABLE `oc_banner_image`
-  MODIFY `banner_image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=152;
+  MODIFY `banner_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 --
 -- AUTO_INCREMENT for table `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `oc_category`
 --
 ALTER TABLE `oc_category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 --
 -- AUTO_INCREMENT for table `oc_country`
 --
 ALTER TABLE `oc_country`
-  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=258;
+  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=258;
 --
 -- AUTO_INCREMENT for table `oc_coupon`
 --
 ALTER TABLE `oc_coupon`
-  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `oc_coupon_history`
 --
@@ -9382,22 +9292,22 @@ ALTER TABLE `oc_coupon_product`
 -- AUTO_INCREMENT for table `oc_currency`
 --
 ALTER TABLE `oc_currency`
-  MODIFY `currency_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `currency_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `oc_customer`
 --
 ALTER TABLE `oc_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `oc_customer_activity`
 --
 ALTER TABLE `oc_customer_activity`
-  MODIFY `customer_activity_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `customer_activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `oc_customer_group`
 --
 ALTER TABLE `oc_customer_group`
-  MODIFY `customer_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `customer_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `oc_customer_history`
 --
@@ -9407,7 +9317,7 @@ ALTER TABLE `oc_customer_history`
 -- AUTO_INCREMENT for table `oc_customer_ip`
 --
 ALTER TABLE `oc_customer_ip`
-  MODIFY `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `oc_customer_login`
 --
@@ -9442,12 +9352,12 @@ ALTER TABLE `oc_download`
 -- AUTO_INCREMENT for table `oc_event`
 --
 ALTER TABLE `oc_event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `oc_extension`
 --
 ALTER TABLE `oc_extension`
-  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `oc_filter`
 --
@@ -9472,37 +9382,37 @@ ALTER TABLE `oc_g2apay_order_transaction`
 -- AUTO_INCREMENT for table `oc_geo_zone`
 --
 ALTER TABLE `oc_geo_zone`
-  MODIFY `geo_zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `geo_zone_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `oc_information`
 --
 ALTER TABLE `oc_information`
-  MODIFY `information_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `information_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `oc_language`
 --
 ALTER TABLE `oc_language`
-  MODIFY `language_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `language_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `oc_layout`
 --
 ALTER TABLE `oc_layout`
-  MODIFY `layout_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `layout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `oc_layout_module`
 --
 ALTER TABLE `oc_layout_module`
-  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=99;
+  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 --
 -- AUTO_INCREMENT for table `oc_layout_route`
 --
 ALTER TABLE `oc_layout_route`
-  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
+  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `oc_length_class`
 --
 ALTER TABLE `oc_length_class`
-  MODIFY `length_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `length_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `oc_location`
 --
@@ -9512,7 +9422,7 @@ ALTER TABLE `oc_location`
 -- AUTO_INCREMENT for table `oc_manufacturer`
 --
 ALTER TABLE `oc_manufacturer`
-  MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `oc_marketing`
 --
@@ -9527,22 +9437,22 @@ ALTER TABLE `oc_modification`
 -- AUTO_INCREMENT for table `oc_module`
 --
 ALTER TABLE `oc_module`
-  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+  MODIFY `module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `oc_option`
 --
 ALTER TABLE `oc_option`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `oc_option_value`
 --
 ALTER TABLE `oc_option_value`
-  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=49;
+  MODIFY `option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT for table `oc_order`
 --
 ALTER TABLE `oc_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `oc_order_custom_field`
 --
@@ -9552,17 +9462,17 @@ ALTER TABLE `oc_order_custom_field`
 -- AUTO_INCREMENT for table `oc_order_history`
 --
 ALTER TABLE `oc_order_history`
-  MODIFY `order_history_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `order_history_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `oc_order_option`
 --
 ALTER TABLE `oc_order_option`
-  MODIFY `order_option_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `oc_order_product`
 --
 ALTER TABLE `oc_order_product`
-  MODIFY `order_product_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `order_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `oc_order_recurring`
 --
@@ -9577,12 +9487,12 @@ ALTER TABLE `oc_order_recurring_transaction`
 -- AUTO_INCREMENT for table `oc_order_status`
 --
 ALTER TABLE `oc_order_status`
-  MODIFY `order_status_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `order_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `oc_order_total`
 --
 ALTER TABLE `oc_order_total`
-  MODIFY `order_total_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `order_total_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `oc_order_voucher`
 --
@@ -9612,37 +9522,37 @@ ALTER TABLE `oc_paypal_order_transaction`
 -- AUTO_INCREMENT for table `oc_product`
 --
 ALTER TABLE `oc_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=70;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT for table `oc_product_discount`
 --
 ALTER TABLE `oc_product_discount`
-  MODIFY `product_discount_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=459;
+  MODIFY `product_discount_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=459;
 --
 -- AUTO_INCREMENT for table `oc_product_image`
 --
 ALTER TABLE `oc_product_image`
-  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2506;
+  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2518;
 --
 -- AUTO_INCREMENT for table `oc_product_option`
 --
 ALTER TABLE `oc_product_option`
-  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=239;
+  MODIFY `product_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 --
 -- AUTO_INCREMENT for table `oc_product_option_value`
 --
 ALTER TABLE `oc_product_option_value`
-  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `product_option_value_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `oc_product_reward`
 --
 ALTER TABLE `oc_product_reward`
-  MODIFY `product_reward_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=566;
+  MODIFY `product_reward_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=568;
 --
 -- AUTO_INCREMENT for table `oc_product_special`
 --
 ALTER TABLE `oc_product_special`
-  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=450;
+  MODIFY `product_special_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=450;
 --
 -- AUTO_INCREMENT for table `oc_recurring`
 --
@@ -9657,7 +9567,7 @@ ALTER TABLE `oc_return`
 -- AUTO_INCREMENT for table `oc_return_action`
 --
 ALTER TABLE `oc_return_action`
-  MODIFY `return_action_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `return_action_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `oc_return_history`
 --
@@ -9667,12 +9577,12 @@ ALTER TABLE `oc_return_history`
 -- AUTO_INCREMENT for table `oc_return_reason`
 --
 ALTER TABLE `oc_return_reason`
-  MODIFY `return_reason_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `return_reason_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `oc_return_status`
 --
 ALTER TABLE `oc_return_status`
-  MODIFY `return_status_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `return_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `oc_review`
 --
@@ -9682,12 +9592,12 @@ ALTER TABLE `oc_review`
 -- AUTO_INCREMENT for table `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=870;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=870;
 --
 -- AUTO_INCREMENT for table `oc_stock_status`
 --
 ALTER TABLE `oc_stock_status`
-  MODIFY `stock_status_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `stock_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `oc_store`
 --
@@ -9697,17 +9607,17 @@ ALTER TABLE `oc_store`
 -- AUTO_INCREMENT for table `oc_tax_class`
 --
 ALTER TABLE `oc_tax_class`
-  MODIFY `tax_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `tax_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `oc_tax_rate`
 --
 ALTER TABLE `oc_tax_rate`
-  MODIFY `tax_rate_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=88;
+  MODIFY `tax_rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 --
 -- AUTO_INCREMENT for table `oc_tax_rule`
 --
 ALTER TABLE `oc_tax_rule`
-  MODIFY `tax_rule_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=129;
+  MODIFY `tax_rule_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 --
 -- AUTO_INCREMENT for table `oc_upload`
 --
@@ -9717,17 +9627,17 @@ ALTER TABLE `oc_upload`
 -- AUTO_INCREMENT for table `oc_url_alias`
 --
 ALTER TABLE `oc_url_alias`
-  MODIFY `url_alias_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=923;
+  MODIFY `url_alias_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=948;
 --
 -- AUTO_INCREMENT for table `oc_user`
 --
 ALTER TABLE `oc_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `oc_user_group`
 --
 ALTER TABLE `oc_user_group`
-  MODIFY `user_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `user_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `oc_voucher`
 --
@@ -9742,22 +9652,22 @@ ALTER TABLE `oc_voucher_history`
 -- AUTO_INCREMENT for table `oc_voucher_theme`
 --
 ALTER TABLE `oc_voucher_theme`
-  MODIFY `voucher_theme_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `voucher_theme_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `oc_weight_class`
 --
 ALTER TABLE `oc_weight_class`
-  MODIFY `weight_class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `weight_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `oc_zone`
 --
 ALTER TABLE `oc_zone`
-  MODIFY `zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4232;
+  MODIFY `zone_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4232;
 --
 -- AUTO_INCREMENT for table `oc_zone_to_geo_zone`
 --
 ALTER TABLE `oc_zone_to_geo_zone`
-  MODIFY `zone_to_geo_zone_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=110;
+  MODIFY `zone_to_geo_zone_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
