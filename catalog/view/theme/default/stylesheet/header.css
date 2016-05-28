@@ -7,3 +7,50 @@ css thi o  C:\xampp\htdocs\thepronails\catalog\view\theme\default\stylesheet
 còn view thì ? C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common
 
 */
+#top{
+    background-color: #000;
+    border-bottom: 1px solid #000000;
+}
+#top .dropdown-menu{
+	background-color: #757373;
+	color: #fff;
+}
+
+#top #top-links .list-inline .dropdown-menu li{
+	background-color: transparent;
+	color: #fff;
+}
+#top #top-links .list-inline .dropdown-menu li:hover{
+	background-color: #229ac8;
+	color: #fff;
+}
+#top #top-links .list-inline .dropdown-menu li:focus{
+	background-color: #229ac8;
+	color: #fff;
+}
+
+#top #top-links .list-inline li.open > a{
+	background-color: transparent;
+}
+#top #top-links .list-inline li.open > a:hover{
+	background-color: transparent;
+}
+#top #top-links .list-inline li.open > a:focus{
+	background-color: transparent;
+}
+
+
+
+#top .btn-link, #top-links li, #top-links a {
+	color: #CCCCCC;
+	/*text-shadow: 0 1px 0 #FFF;*/
+	text-shadow: none;
+	text-decoration: none;
+	font-weight: 400;
+}
+#top .btn-link:hover, #top-links a:hover {
+	color: #fff;
+}
+#top-links .dropdown-menu a {
+	text-shadow: none;
+}
