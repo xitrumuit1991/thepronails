@@ -1,1 +1,39 @@
 2016-05-26 6:01:08 - PHP Notice:  Undefined variable: informations in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 104
+2016-05-28 10:03:32 - PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 56
+2016-05-28 10:03:32 - PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 58
+2016-05-28 10:03:32 - PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 79
+2016-05-28 10:03:38 - PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 56
+2016-05-28 10:03:38 - PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 58
+2016-05-28 10:03:38 - PHP Notice:  Trying to get property of non-object in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 79
+2016-05-28 10:53:18 - PHP Notice:  Undefined index: model in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 88
+2016-05-28 10:53:18 - PHP Notice:  Undefined index: quantity in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 93
+2016-05-28 10:53:18 - PHP Notice:  Undefined index: model in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 88
+2016-05-28 10:53:18 - PHP Notice:  Undefined index: quantity in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\module\bestseller.tpl on line 93
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 71
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 72
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 73
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 74
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 71
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 72
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 73
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 74
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 71
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 72
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 73
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 74
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 71
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 72
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 73
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 74
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 71
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 72
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 73
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 74
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 71
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 72
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 73
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 74
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 71
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 72
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 73
+2016-05-28 11:01:46 - PHP Notice:  Undefined variable: result in C:\xampp\htdocs\thepronails\catalog\controller\module\featured.php on line 74

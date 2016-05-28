@@ -67,7 +67,12 @@ class ControllerModuleFeatured extends Controller {
 						'special'     => $special,
 						'tax'         => $tax,
 						'rating'      => $rating,
-						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
+						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
+						'model'=> $product_info['model'],
+						'quantity'=> $product_info['quantity'],
+						'date_modified'=> $product_info['date_modified'],
+						'all_attribute'=> $product_info,
+
 					);
 				}
 			}
