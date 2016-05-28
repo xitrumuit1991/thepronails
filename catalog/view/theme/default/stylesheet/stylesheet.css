@@ -11,14 +11,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* default font size */
 .fa {
-	font-size: 14px;
+	font-size: 20px;
 }
 /* Override the bootstrap defaults */
 h1 {
 	font-size: 33px;
+	color: #ed2a7b;
 }
 h2 {
 	font-size: 27px;
+	color: #182197;
 }
 h3 {
 	font-size: 21px;
@@ -497,7 +499,7 @@ footer h5 {
 	background-color: #222222;
 	background-image: linear-gradient(to bottom, #333333, #111111);
 }*/
-/* list group */
+/* list group 
 .list-group a {
 	border: 1px solid #DDDDDD;
 	color: #888888;
@@ -509,7 +511,7 @@ footer h5 {
 	border: 1px solid #DDDDDD;
 	text-shadow: 0 1px 0 #FFF;
 }
-/* carousel */
+ carousel */
 .carousel-caption {
 	color: #FFFFFF;
 	text-shadow: 0 1px 0 #000000;
