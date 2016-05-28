@@ -95,6 +95,7 @@ body{
 .product-thumb .image img {
 	margin-left: auto;
 	margin-right: auto;
+	margin-top: 10px;
 }
 .product-grid .product-thumb .image {
 	float: none;
@@ -105,7 +106,7 @@ body{
 	display: inline-block;
 	float: left;
 	background-color: #fff;
-	color: #673695;
+	color: #ed2a7b;
 	line-height: 38px;
 	font-weight: bold;
 	text-align: center;
@@ -113,11 +114,11 @@ body{
 }
 .product-thumb .button-group button + button {
 	width: 20%;
-	border-left: 1px solid #888;
+	border-left: 1px solid #ddd;
 }
 .product-thumb .button-group button:hover {
-	color: #673695;
-	background-color: #ddd;
+	color: #fff;
+	background-color: #ed2a7b;
 	text-decoration: none;
 	cursor: pointer;
 }
