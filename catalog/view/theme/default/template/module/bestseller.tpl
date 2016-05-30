@@ -1,6 +1,6 @@
 <h3 class="featured-product"><?php echo $heading_title; ?>
   <a href="#" class="pull-right">
-    <i class="fa fa-angle-double-right"></i>
+    <i class="fa fa-chevron-right"></i>
   </a>
 </h3>
 <div class="row">

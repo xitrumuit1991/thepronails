@@ -16,11 +16,11 @@ h1, h2, h3, h4, h5, h6 {
 /* Override the bootstrap defaults */
 h1 {
 	font-size: 33px;
-	color: #ed2a7b;
+	color: #036300;
 }
 h2 {
 	font-size: 27px;
-	color: #182197;
+	color: #fd0000;
 }
 h3 {
 	font-size: 21px;
@@ -312,14 +312,14 @@ div.required .control-label:before {
 #content {
 	min-height: 600px;
 }
-/* footer */
+/* footer 
 footer {
 	margin-top: 30px;
 	padding-top: 30px;
 	background-color: #303030;
 	border-top: 1px solid #ddd;
 	color: #e2e2e2;
-}
+}*/
 footer hr {
 	border-top: none;
 	border-bottom: 1px solid #666;
@@ -601,7 +601,7 @@ h2.price {
 	margin: 0;
 }
 .product-thumb .price {
-	color: #444;
+	color: #fd0000;
 }
 .product-thumb .price-new {
 	font-weight: 600;

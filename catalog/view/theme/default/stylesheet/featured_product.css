@@ -2,23 +2,26 @@
 /*-----------------san pham noi bat*/
 .featured-product{
     padding-bottom: 1px;
+    padding-left: 5px;
     margin-top: 10px;
     margin-bottom: 25px;
-    font-size: 24px;
-    color: #da5ca3;
-    text-transform: uppercase;
-    border-bottom: 1px solid #292929;
+    font-size: 30px;
+    color: #3AA81D;
+    /*text-transform: uppercase;
+    border-bottom: 1px solid #292929;*/
 }
 .featured-product a{
-	cursor: default;
+	cursor: hand;
 }
 .featured-product a i{
-	color: #da5ca3; font-size:38px;
+	color: #3AA81D; 
+    font-size:34px;
+    padding-right: 5px;
 }
 
 .featured-product:after {
     content: "";
     display: block;
-    border-bottom: 1px solid #292929;
-    padding-top: 14px;
+    /*border-bottom: 1px solid #292929;*/
+    padding-top: 6px;
 }

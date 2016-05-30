@@ -3,7 +3,8 @@ file custom css cho project này
 vui lòng chi edit o day
 */
 body{
-	background:transparent url(image/bg.jpg) repeat;
+	/*background:transparent url(image/bg.jpg) repeat;*/
+	background-color: #EDECE9;
 	color:#292929;
 	font:14px/22px 'Open Sans', Arial, Helvetica, sans-serif;
 }
@@ -15,24 +16,24 @@ body{
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	background-color: #101665;
-	background-image: linear-gradient(to bottom, #141c7e, #182197);
+	background-image: linear-gradient(to bottom, #208F02, #25A805);
 	background-repeat: repeat-x;
 	border-color: #222222 #222222 #000000;
 }
 .btn-inverse:hover, .btn-inverse:active, .btn-inverse.active, .btn-inverse.disabled, .btn-inverse[disabled] {
 	background-color: #0c104b;
-	background-image: linear-gradient(to bottom, #080b32, #0c104b);
+	background-image: linear-gradient(to bottom, #7D7C7C, #999897);
 }
 .dropdown-menu li > a:hover {
 	text-decoration: none;
 	color: #ffffff;
-	background-color: #f9227b;
+	background-color: #8c9688;
 	background-image: linear-gradient(to bottom, #e01e6e, #f93888);
 	background-repeat: repeat-x;
 }
 #menu {
-	background-color: #ed2a7b;
-	background-image: linear-gradient(to bottom, #d5256e, #f05495);
+	background-color: #25DA0C;
+	background-image: linear-gradient(to bottom, #1B6503, #208F02);
 	background-repeat: repeat-x;
 	/*border-color: #8e1949 #8e1949 #a51d56;*/
 	min-height: 40px;
@@ -66,7 +67,8 @@ body{
 	background-color: transparent;
 }
 #menu .nav > li > a:hover, #menu .nav > li.open > a {
-	background-color: #a51d56;
+	background-color: #fff;
+	color: #1B6503;
 }
 .product-thumb {
 	background-color: #ffffff;
@@ -96,6 +98,7 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .product-grid .product-thumb .image {
 	float: none;
@@ -106,7 +109,7 @@ body{
 	display: inline-block;
 	float: left;
 	background-color: #fff;
-	color: #ed2a7b;
+	color: #21C20B;
 	line-height: 38px;
 	font-weight: bold;
 	text-align: center;
@@ -118,21 +121,20 @@ body{
 }
 .product-thumb .button-group button:hover {
 	color: #fff;
-	background-color: #ed2a7b;
+	background-color: #208F02;
 	text-decoration: none;
 	cursor: pointer;
 }
 
 .list-group a {
 	border: 1px solid #DDDDDD;
-	color: #8e1949 ;
+	color: #024C00 ;
 }
 .list-group a.active, .list-group a.active:hover, .list-group a:hover {
 	color: #fff;
-	background: #ed2a7b;
+	background: #208F02;
 	border: 1px solid #DDDDDD;
 	text-shadow: 0 1px 0 #FFF;
-	text-align: center;
 }
 
 
@@ -166,4 +168,11 @@ body{
 
 .product-thumb:hover .show-modal-detail i.fa-search-plus{
 	opacity: 0.5;
+}
+
+
+footer {
+	margin-top: 10px;
+	padding-top: 10px;
+	background-color: #303030;
 }
