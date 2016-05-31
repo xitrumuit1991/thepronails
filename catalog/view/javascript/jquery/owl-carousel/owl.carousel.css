@@ -77,7 +77,7 @@
 /* OpenCart Code */
 .owl-carousel {
 	margin: 0 0 20px;
-	background: #fff;
+	
 	direction: ltr !important;
 	z-index: 1;
 }
