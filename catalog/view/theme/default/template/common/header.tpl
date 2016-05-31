@@ -27,6 +27,7 @@
 <link href="catalog/view/theme/default/stylesheet/footer.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/lasted_product.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/featured_product.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/bestseller_product.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/n_v_custom_css.css" rel="stylesheet">
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />

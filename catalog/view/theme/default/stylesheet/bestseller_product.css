@@ -1,6 +1,6 @@
 
 /*-----------------san pham noi bat*/
-.featured-product{
+.bestseller-product{
     margin: 10px 0px 25px 0px;
     font-size: 20px;
     line-height: 40px;
@@ -11,13 +11,13 @@
     /*text-transform: uppercase;
     border-bottom: 1px solid #292929;*/
 }
-.featured-product .left{
+.bestseller-product .left{
     background: #3AA81D;
     color: #fff;
     position: relative;
     height: 40px;
 }
-.featured-product .left:after{
+.bestseller-product .left:after{
     width: 0px;
     height: 0px;
     position: absolute;
@@ -27,33 +27,33 @@
     border-bottom: 20px solid transparent;
     border-left: 40px solid #3AA81D;
 }
-.featured-product .mid{
+.bestseller-product .mid{
     height: 40px;
     background-color: #fff;
     z-index: -1;
     border-bottom: 1px solid;
 }
-.featured-product .right{
+.bestseller-product .right{
     height: 40px;
     background-color: #fff;
     line-height: 40px;
     border-bottom: 1px solid;
 }
-.featured-product .right a{
+.bestseller-product .right a{
     line-height: 40px;
     margin-top: 5px;
 }
     
-.featured-product a{
+.bestseller-product a{
 	cursor: hand;
 }
-.featured-product a i{
+.bestseller-product a i{
 	color: #3AA81D; 
     font-size:34px;
     padding-right: 5px;
 }
 
-.featured-product:after {
+.bestseller-product:after {
     content: "";
     display: block;
     /*border-bottom: 1px solid #292929;*/

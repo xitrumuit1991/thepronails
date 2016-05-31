@@ -1,7 +1,13 @@
-<h3 class='lasted-product'><?php echo $heading_title; ?>
+<!-- <h3 class='lasted-product'><?php echo $heading_title; ?>
   <a href="#" class="pull-right">
     <i class="fa fa-chevron-right"></i>
   </a>
+</h3> -->
+<h3 class="lasted-product row">
+  <div class="col-sm-5 left"><?php echo $heading_title; ?></div>
+  <div class="col-sm-5 mid">&nbsp;</div>
+  <div class="col-sm-2 right">&nbsp;
+  </div>
 </h3>
 
 <div class="row">
