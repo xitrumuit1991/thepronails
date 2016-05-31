@@ -2,20 +2,22 @@
 /*-----------------san pham noi bat*/
 .bestseller-product{
     margin: 10px 0px 25px 0px;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 40px;
     color: #3AA81D;
     text-transform: uppercase;
-        margin: 40px 0 20px 0;
+    margin: 40px 0 20px 0;
         
-    /*text-transform: uppercase;
-    border-bottom: 1px solid #292929;*/
 }
 .bestseller-product .left{
-    background: #3AA81D;
+    background: #287D11;
     color: #fff;
     position: relative;
     height: 40px;
+    min-width: 150px;
+
+    display: inline-block;
+    padding: 1px 20px 1px 10px;
 }
 .bestseller-product .left:after{
     width: 0px;
@@ -25,9 +27,9 @@
     content: '';
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
-    border-left: 40px solid #3AA81D;
+    border-left: 40px solid #287D11;
 }
-.bestseller-product .mid{
+/*.bestseller-product .mid{
     height: 40px;
     background-color: #fff;
     z-index: -1;
@@ -42,7 +44,7 @@
 .bestseller-product .right a{
     line-height: 40px;
     margin-top: 5px;
-}
+}*/
     
 .bestseller-product a{
 	cursor: hand;

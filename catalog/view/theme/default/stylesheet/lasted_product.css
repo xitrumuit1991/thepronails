@@ -1,32 +1,21 @@
 
 /*-----------------san pham moi nhat*/
 .lasted-product{
-
     margin: 10px 0px 25px 0px;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 40px;
-    color: #3AA81D;
+    /*color: #3AA81D;*/
     text-transform: uppercase;
     margin: 40px 0 20px 0;
 }
-/*.lasted-product a{
-	cursor: default;
-}
-.lasted-product a i{
-	color: #da5ca3; font-size:38px;
-}*/
-
-/*.lasted-product:after {
-    content: "";
-    display: block;
-    border-bottom: 1px solid #292929;
-    padding-top: 14px;
-}*/
 .lasted-product .left{
-    background: #3AA81D;
+    background: #287D11;
     color: #fff;
     position: relative;
     height: 40px;
+    min-width: 150px;
+    display: inline-block;
+    padding: 1px 20px 1px 10px;
 }
 .lasted-product .left:after{
     width: 0px;
@@ -36,9 +25,9 @@
     content: '';
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
-    border-left: 40px solid #3AA81D;
+    border-left: 40px solid #287D11;
 }
-.lasted-product .mid{
+/*.lasted-product .mid{
     height: 40px;
     background-color: #fff;
     z-index: -1;
@@ -53,4 +42,4 @@
 .lasted-product .right a{
     line-height: 40px;
     margin-top: 5px;
-}
+}*/
