@@ -9,13 +9,46 @@
 <div class="row" style="margin-bottom:30px">
   <?php foreach ($products as $product) { ?>
   <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
+
+
+
+<!-- Nguyen add tooltip -->
+    <div class="product-tooltip row thumbnail">
+          <div class="col-md-5">
+                <div class="image">
+                    <a href="<?php echo $product['href']; ?>">
+                        <img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-rounded thumbnail" />
+                    </a>
+                </div>
+          </div>
+          <div class="col-md-7">
+                <div class="text-uppercase"><span class="label label-success"><?php echo $product['name']; ?></span></div>
+                <div style="margin-top: 10px;">Model: <b> <?php echo $product['model']; ?> </b> </div>
+                <div class="text text-danger">Price:  <b> <?php echo $product['price']; ?> </b> </div>
+                <div class="text text-info">Quantity:  <b>  <?php echo $product['quantity']; ?> </b> </div>
+          </div>
+          <div class="col-md-12">
+                <div style="margin-bottom: 5px;"><i><?php echo $product['description']; ?></i></div>
+          </div>
+          <div class="col-md-12">
+                <div class="pull-right">
+                    <a href="<?php echo $product['href']; ?>">
+                      <i class="fa fa-long-arrow-right" style="font-size: 35px;" aria-hidden="true"></i> 
+                    </a>
+                </div>
+          </div>
+          
+    </div>
+<!-- end Nguyen add tooltip -->
+
+
+
     <div class="product-thumb transition">
-
       <!-- nguyen custom -->
-        <div class="show-modal-detail" onclick="showModal('<?php echo $product['product_id']; ?>');"><i class="fa fa-search-plus"></i></div>
+        <!-- <div class="show-modal-detail" onclick="showModal('<?php echo $product['product_id']; ?>');"><i class="fa fa-search-plus"></i></div> -->
+      <!--  -->
 
-
-      <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
+      <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive img-rounded" /></a></div>
       <div class="caption">
         <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
 
