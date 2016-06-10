@@ -155,7 +155,7 @@
 
 
 <?php if ($categories) { ?>
-<div class="container visible-xs visible-md" style="margin-bottom: 10px;">
+<div class="container visible-xs hidden-md hidden-lg" style="margin-bottom: 10px;">
     <select class="form-control" onchange="changeCategory(this.value);" style="text-align:center;">
         <option value="" >--- Select category ---</option>
         <?php 
