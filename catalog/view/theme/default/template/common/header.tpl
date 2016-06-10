@@ -90,9 +90,8 @@
     </div>
   </div>
 </header>
+
 <?php if ($categories) { ?>
-<!-- <div class="container"> -->
-<!-- <div class="row"> -->
   <nav id="menu" class="navbar row">
     <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
       <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
@@ -142,9 +141,8 @@
                   <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
             <?php } 
           } 
-          */ 
+          */
           ?>
-          
         </ul>
       </div>
     </div>
@@ -152,8 +150,33 @@
       
     </div>
   </nav>
-<!-- </div> -->
 <?php } ?>
+
+
+
+<?php if ($categories) { ?>
+<div class="container visible-xs visible-md" style="margin-bottom: 10px;">
+    <select class="form-control" onchange="changeCategory(this.value);" style="text-align:center;">
+        <option value="" >--- Select category ---</option>
+        <?php 
+          foreach ($categories as $category) 
+          { 
+            if ($category['children']) 
+            { ?>
+              <option value="<?php echo $category['href']; ?>" ><?php echo $category['name']; ?></option>
+              <?php
+            }else{
+              ?>
+              <option value="<?php echo $category['href']; ?>" ><?php echo $category['name']; ?></option>
+              <?php
+            }
+          }
+        ?>
+    </select>
+</div>
+<?php } ?>
+
+
 
 
 <style type="text/css">
@@ -161,3 +184,9 @@
   border-bottom: 1px rgba(169, 169, 169, 0.37) solid;
 }
 </style>
+
+<script type="text/javascript">
+  function changeCategory(value){
+    window.location.href = value;
+  }
+</script>
