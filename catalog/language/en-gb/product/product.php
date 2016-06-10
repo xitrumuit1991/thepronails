@@ -1,5 +1,9 @@
 <?php
 // Text
+//Nguyen code
+$_['text_weight']       	   = 'Unit:';
+
+
 $_['text_search']              = 'Search';
 $_['text_brand']               = 'Brand';
 $_['text_manufacturer']        = 'Brand:';

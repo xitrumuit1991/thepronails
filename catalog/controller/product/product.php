@@ -240,6 +240,16 @@ class ControllerProductProduct extends Controller {
 			$data['text_login'] = sprintf($this->language->get('text_login'), $this->url->link('account/login', '', true), $this->url->link('account/register', '', true));
 			$data['text_note'] = $this->language->get('text_note');
 			$data['text_tags'] = $this->language->get('text_tags');
+
+
+
+			//Nguyen add unit
+			$data['text_weight'] = $this->language->get('text_weight');
+			// var_dump( $data['text_weight'] );
+			//end
+
+
+
 			$data['text_related'] = $this->language->get('text_related');
 			$data['text_payment_recurring'] = $this->language->get('text_payment_recurring');
 			$data['text_loading'] = $this->language->get('text_loading');
@@ -269,6 +279,19 @@ class ControllerProductProduct extends Controller {
 			$data['model'] = $product_info['model'];
 			$data['reward'] = $product_info['reward'];
 			$data['points'] = $product_info['points'];
+
+
+
+			//Nguyen add query sql
+			//$data['weight'] = $product_info['weight'];
+			$data['weight'] = number_format($product_info['weight'], 2) ;
+			$tablewunit = $this->db->query("SELECT wcd.unit FROM " . DB_PREFIX . "weight_class_description wcd WHERE (wcd.weight_class_id = " . $product_info['weight_class_id'] . ") AND wcd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+			$data['weightunit'] = $tablewunit->row['unit'];
+			// var_dump($tablewunit);
+			//end
+
+
+
 			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
 
 			if ($product_info['quantity'] <= 0) {

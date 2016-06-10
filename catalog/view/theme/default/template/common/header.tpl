@@ -98,7 +98,7 @@
       <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
     </div>
     <div class="container">
-      <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding: 0;">
+      <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0; margin-left:0px !important; ">
         <ul class="nav navbar-nav">
 
 
@@ -154,3 +154,10 @@
   </nav>
 <!-- </div> -->
 <?php } ?>
+
+
+<style type="text/css">
+.navbar-ex1-collapse ul li{
+  border-bottom: 1px rgba(169, 169, 169, 0.37) solid;
+}
+</style>

@@ -124,16 +124,61 @@
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange" style="color:#208F02"></i></button>
           </div>
           <h1><?php echo $heading_title; ?></h1>
+
+          <table class="table table-hover"> 
+            <tbody> 
+              <?php if ($manufacturer) { ?>
+                  <tr> 
+                    <td width="40%"> <?php echo $text_manufacturer; ?> </td> 
+                    <td> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a> </td> 
+                  </tr> 
+              <?php } ?>
+              <tr>
+                <td><?php echo $text_model; ?></td>
+                <td><b><?php echo $model; ?></b></td>
+              </tr>
+              <tr>
+                <td><?php echo $text_weight; ?></td>
+                <td><b><?php echo $weight . ' ' . $weightunit; ?></b></td>
+              </tr>
+
+              <?php if ($reward) { ?>
+                  <tr> 
+                    <td width="40%"> <?php echo $text_reward; ?> </td> 
+                    <td><b> <?php echo $reward; ?><b> </td> 
+                  </tr> 
+              <?php } ?>
+
+              <tr>
+                <td><?php echo $text_stock; ?></td>
+                <td><b><?php echo $stock; ?></b></td>
+              </tr>
+
+            </tbody> 
+          </table>
+
+          <?php /*
           <ul class="list-unstyled">
             <?php if ($manufacturer) { ?>
             <li><?php echo $text_manufacturer; ?> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a></li>
             <?php } ?>
-            <li><?php echo $text_model; ?> <?php echo $model; ?></li>
+
+            <li><?php echo $text_model; ?> <b><?php echo $model; ?></b></li>
+
+
+            <!-- Nguyen code -->
+            <li><?php echo $text_weight; ?> <b> <?php echo $weight . ' ' . $weightunit; ?> </b> </li>
+            <!-- end -->
+            
+
+
             <?php if ($reward) { ?>
             <li><?php echo $text_reward; ?> <?php echo $reward; ?></li>
             <?php } ?>
             <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
           </ul>
+          */ ?>
+
           <?php if ($price) { ?>
           <ul class="list-unstyled">
             <?php if (!$special) { ?>
