@@ -23,6 +23,7 @@ $_['text_affiliate']    = 'Cộng tác bán hàng';
 $_['text_special']      = 'Khuyến mãi';
 
 $_['text_account']      = 'Tài khoản';
+$_['text_footer_store']      = 'Cửa hàng';
 
 $_['text_order']        = 'Lịch sử đặt hàng';
 

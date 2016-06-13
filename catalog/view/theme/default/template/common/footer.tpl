@@ -28,6 +28,8 @@
           <li><a href="<?php echo $special; ?>"><?php echo $text_special; ?></a></li>
         </ul>
       </div>
+      
+      <?php /*
       <div class="col-sm-3">
         <h5><?php echo $text_account; ?></h5>
         <ul class="list-unstyled">
@@ -35,6 +37,15 @@
           <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
           <li><a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?></a></li>
           <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
+        </ul>
+      </div>
+      */ ?>
+      <div class="col-sm-3">
+        <h5><?php echo $text_footer_store; ?></h5>
+        <ul class="list-unstyled">
+          <li><i style='color: #cd4073;' class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $address; ?> </li>
+          <li><i style='color: #de7c35;' class="fa fa-phone" aria-hidden="true">    </i>  <?php echo $telephone; ?> </li>
+          <li><i style='color: #ef556b;' class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo $email; ?> </li>
         </ul>
       </div>
     </div>

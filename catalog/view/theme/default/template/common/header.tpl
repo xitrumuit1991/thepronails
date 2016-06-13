@@ -195,7 +195,6 @@
   $(document).ready(function(){
       var url = window.location.href;
       $("#menu ul.navbar-nav li a").each(function(){
-          console.log(this);
           if( $(this).attr('href')==url)
             $(this).addClass('active');
           else

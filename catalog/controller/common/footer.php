@@ -16,6 +16,7 @@ class ControllerCommonFooter extends Controller {
 		$data['text_affiliate'] = $this->language->get('text_affiliate');
 		$data['text_special'] = $this->language->get('text_special');
 		$data['text_account'] = $this->language->get('text_account');
+		$data['text_footer_store'] = $this->language->get('text_footer_store');
 		$data['text_order'] = $this->language->get('text_order');
 		$data['text_wishlist'] = $this->language->get('text_wishlist');
 		$data['text_newsletter'] = $this->language->get('text_newsletter');
@@ -32,6 +33,10 @@ class ControllerCommonFooter extends Controller {
 				);
 			}
 		}
+
+		$data['telephone'] = $this->config->get('config_telephone');
+		$data['address'] = $this->config->get('config_address');
+		$data['email'] = $this->config->get('config_email');
 
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', true);
