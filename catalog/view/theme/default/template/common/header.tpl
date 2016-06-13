@@ -105,7 +105,7 @@
           <!-- nguyen add them menu ngang -->
           <li><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li>
           <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
-          <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
+          <?php /* <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li> */ ?>
           <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
 
           <?php if( !empty($informations) && count($informations) > 0  )
@@ -189,4 +189,17 @@
   function changeCategory(value){
     window.location.href = value;
   }
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      var url = window.location.href;
+      $("#menu ul.navbar-nav li a").each(function(){
+          console.log(this);
+          if( $(this).attr('href')==url)
+            $(this).addClass('active');
+          else
+            $(this).removeClass('active');
+      });
+});
 </script>

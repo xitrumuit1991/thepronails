@@ -66,7 +66,7 @@ body{
 	min-height: 15px;
 	background-color: transparent;
 }
-#menu .nav > li > a:hover, #menu .nav > li.open > a {
+#menu .nav > li > a:hover, #menu .nav > li > a.active, #menu .nav > li.open > a {
 	background-color: #fff;
 	color: #1B6503;
 }
