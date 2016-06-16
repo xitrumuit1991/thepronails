@@ -40,16 +40,18 @@
             </a>
             <?php if ($category['children'] ) 
             { ?>
-              <ul class="home-category-child" >
+              <table class="home-category-child table" >
                 <?php foreach ($category['children'] as $child) 
                 { 
                   ?>
-                    <li>
-                      <a href="<?php echo $child['href']; ?>" >&nbsp;&nbsp;&nbsp;- <?php echo $child['name']; ?></a>
-                    </li>
+                    <tr>
+                      <td>
+                        <a class="" href="<?php echo $child['href']; ?>" >&nbsp;&nbsp;&nbsp;&nbsp; <i style="font-size: 10px; font-weight: 100;" class="fa fa-minus"></i> &nbsp; <?php echo $child['name']; ?></a>
+                      </td>
+                    </tr>
                     <?php 
                 } ?>
-              </ul>
+              </table>
             <?php 
             } ?>
 
@@ -63,7 +65,7 @@
 
 <style type="text/css">
   .home-category-child{
-    right: -95%;
+    right: -100%;
     z-index: 99999;
     top: 0;
     position: absolute;
@@ -72,12 +74,17 @@
     /*display: block;*/
     display: none;
   }
-  .home-category-child a{
-    width: 250px;
-    display: block;
-    padding: 5px 10px;
-     border-radius: 2px; 
+  .home-category-child td{
     background-color: #f1f1f1;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none;
+  }
+  .home-category-child td a{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: block;
   }
 
   .div-link-hover:hover .home-category-child{
