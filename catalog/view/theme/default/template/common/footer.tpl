@@ -43,9 +43,9 @@
       <div class="col-sm-3">
         <h5><?php echo $text_footer_store; ?></h5>
         <ul class="list-unstyled">
-          <li><i style='color: #cd4073;' class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $address; ?> </li>
-          <li><i style='color: #de7c35;' class="fa fa-phone" aria-hidden="true">    </i>  <?php echo $telephone; ?> </li>
-          <li><i style='color: #ef556b;' class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo $email; ?> </li>
+          <li><i style='color: #23FF0B;' class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $address; ?> </li>
+          <li><i style='color: #23FF0B;' class="fa fa-phone" aria-hidden="true">    </i>  <?php echo $telephone; ?> </li>
+          <li><i style='color: #23FF0B;' class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo $email; ?></a> </li>
         </ul>
       </div>
     </div>
