@@ -814,7 +814,8 @@ $('select[name=\'country_id\'], select[name=\'zone_id\'], select[name=\'shipping
 
 	jQuery(".payment-method").load('index.php?route=checkout/checkout/payment_method', $('.checkout_form input[type=\'text\'], .checkout_form input[type=\'date\'], .checkout_form input[type=\'datetime-local\'], .checkout_form input[type=\'time\'], .checkout_form input[type=\'password\'], .checkout_form input[type=\'hidden\'], .checkout_form input[type=\'checkbox\']:checked, .checkout_form input[type=\'radio\']:checked,input[name=\'shipping_method\']:first, .checkout_form textarea, .checkout_form select'), function() 
 	{
-		jQuery("[name=\'payment_method\']").attr("checked").prop('checked', true);
+		// jQuery("[name=\'payment_method\']").attr("checked").prop('checked', true);
+		jQuery("[name=\'payment_method\']").attr("checked")==true;
 	});
 });    
 
