@@ -164,6 +164,13 @@
             if ($category['children']) 
             { ?>
               <option value="<?php echo $category['href']; ?>" ><?php echo $category['name']; ?></option>
+              <?php 
+              foreach ($category['children'] as $child) 
+              {
+                if(!empty($child))
+                  echo '<option value="'.$child['href'].'" > &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;'.$child['name'].'</option>';
+              }
+              ?>
               <?php
             }else{
               ?>
