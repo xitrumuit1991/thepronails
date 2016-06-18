@@ -2,7 +2,8 @@
 class Cache {
 	private $adaptor;
 
-	public function __construct($adaptor, $expire = 3600) {
+	//public function __construct($adaptor, $expire = 3600) {
+	public function __construct($adaptor, $expire = 1) {
 		$class = 'Cache\\' . $adaptor;
 
 		if (class_exists($class)) {
@@ -21,14 +22,14 @@ class Cache {
 	 * @return mixed
 	*/
 	public function get($key) {
-		return $this->adaptor->get($key);
+		//return $this->adaptor->get($key);
 	}
 
 	public function set($key, $value) {
-		return $this->adaptor->set($key, $value);
+		//return $this->adaptor->set($key, $value);
 	}
 
 	public function delete($key) {
-		return $this->adaptor->delete($key);
+		//return $this->adaptor->delete($key);
 	}
 }
