@@ -543,3 +543,91 @@
 2016-06-16 18:52:13 - PHP Notice:  Undefined variable: content_bottom in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 629
 2016-06-16 18:52:13 - PHP Notice:  Undefined variable: column_right in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 630
 2016-06-16 18:52:13 - PHP Notice:  Undefined variable: footer in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 867
+2016-06-18 20:08:51 - PHP Warning:  fopen(system/storage/cache/cache.country.catalog.1466276931): failed to open stream: No such file or directory in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 49
+2016-06-18 20:08:51 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 51
+2016-06-18 20:08:51 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 53
+2016-06-18 20:08:51 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 55
+2016-06-18 20:08:51 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 57
+2016-06-18 20:08:51 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 59
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: header in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 1
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: error_warning in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 9
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_left in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 14
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_left in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 15
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_left in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 17
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_right in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 17
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: addresses in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 108
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: text_address_new in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 294
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: addresses in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 299
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: addresses in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 328
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: error_warning in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 498
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: shipping_methods in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 501
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: error_warning in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 527
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: payment_methods in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 532
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: text_comments in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 549
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: comment in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 551
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: text_cart in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 557
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_name in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 561
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_model in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 562
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_quantity in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 563
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_price in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 564
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_total in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 565
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: products in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 569
+2016-06-18 20:08:52 - PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 569
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: vouchers in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 582
+2016-06-18 20:08:52 - PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 582
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: totals in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 593
+2016-06-18 20:08:52 - PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 593
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: text_agree in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 602
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: text_loading in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 616
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: payment in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 622
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: content_bottom in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 629
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: column_right in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 630
+2016-06-18 20:08:52 - PHP Notice:  Undefined variable: footer in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\checkout\checkout.tpl on line 867
+2016-06-18 20:08:52 - PHP Warning:  fopen(system/storage/cache/cache.country.catalog.1466276932): failed to open stream: No such file or directory in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 49
+2016-06-18 20:08:52 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 51
+2016-06-18 20:08:52 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 53
+2016-06-18 20:08:52 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 55
+2016-06-18 20:08:52 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 57
+2016-06-18 20:08:52 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 59
+2016-06-18 20:08:52 - PHP Warning:  fopen(system/storage/cache/cache.country.catalog.1466276932): failed to open stream: No such file or directory in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 49
+2016-06-18 20:08:52 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 51
+2016-06-18 20:08:52 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 53
+2016-06-18 20:08:52 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 55
+2016-06-18 20:08:52 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 57
+2016-06-18 20:08:52 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 59
+2016-06-18 20:08:53 - PHP Warning:  fopen(system/storage/cache/cache.language.1466276933): failed to open stream: No such file or directory in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 49
+2016-06-18 20:08:53 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 51
+2016-06-18 20:08:53 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 53
+2016-06-18 20:08:53 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 55
+2016-06-18 20:08:53 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 57
+2016-06-18 20:08:53 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 59
+2016-06-18 20:08:53 - PHP Warning:  fopen(system/storage/cache/cache.currency.1466276933): failed to open stream: No such file or directory in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 49
+2016-06-18 20:08:53 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 51
+2016-06-18 20:08:53 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 53
+2016-06-18 20:08:53 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 55
+2016-06-18 20:08:53 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 57
+2016-06-18 20:08:53 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 59
+2016-06-18 20:08:55 - PHP Warning:  fopen(../system/storage/cache/cache.store.1466276935): failed to open stream: No such file or directory in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 49
+2016-06-18 20:08:55 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 51
+2016-06-18 20:08:55 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 53
+2016-06-18 20:08:55 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 55
+2016-06-18 20:08:55 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 57
+2016-06-18 20:08:55 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 59
+2016-06-18 20:08:55 - PHP Warning:  fopen(../system/storage/cache/cache.order_status.1.1466276935): failed to open stream: No such file or directory in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 49
+2016-06-18 20:08:55 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 51
+2016-06-18 20:08:55 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 53
+2016-06-18 20:08:55 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 55
+2016-06-18 20:08:55 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 57
+2016-06-18 20:08:55 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 59
+2016-06-18 20:08:59 - PHP Warning:  fopen(system/storage/cache/cache.country.catalog.1466276939): failed to open stream: No such file or directory in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 49
+2016-06-18 20:08:59 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 51
+2016-06-18 20:08:59 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 53
+2016-06-18 20:08:59 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 55
+2016-06-18 20:08:59 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 57
+2016-06-18 20:08:59 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 59
+2016-06-18 20:08:59 - PHP Warning:  fopen(system/storage/cache/cache.country.catalog.1466276939): failed to open stream: No such file or directory in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 49
+2016-06-18 20:08:59 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 51
+2016-06-18 20:08:59 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 53
+2016-06-18 20:08:59 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 55
+2016-06-18 20:08:59 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 57
+2016-06-18 20:08:59 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\thepronails\system\library\cache\file.php on line 59
