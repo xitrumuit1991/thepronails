@@ -31,9 +31,15 @@ class ModelShippingUsps extends Model {
 			$pounds = floor($weight);
 			$ounces = round(16 * ($weight - $pounds), 2); // max 5 digits
 
-			$postcode = str_replace(' ', '', $address['postcode']);
+			$postcode = '';
+			if(isset ($address['postcode']) && !empty($address['postcode']) )
+			{
+				$postcode = str_replace(' ', '',  $address['postcode'] );
+			}
+			
 
-			if ($address['iso_code_2'] == 'US') {
+			if ( isset( $address['iso_code_2'] ) &&  $address['iso_code_2'] == 'US') 
+			{
 				$xml  = '<RateV4Request USERID="' . $this->config->get('usps_user_id') . '">';
 				$xml .= '	<Package ID="1">';
 				$xml .=	'		<Service>ALL</Service>';
@@ -283,7 +289,7 @@ class ModelShippingUsps extends Model {
 					'ZW' => 'Zimbabwe'
 				);
 
-				if (isset($country[$address['iso_code_2']])) {
+				if (  isset($address['iso_code_2']) &&  isset($country[$address['iso_code_2']])) {
 					$xml  = '<IntlRateV2Request USERID="' . $this->config->get('usps_user_id') . '">';
 					$xml .= '	<Revision>2</Revision>';
 					$xml .=	'	<Package ID="1">';
