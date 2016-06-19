@@ -176,6 +176,8 @@
 				    <label class="control-label" for="input-payment-postcode"><?php echo $entry_postcode; ?></label>
 				    <input type="text" name="postcode" value="<?php if (isset($postcode)) echo $postcode;?>" placeholder="<?php echo str_replace(':','',$entry_postcode); ?>" id="input-payment-postcode" class="form-control" />
 				  </div>
+				  
+
 
 				  <div class="form-group required col-md-6">
 				    <label class="control-label" for="input-payment-country"><?php echo $entry_country; ?></label>
@@ -722,12 +724,18 @@ $(document).delegate('#button-register', 'click', function()
     }); 
 });
 
+
+
+
 $('select[name=\'country_id\']').on('change', function() {
-	if( $('input[name=\'postcode\']').val() =='' || $('input[name=\'postcode\']').val() == null )
-	{
-		alert("Please input PostCode and try again!");
+	if(this.value == '')
 		return false;
-	}
+
+	// if( this.value != '' && ( $('input[name=\'postcode\']').val() =='' || $('input[name=\'postcode\']').val() == null ) )
+	// {
+	// // 	//$('input[name=\'postcode\']').parent().append("<div style='color:red'>Please input Postcode!</div>");
+	// 	return false;
+	// }
 
 	$.ajax({
         url: 'index.php?route=checkout/checkout/country&country_id=' + this.value,
@@ -817,8 +825,20 @@ $('select[name=\'shipping_country_id\']').on('change', function() {
 
 $('select[name=\'country_id\'], select[name=\'zone_id\'], select[name=\'shipping_country_id\'], select[name=\'shipping_zone_id\'], input[type=\'radio\'][name=\'payment_address\'], input[type=\'radio\'][name=\'shipping_address\']').on('change', function() 
 {
-	if (this.name == 'contry_id') jQuery("select[name=\'zone_id\']").val("");
-	if (this.name == 'shipping_country_id') jQuery("select[name=\'shipping_zone_id\']").val("");
+	if( this.value != '' && ( $('input[name=\'postcode\']').val() =='' || $('input[name=\'postcode\']').val() == null ) )
+	{
+		$('input[name=\'postcode\']').parent().append("<div style='color:red' class='error-postcode' >Please input Postcode and try again!</div>");
+		setTimeout(function(){
+			$('.error-postcode').remove();
+		}, 5000);
+		return false;
+	}
+	$('.error-postcode').remove();
+
+	if (this.name == 'contry_id') 
+		jQuery("select[name=\'zone_id\']").val("");
+	if (this.name == 'shipping_country_id') 
+		jQuery("select[name=\'shipping_zone_id\']").val("");
 	
     jQuery(".shipping-method").load('index.php?route=checkout/checkout/shipping_method', $('.checkout_form input[type=\'text\'], .checkout_form input[type=\'date\'], .checkout_form input[type=\'datetime-local\'], .checkout_form input[type=\'time\'], .checkout_form input[type=\'password\'], .checkout_form input[type=\'hidden\'], .checkout_form input[type=\'checkbox\']:checked, .checkout_form input[type=\'radio\']:checked,input[name=\'shipping_method\']:first, .checkout_form textarea, .checkout_form select'), function() 
     {
