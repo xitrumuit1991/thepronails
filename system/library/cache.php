@@ -3,7 +3,7 @@ class Cache {
 	private $adaptor;
 
 	//public function __construct($adaptor, $expire = 3600) {
-	public function __construct($adaptor, $expire = 1) {
+	public function __construct($adaptor, $expire = 3600) {
 		$class = 'Cache\\' . $adaptor;
 
 		if (class_exists($class)) {
