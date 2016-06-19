@@ -171,17 +171,33 @@
 				    <label class="control-label" for="input-payment-address-2"><?php echo $entry_address_2; ?></label>
 				    <input type="text" name="address_2" value="<?php if (isset($address_2)) echo $address_2;?>" placeholder="<?php echo str_replace(':','',$entry_address_2); ?>" id="input-payment-address-2" class="form-control" />
 				  </div>
+
+				  <div class="form-group required col-md-12" >
+				    <label class="control-label" for="input-payment-postcode"><?php echo $entry_postcode; ?></label>
+				    <input type="text" name="postcode" value="<?php if (isset($postcode)) echo $postcode;?>" placeholder="<?php echo str_replace(':','',$entry_postcode); ?>" id="input-payment-postcode" class="form-control" />
+				  </div>
+
 				  <div class="form-group required col-md-6">
 				    <label class="control-label" for="input-payment-country"><?php echo $entry_country; ?></label>
 				    <select name="country_id" id="input-payment-country" class="form-control">
 				      <option value=""><?php echo $text_select; ?></option>
-				      <?php foreach ($countries as $country) { ?>
-				      <?php if ($country['country_id'] == $country_id) { ?>
-				      <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
-				      <?php } else { ?>
-				      <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
-				      <?php } ?>
-				      <?php } ?>
+				      <?php foreach ($countries as $country) 
+				      { ?>
+				      		<option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
+					      
+					      <?php
+					      /* 
+					      if ($country['country_id'] == $country_id) 
+					      { ?>
+					      	<option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
+					      <?php 
+					      } else { ?>
+					      	<option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
+					      	<?php } 
+			      			*/ ?>
+					      
+					      <?php 
+				      } ?>
 				    </select>
 				  </div>
 				  <div class="form-group required col-md-6">
@@ -193,10 +209,7 @@
 				    <label class="control-label" for="input-payment-city"><?php echo $entry_city; ?></label>
 				    <input type="text" name="city" value="<?php if (isset($city)) echo $city;?>" placeholder="<?php echo str_replace(':','',$entry_city); ?>" id="input-payment-city" class="form-control" />
 				  </div>
-				  <div class="form-group required col-md-6" >
-				    <label class="control-label" for="input-payment-postcode"><?php echo $entry_postcode; ?></label>
-				    <input type="text" name="postcode" value="<?php if (isset($postcode)) echo $postcode;?>" placeholder="<?php echo str_replace(':','',$entry_postcode); ?>" id="input-payment-postcode" class="form-control" />
-				  </div>
+				  
 				</div>
 
 				<?php if (!isset($customer_id)) {?>	
@@ -710,6 +723,12 @@ $(document).delegate('#button-register', 'click', function()
 });
 
 $('select[name=\'country_id\']').on('change', function() {
+	if( $('input[name=\'postcode\']').val() =='' || $('input[name=\'postcode\']').val() == null )
+	{
+		alert("Please input PostCode and try again!");
+		return false;
+	}
+
 	$.ajax({
         url: 'index.php?route=checkout/checkout/country&country_id=' + this.value,
         dataType: 'json',
