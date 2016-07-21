@@ -4,7 +4,7 @@ vui lòng chi edit o day
 */
 body{
 	/*background:transparent url(image/bg.jpg) repeat;*/
-	background-color: #EDECE9;
+	background-color: #403D3C;
 	color:#292929;
 	font:14px/22px 'Open Sans', Arial, Helvetica, sans-serif;
 }
@@ -32,12 +32,12 @@ body{
 	background-repeat: repeat-x;
 }
 #menu {
-	background-color: #25DA0C;
-	background-image: linear-gradient(to bottom, #1B6503, #208F02);
+	background-color: #1C1919;
+	background-image: linear-gradient(to bottom, #1C1919, #1C1919);
 	background-repeat: repeat-x;
 	/*border-color: #8e1949 #8e1949 #a51d56;*/
 	min-height: 40px;
-	margin: 20px -10px 20px -10px;
+	/*margin: 20px -10px 20px -10px;*/
 }
 
 /*#menu:before{
@@ -175,4 +175,9 @@ footer {
 	margin-top: 10px;
 	padding-top: 10px;
 	background-color: #303030;
+}
+
+#top {
+	margin: 0 0 20px 0;
+	min-height: 40px;
 }

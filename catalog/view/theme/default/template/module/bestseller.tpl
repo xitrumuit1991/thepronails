@@ -1,3 +1,5 @@
+
+<div class="row" style="margin-bottom:30px; background-color:#fff;">
 <h3 class="bestseller-product row">
   <div class="left"><?php echo $heading_title; ?></div>
   <!-- <div class="col-sm-5 mid">&nbsp;</div> -->
@@ -5,7 +7,7 @@
     <!-- <a href="#" class="pull-right">      <i class="fa fa-chevron-right"></i>    </a> -->
   <!-- </div> -->
 </h3>
-<div class="row" style="margin-bottom:30px">
+
   <?php foreach ($products as $product) { ?>
   <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
