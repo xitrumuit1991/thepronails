@@ -32,45 +32,7 @@ body{
 	background-image: linear-gradient(to bottom, #e01e6e, #f93888);
 	background-repeat: repeat-x;
 }
-#menu {
-	background-color: #1C1919;
-	background-image: linear-gradient(to bottom, #1C1919, #1C1919);
-	background-repeat: repeat-x;
-	/*border-color: #8e1949 #8e1949 #a51d56;*/
-	min-height: 40px;
-	/*margin: 20px -10px 20px -10px;*/
-}
 
-/*#menu:before{
-	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.30) 100%);
-	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.30) 100%);
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.30) 100%);
-	background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.45) 100%);
-	display: block;
-	height: 10px;
-	content: '';
-}*/
-/*#menu:after{
-	background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.30) 100%);
-	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.30) 100%);
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.30) 100%);
-	background-image: linear-gradient(-180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.45) 100%);
-	display: block;
-	height: 10px;
-	content: '';
-}*/
-
-#menu .nav > li > a {
-	color: #fff;
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	padding: 10px 15px 10px 15px;
-	min-height: 15px;
-	background-color: transparent;
-}
-#menu .nav > li > a:hover, #menu .nav > li > a.active, #menu .nav > li.open > a {
-	background-color: #fff;
-	color: #1B6503;
-}
 
 
 /*----------------------------------------------------------------------*/
@@ -233,4 +195,52 @@ body{
 /*slide banner*/
 .owl-wrapper-outer{
 	border:none !important;
+}
+
+
+
+/*Menu ngang*/
+#menu {
+	background-color: #1C1919;
+	background-image: linear-gradient(to bottom, #1C1919, #1C1919);
+	background-repeat: repeat-x;
+	min-height: 40px;
+}
+#menu.navbar{
+	margin-bottom: 0;
+}
+
+#menu .nav > li > a {
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	padding: 10px 15px 10px 15px;
+	min-height: 15px;
+	background-color: transparent;
+}
+#menu .nav > li > a:hover, #menu .nav > li > a.active, #menu .nav > li.open > a {
+	background-color: #fff;
+	color: #1B6503;
+}
+
+
+
+
+
+
+
+/*product-detail-page*/
+.product-detail-page{
+	background-color: #fff;
+	padding: 10px 0 0 0;
+}
+.custom-breadcrumb{
+	border: none;
+}
+.custom-breadcrumb a, .custom-breadcrumb a i{
+	color: #1C1919;
+	font-weight: bold;
+}
+
+.main-detail-picture{
+	border: none;
 }
