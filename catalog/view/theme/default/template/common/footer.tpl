@@ -1,5 +1,5 @@
 <footer>
-  <div class="container">
+  <div class="container contain-footer-information">
     <div class="row">
       <?php if ($informations) { ?>
       <div class="col-sm-3">
@@ -28,7 +28,6 @@
           <li><a href="<?php echo $special; ?>"><?php echo $text_special; ?></a></li>
         </ul>
       </div>
-      
       <?php /*
       <div class="col-sm-3">
         <h5><?php echo $text_account; ?></h5>
@@ -40,12 +39,12 @@
         </ul>
       </div>
       */ ?>
-      <div class="col-sm-3">
+      <div class="col-sm-3 infor-store-last">
         <h5><?php echo $text_footer_store; ?></h5>
         <ul class="list-unstyled">
-          <li><i style='color: #23FF0B;' class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $address; ?> </li>
-          <li><i style='color: #23FF0B;' class="fa fa-phone" aria-hidden="true">    </i>  <?php echo $telephone; ?> </li>
-          <li><i style='color: #23FF0B;' class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo $email; ?></a> </li>
+          <li><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $address; ?> </li>
+          <li><i class="fa fa-phone" aria-hidden="true">    </i>  <?php echo $telephone; ?> </li>
+          <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <?php echo $email; ?></a> </li>
         </ul>
       </div>
     </div>
@@ -53,17 +52,9 @@
     <!-- <p><?php echo $powered; ?></p> -->
   </div>
 
-  <div class="container-fluid footer-custom">
-      <p><?php echo $powered; ?></p>
+  <div class="container footer-custom">
+      <?php echo $powered; ?>
   </div>
 </footer>
-
-
-<!--
-OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
-Please donate via PayPal to donate@opencart.com
-//-->
-
-<!-- Theme created by Welford Media for OpenCart 2.0 www.welfordmedia.co.uk -->
-
-</body></html>
+</body>
+</html>
