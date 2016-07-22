@@ -125,38 +125,38 @@
         <?php } ?>
         <div class="<?php echo $class; ?>">
           <div class="btn-group">
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart" style="color:#208F02"></i></button>
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange" style="color:#208F02"></i></button>
+            <button type="button" data-toggle="tooltip" class="btn btn-detail" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i></button>
+            <button type="button" data-toggle="tooltip" class="btn btn-detail" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i></button>
           </div>
-          <h1><?php echo $heading_title; ?></h1>
+          <h1 class="title-detail"><?php echo $heading_title; ?></h1>
 
           <table class="table table-hover"> 
             <tbody> 
               <?php if ($manufacturer) { ?>
                   <tr> 
-                    <td width="40%"> <?php echo $text_manufacturer; ?> </td> 
+                    <td width="40%" class="detail-info-text"> <?php echo $text_manufacturer; ?> </td> 
                     <td> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a> </td> 
                   </tr> 
               <?php } ?>
               <tr>
-                <td><?php echo $text_model; ?></td>
-                <td><b><?php echo $model; ?></b></td>
+                <td class="detail-info-text"><?php echo $text_model; ?></td>
+                <td><?php echo $model; ?></td>
               </tr>
               <tr>
-                <td><?php echo $text_weight; ?></td>
-                <td><b><?php echo $weight . ' ' . $weightunit; ?></b></td>
+                <td class="detail-info-text"><?php echo $text_weight; ?></td>
+                <td><?php echo $weight . ' ' . $weightunit; ?></td>
               </tr>
 
               <?php if ($reward) { ?>
                   <tr> 
-                    <td width="40%"> <?php echo $text_reward; ?> </td> 
-                    <td><b> <?php echo $reward; ?><b> </td> 
+                    <td width="40%" class="detail-info-text"> <?php echo $text_reward; ?> </td> 
+                    <td> <?php echo $reward; ?> </td> 
                   </tr> 
               <?php } ?>
 
               <tr>
-                <td><?php echo $text_stock; ?></td>
-                <td><b><?php echo $stock; ?></b></td>
+                <td class="detail-info-text"><?php echo $text_stock; ?></td>
+                <td><?php echo $stock; ?> </td>
               </tr>
 
             </tbody> 
@@ -188,12 +188,12 @@
           <ul class="list-unstyled">
             <?php if (!$special) { ?>
             <li>
-              <h2><?php echo $price; ?></h2>
+              <h2 class='price-origin'><?php echo $price; ?></h2>
             </li>
             <?php } else { ?>
             <li><span style="text-decoration: line-through;"><?php echo $price; ?></span></li>
             <li>
-              <h2><?php echo $special; ?></h2>
+              <h2 class='price-origin'><?php echo $special; ?></h2>
             </li>
             <?php } ?>
             <?php if ($tax) { ?>
@@ -358,7 +358,7 @@
               <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
               <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
               <br />
-              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-lg btn-block detail-btn-add-cart"><?php echo $button_cart; ?></button>
             </div>
             <?php if ($minimum > 1) { ?>
             <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
