@@ -2,6 +2,10 @@
 file custom css cho project này
 vui lòng chi edit o day
 */
+.background-white{
+	background-color: #fff !important;
+}
+
 body{
 	/*background:transparent url(image/bg.jpg) repeat;*/
 	background-color: #403D3C;
@@ -32,7 +36,6 @@ body{
 	background-image: linear-gradient(to bottom, #e01e6e, #f93888);
 	background-repeat: repeat-x;
 }
-
 
 
 /*----------------------------------------------------------------------*/
@@ -280,6 +283,18 @@ body{
 	font-weight: bold;
 	font-size: 25px;
 	font-family: 'Open Sans';
+}
+.product-detail-page .detail-review-link{
+	color: #EB5937;
+} 
+.product-detail-page .detail-description li a{
+	background-color: transparent;
+	color: #1C1919;
+	font-weight: bold;
+}
+.product-detail-page .detail-description li.active a{
+	background-color: #EB5937;
+	color: #fff;
 }
 
 
