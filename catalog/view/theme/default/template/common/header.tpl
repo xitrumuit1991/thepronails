@@ -23,12 +23,19 @@
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
+
+
+<!-- them vao -->
 <link href="catalog/view/theme/default/stylesheet/header.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/footer.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/lasted_product.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/featured_product.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/bestseller_product.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/style-page-home.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/n_v_custom_css.css" rel="stylesheet">
+
+
+
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>

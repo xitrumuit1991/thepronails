@@ -1,39 +1,19 @@
 
 /*-----------------san pham moi nhat*/
 .lasted-product{
-    margin: 10px 320px 25px 320px;
-    font-size: 18px;
-    line-height: 40px;
-    background-color: #456F74;
-    /*text-transform: uppercase;
-    border-bottom-style: double;*/
-}
-.lasted-product .left{
-    /*background: #287D11; */
-    color: #fff;
-    /* position: relative; */
-    
-    /* height: 40px; */
-    min-width: 150px;
-    /*display: inline-block;*/
-    padding: 10px 20px 10px 10px;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    /* color: #444; */
-    margin: 0;
-    /* padding: 0px 0px 6px 0px; */
-    font-size: 35px;
-    line-height: 44px;
-    letter-spacing: -2px;
-
     text-align: center;
 }
-
-
-
-
-
-
-
+.lasted-product .left{
+    background-color: #456F74;
+    color: #fff;
+    /*font-weight: bold;*/
+    display: inline-block;
+    padding: 5px 10px;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    font-size: 35px;
+    line-height: 40px;
+}
 
 
 /*Tooltip product Nguyen*/

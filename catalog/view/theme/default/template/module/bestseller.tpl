@@ -1,17 +1,10 @@
-
-<div class="row" style="margin-bottom:30px; background-color:#fff;">
 <h3 class="bestseller-product row">
-  <div class="left"><?php echo $heading_title; ?></div>
-  <!-- <div class="col-sm-5 mid">&nbsp;</div> -->
-  <!-- <div class="col-sm-2 right">&nbsp; -->
-    <!-- <a href="#" class="pull-right">      <i class="fa fa-chevron-right"></i>    </a> -->
-  <!-- </div> -->
+  <span class="left"><?php echo $heading_title; ?></span>
 </h3>
 
+<div class="row" style="margin-bottom:30px; background-color:#fff;">
   <?php foreach ($products as $product) { ?>
   <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
-
-
 
 
 <!-- Nguyen add tooltip -->
@@ -81,9 +74,11 @@
         <?php } ?>
       </div>
       <div class="button-group">
-        <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo "Buy"; ?></span></button>
-        <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-        <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
+        <button class='add-cart' type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> 
+            <!-- <span class="hidden-xs hidden-sm hidden-md"><?php echo "Buy"; ?></span> -->
+        </button>
+        <button class='add-wishlist' type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
+        <button class='add-compare' type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
       </div>
       
     </div>
