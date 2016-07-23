@@ -1,5 +1,4 @@
 <?php echo $header; ?>
-
 <div class="container background-white">        
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
