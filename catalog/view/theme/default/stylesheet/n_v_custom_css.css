@@ -204,10 +204,14 @@ body{
 
 /*Menu ngang*/
 #menu {
-	background-color: #1C1919;
-	background-image: linear-gradient(to bottom, #1C1919, #1C1919);
-	background-repeat: repeat-x;
+	/*background-color: #1C1919;*/
+	background-color: transparent !important;
+	/*background-image: linear-gradient(to bottom, #1C1919, #1C1919);*/
+	/*background-repeat: repeat-x;*/
 	min-height: 40px;
+}
+#menu .container {
+	background-color: #1C1919;
 }
 #menu.navbar{
 	margin-bottom: 0;
