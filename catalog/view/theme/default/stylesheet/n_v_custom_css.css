@@ -2,6 +2,9 @@
 file custom css cho project này
 vui lòng chi edit o day
 */
+*{
+	font-family: 'Open Sans';
+}
 .background-white{
 	background-color: #fff !important;
 }
