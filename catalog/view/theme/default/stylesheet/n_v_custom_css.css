@@ -227,11 +227,19 @@ body{
 	min-height: 15px;
 	background-color: transparent;
 }
-#menu .nav > li > a:hover, #menu .nav > li > a.active, #menu .nav > li.open > a {
-	background-color: #fff;
-	color: #1B6503;
+#menu .nav > li
+{
+	height: 45px;
+
 }
 
+#menu .nav > li > a:hover,  #menu .nav > li.open > a, #menu .nav > li > a.active {
+	background-color: #fff;
+	color: #1B6503;
+	height: 100%;
+	line-height: 25px;
+	/*font-weight: bold;*/
+}
 
 
 
