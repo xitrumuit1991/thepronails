@@ -54,3 +54,16 @@ còn view thì ? C:\xampp\htdocs\thepronails\catalog\view\theme\default\template
 #top-links .dropdown-menu a {
 	text-shadow: none;
 }
+
+
+
+/*logo-home-header*/
+img.logo-home-header{
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+}
+
+.navbar-ex1-collapse ul li{
+ border-bottom: none !important;
+}

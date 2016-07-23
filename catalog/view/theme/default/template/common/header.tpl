@@ -84,11 +84,13 @@
     <div class="row">
       <div class="col-sm-4">
         <div id="logo">
+          <?php /*
           <?php if ($logo) { ?>
           <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
           <?php } else { ?>
           <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
           <?php } ?>
+          */ ?>
         </div>
       </div>
       <div class="col-sm-5"><?php echo $search; ?>
@@ -110,7 +112,10 @@
 
 
           <!-- nguyen add them menu ngang -->
-          <li><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li>
+          <!-- <li><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li> -->
+          <li>
+              <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="logo-home-header" /></a>
+          </li>
           <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
           <?php /* <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li> */ ?>
           <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
