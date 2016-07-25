@@ -49,9 +49,9 @@ CREATE TABLE IF NOT EXISTS `oc_address` (
 -- Dumping data for table `oc_address`
 --
 
-INSERT INTO `oc_address` (`address_id`, `customer_id`, `firstname`, `lastname`, `company`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `custom_field`) VALUES
-(1, 1, 'Vincent', 'Truong', '', 'Pheonix', '', 'Arizona', '78910', 223, 3616, '[]'),
-(2, 2, 'Vincent', 'Vincnet', '', 'Arizona', '', 'Arizona', '1234567', 223, 3616, '[]');
+-- INSERT INTO `oc_address` (`address_id`, `customer_id`, `firstname`, `lastname`, `company`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `custom_field`) VALUES
+-- (1, 1, 'Vincent', 'Truong', '', 'Pheonix', '', 'Arizona', '78910', 223, 3616, '[]'),
+-- (2, 2, 'Vincent', 'Vincnet', '', 'Arizona', '', 'Arizona', '1234567', 223, 3616, '[]');
 
 -- --------------------------------------------------------
 
