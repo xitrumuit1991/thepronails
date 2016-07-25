@@ -32,6 +32,7 @@
 <link href="catalog/view/theme/default/stylesheet/featured_product.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/bestseller_product.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/style-page-home.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/style-menu-dropdown-product.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/n_v_custom_css.css" rel="stylesheet">
 
 
@@ -116,6 +117,33 @@
           <li>
               <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="logo-home-header" /></a>
           </li>
+
+          <li class='dropdown-category'>
+            <a onclick="javascript:void(0);">Product</a>
+              <div class='row dropdown-category-list'>
+                  <?php
+                  foreach ($categories as $category) 
+                  { 
+                     if ($category['children']) 
+                    { ?>
+                          <div class='col-md-4'>
+                              <a class="category-parent" href="<?php echo $category['href']; ?>" ><?php echo $category['name']; ?></a>
+                              <ul class="list-unstyled category-ul-child">
+                                <?php foreach ($category['children'] as $child) { ?>
+                                    <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                                <?php } ?>
+                              </ul>
+                          </div>
+                    <?php } else { ?>
+                          <div class='col-md-4'>
+                            <a class="category-parent" href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
+                          </div>
+                    <?php } 
+                  } 
+                  ?>
+              </div>
+          </li>
+          
           <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
           <?php /* <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li> */ ?>
           <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
