@@ -130,7 +130,7 @@ div.required .control-label:before {
 #logo {
 	margin: 0 0 10px 0;
 }
-/* search */
+/*  
 #search {
 	margin-bottom: 10px;
 }
@@ -145,16 +145,16 @@ div.required .control-label:before {
 	padding: 10px 35px;
 	text-shadow: 0 1px 0 #FFF;
 }
-/* cart */
+
 #cart {
 	margin-bottom: 10px;
 }
-/*  
+
 #cart > .btn {
 	font-size: 12px;
 	line-height: 18px;
 	color: #FFF;
-}*/
+}
 #cart.open > .btn {
 	background-image: none;
 	background-color: #FFFFFF;
@@ -192,7 +192,7 @@ div.required .control-label:before {
 }
 #cart .dropdown-menu li p {
 	margin: 20px 0;
-}
+}*/
 /* menu 
 #menu {
 	background-color: #229ac8;

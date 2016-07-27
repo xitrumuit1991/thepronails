@@ -56,6 +56,7 @@
   <div class="container">
     <?php echo $currency; ?>
     <?php echo $language; ?>
+    <?php echo $search; ?>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
         <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $telephone; ?></span></a></li>
@@ -94,9 +95,6 @@
           */ ?>
         </div>
       </div>
-      <div class="col-sm-5"><?php echo $search; ?>
-      </div>
-      <div class="col-sm-3"><?php echo $cart; ?></div>
     </div>
   </div>
 </header>
@@ -183,6 +181,7 @@
           } 
           */
           ?>
+          <li style="margin: 0px 0px 0px 100px;"><?php echo $cart; ?></li>
         </ul>
       </div>
     </div>
