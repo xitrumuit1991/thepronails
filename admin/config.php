@@ -14,11 +14,28 @@ define('DIR_UPLOAD', '../system/storage/upload/');
 define('DIR_CATALOG', '../catalog/');
 
 
-define('HTTP_SERVER', 'http://localhost/thepronails/admin/');
-define('HTTP_CATALOG', 'http://localhost/thepronails/');
+//local host admin config
+// define('HTTP_SERVER', 'http://localhost/thepronails/admin/');
+// define('HTTP_CATALOG', 'http://localhost/thepronails/');
 
-define('HTTPS_SERVER', 'http://localhost/thepronails/admin/');
-define('HTTPS_CATALOG', 'http://localhost/thepronails/');
+// define('HTTPS_SERVER', 'http://localhost/thepronails/admin/');
+// define('HTTPS_CATALOG', 'http://localhost/thepronails/');
+//------------------------------------------------------
+
+
+//server admin config
+define('HTTP_SERVER', 'http://tinanailsupply.com/changestyle/admin/');
+define('HTTP_CATALOG', 'http://tinanailsupply.com/changestyle/');
+
+define('HTTPS_SERVER', 'http://tinanailsupply.com/changestyle/admin/');
+define('HTTPS_CATALOG', 'http://tinanailsupply.com/changestyle/');
+//-----------------------------------------------------------
+
+
+
+
+
+
 
 
 // define('DB_DRIVER', 'mysqli');
