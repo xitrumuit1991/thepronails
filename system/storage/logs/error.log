@@ -2529,3 +2529,9 @@ PS Form 2976-A inside 2976-E (envelope)
 2016-07-25 19:45:14 - PHP Warning:  Division by zero in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 132
 2016-07-25 19:45:14 - PHP Warning:  array_chunk(): Size parameter expected to be greater than 0 in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 132
 2016-07-25 19:45:14 - PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 132
+2016-07-31 8:15:22 - PHP Notice:  Undefined variable: a in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 168
+2016-07-31 8:15:22 - PHP Notice:  Undefined variable: a in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 168
+2016-07-31 8:15:22 - PHP Notice:  Undefined variable: a in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 168
+2016-07-31 8:15:22 - PHP Notice:  Undefined variable: a in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 168
+2016-07-31 8:16:59 - PHP Notice:  Undefined variable: information in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 166
+2016-07-31 8:16:59 - PHP Notice:  Undefined variable: information in C:\xampp\htdocs\thepronails\catalog\view\theme\default\template\common\header.tpl on line 166

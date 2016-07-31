@@ -52,6 +52,10 @@
 <?php } ?>
 </head>
 <body class="<?php echo $class; ?>">
+
+
+<!-- MENU LOGIN / REGISTER -->
+
 <nav id="top">
   <div class="container">
     <?php echo $currency; ?>
@@ -81,6 +85,11 @@
     </div>
   </div>
 </nav>
+
+
+<!-- END MENU LOGIN / REGISTER -->
+
+
 <?php /*
 <header>
   <div class="container">
@@ -102,6 +111,8 @@
 */ ?>
 
 
+
+<!-- MENU NGANG PRODUCT -->
 <?php if ($categories) { ?>
   <nav id="menu" class="navbar row">
     <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
@@ -111,14 +122,14 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0; margin-left:0px !important; ">
         <ul class="nav navbar-nav">
 
-
-
           <!-- nguyen add them menu ngang -->
-          <!-- <li><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li> -->
+          <?php /* <li><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li> */?>
           <li>
               <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="logo-home-header" /></a>
           </li>
 
+          <?php /* 
+          //bỏ product category
           <li class='dropdown-category'>
             <a onclick="javascript:void(0);">Product</a>
               <div class='row dropdown-category-list'>
@@ -144,17 +155,25 @@
                   ?>
               </div>
           </li>
+          */?>
           
           <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
           <?php /* <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li> */ ?>
-          <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
+          <?php /* <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li> */ ?>
 
           <?php if( !empty($informations) && count($informations) > 0  )
                 { 
-                  foreach ($informations as $information) { ?>
-                    <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
-          <?php   } 
-                } ?>
+                  
+                  foreach ($informations as $information) 
+                  {
+                     // echo '<li><a href="'.$information['href'].'">'.$information['title'].'</a></li>'; 
+                     if($information && $information['href']  && ( strpos(  $information['href'], 'information_id=6') == true or strpos(  $information['href'], 'information_id=4') == true ) )
+                     {
+                        echo '<li><a href="'.$information['href'].'">'.$information['title'].'</a></li>';
+                     }
+                  }
+                } 
+          ?>
           <!-- End nguyen add them vao -->
 
 
@@ -194,8 +213,10 @@
   </nav>
 <?php } ?>
 
+<!--END MENU NGANG PRODUCT -->
 
 
+<!-- MENU NGANG PRODUCT TREN MOBILE -->
 <?php if ($categories) { ?>
 <div class="container visible-xs hidden-md hidden-lg" style="margin-bottom: 10px;">
     <select class="form-control" onchange="changeCategory(this.value);" style="text-align:center;">
@@ -224,6 +245,8 @@
     </select>
 </div>
 <?php } ?>
+
+<!--END MENU NGANG PRODUCT TREN MOBILE -->
 
 
 
