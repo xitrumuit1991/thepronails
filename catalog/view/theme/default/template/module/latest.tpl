@@ -1,6 +1,6 @@
-    <h3 class="lasted-product row">
-       <span class="left"><?php echo $heading_title; ?></span>
-    </h3>
+<div class="lasted-product row">
+   <?php echo $heading_title; ?>
+</div>
 
 <div class="row" style="margin-bottom:30px; background-color:#fff;">
   <?php foreach ($products as $product) { ?>

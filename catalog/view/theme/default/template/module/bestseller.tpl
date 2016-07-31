@@ -1,6 +1,6 @@
-<h3 class="bestseller-product row">
-  <span class="left"><?php echo $heading_title; ?></span>
-</h3>
+<div class="row bestseller-product">
+        <?php echo $heading_title; ?>
+</div>
 
 <div class="row" style="margin-bottom:30px; background-color:#fff;">
   <?php foreach ($products as $product) { ?>

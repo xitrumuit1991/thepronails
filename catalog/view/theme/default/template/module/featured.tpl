@@ -1,7 +1,7 @@
 
-<h3 class="featured-product row">
-    <span class="left"><?php echo $heading_title; ?></span>
-</h3>
+<div class="featured-product row">
+  <?php echo $heading_title; ?>
+</div>
 
 <div class="row" style="margin-bottom:30px; background-color:#fff">
   <?php foreach ($products as $product) { ?>
