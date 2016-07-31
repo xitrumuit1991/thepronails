@@ -230,15 +230,22 @@ body{
 #menu .nav > li
 {
 	height: 45px;
-
+	line-height: 25px;
+}
+#menu .nav  li a
+{
+	/*height: 45px;*/
+	line-height: 25px;
 }
 
 #menu .nav > li > a:hover,  #menu .nav > li.open > a, #menu .nav > li > a.active {
-	background-color: #fff;
-	color: #1B6503;
-	height: 100%;
-	line-height: 25px;
-	/*font-weight: bold;*/
+	/*background-color: #fff;*/
+	background-color: #3c3838;
+	/*color: #1B6503;*/
+	height: 45px;
+	color: #fff;
+	    line-height: 25px;
+	
 }
 
 
