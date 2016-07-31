@@ -395,3 +395,21 @@ body{
 #cart .dropdown-menu li p {
 	margin: 20px 0;
 }
+
+
+
+/**/
+#column-left{
+	margin-top: 10px;
+}
+
+.list-group-item{
+	border-radius: 0 !important;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	/*border-top: none !important;*/
+}
+
+#content{
+	margin-top: 10px;
+}
