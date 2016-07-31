@@ -1,3 +1,4 @@
+<div class="row title-categories">  CATEGORIES</div>
 <div class="list-group">
   <?php foreach ($categories as $category) 
   { 
@@ -90,6 +91,9 @@
   .div-link-hover:hover .home-category-child{
     display: block;
   }
+
+
+
 
 </style>
 
