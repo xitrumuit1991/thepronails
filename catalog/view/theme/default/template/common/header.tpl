@@ -120,7 +120,7 @@
     </div>
     <div class="container">
       <div class="collapse navbar-collapse navbar-ex1-collapse" style="padding:0; margin-left:0px !important; ">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" style="width: 100%;">
 
           <!-- nguyen add them menu ngang -->
           <?php /* <li><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a></li> */?>
@@ -203,7 +203,7 @@
           } 
           */
           ?>
-          <li style="margin: 0px 0px 0px 100px;"><?php echo $cart; ?></li>
+          <li style=" float: right; margin: 0; "><?php echo $cart; ?></li>
         </ul>
       </div>
     </div>
