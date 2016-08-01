@@ -23,10 +23,10 @@ define('DIR_CATALOG', 			'../catalog/');
 
 
 /* // host tinanailsupply.com/index.php */
-define('HTTP_SERVER', 'http://tinanailsupply.com/changestyle/admin/');
-define('HTTP_CATALOG', 'http://tinanailsupply.com/changestyle/');
-define('HTTPS_SERVER', 'http://tinanailsupply.com/changestyle/admin/');
-define('HTTPS_CATALOG', 'http://tinanailsupply.com/changestyle/');
+define('HTTP_SERVER', 'http://tinanailsupply.com/admin/');
+define('HTTP_CATALOG', 'http://tinanailsupply.com/');
+define('HTTPS_SERVER', 'http://tinanailsupply.com/admin/');
+define('HTTPS_CATALOG', 'http://tinanailsupply.com/');
 
 
 
