@@ -448,7 +448,7 @@ body{
 }
 
 .title-categories{
-	    background: #166fb0 url('image/square-dark.png') repeat 0 0;
+	    background: #EB5937 url('image/square-dark.png') repeat 0 0;
     color: #fff;
     line-height: 42px;
     padding: 0 0 0 12px;
@@ -459,4 +459,5 @@ body{
     font-weight: normal;
     font-style: normal;
     text-transform: uppercase;
+    text-align: center;
 }

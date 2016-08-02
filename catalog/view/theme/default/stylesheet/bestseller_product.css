@@ -2,14 +2,15 @@
 /*-----------------san pham noi bat*/
 .bestseller-product{
     text-align: left;
-    background: #fbfbfb url('image/square.png') 0 0 repeat;
-    color: #000;
+    background: #EB5937 url('image/square-dark.png') 0 0 repeat;
+    color: #fff;
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
     line-height: 42px;
     padding: 0 0 0 12px;
     font-size: 22px;
     margin: 0 0 18px;
+
     /*font-weight: bold;*/
 }
 
