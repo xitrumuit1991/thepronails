@@ -566,7 +566,7 @@ footer h5 {
 }
 @media (max-width: 1200px) {
 .product-grid .product-thumb .caption {
-	min-height: 210px;
+	/*min-height: 210px;*/
 	padding: 0 10px;
 }
 }
