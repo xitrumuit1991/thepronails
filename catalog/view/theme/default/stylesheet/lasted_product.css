@@ -2,8 +2,8 @@
 /*-----------------san pham moi nhat*/
 .lasted-product{
     text-align: left;
-    background: #fbfbfb url('image/square.png') 0 0 repeat;
-    color: #000;
+    background: #EB5937 url('image/square-dark.png') 0 0 repeat;
+    color: #fff;
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
     line-height: 42px;
