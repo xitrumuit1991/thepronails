@@ -19,7 +19,8 @@ class Weight {
 		}
 	}
 
-	public function convert($value, $from, $to) {
+	public function convert($value, $from, $to) 
+	{
 		if ($from == $to) {
 			return $value;
 		}
@@ -38,13 +39,20 @@ class Weight {
 
 		return $value * ($to / $from);
 	}
+	
 
-	public function format($value, $weight_class_id, $decimal_point = '.', $thousand_point = ',') {
-		if (isset($this->weights[$weight_class_id])) {
+	public function format($value, $weight_class_id, $decimal_point = '.', $thousand_point = ',') 
+	{
+		if (isset($this->weights[$weight_class_id])) 
+		{
 			return number_format($value, 2, $decimal_point, $thousand_point) . $this->weights[$weight_class_id]['unit'];
-		} else {
+		} 
+		else 
+		{
 			return number_format($value, 2, $decimal_point, $thousand_point);
 		}
+
+
 	}
 
 	public function getUnit($weight_class_id) {

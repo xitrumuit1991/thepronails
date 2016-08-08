@@ -62,11 +62,21 @@ class ControllerCheckoutCart extends Controller {
 
 			$data['action'] = $this->url->link('checkout/cart/edit', '', true);
 
-			if ($this->config->get('config_cart_weight')) {
+
+			//
+			//
+			//
+			if ($this->config->get('config_cart_weight')) 
+			{
 				$data['weight'] = $this->weight->format($this->cart->getWeight(), $this->config->get('config_weight_class_id'), $this->language->get('decimal_point'), $this->language->get('thousand_point'));
-			} else {
+			} 
+			else 
+			{
 				$data['weight'] = '';
 			}
+			//
+			//
+			//
 
 			$this->load->model('tool/image');
 			$this->load->model('tool/upload');

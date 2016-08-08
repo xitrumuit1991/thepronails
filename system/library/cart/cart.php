@@ -303,17 +303,23 @@ class Cart {
 		return $product_data;
 	}
 
-	public function getWeight() {
+
+	//Nguyen custom get Weight
+	public function getWeight() 
+	{
 		$weight = 0;
 
-		foreach ($this->getProducts() as $product) {
-			if ($product['shipping']) {
+		foreach ($this->getProducts() as $product) 
+		{
+			if ($product['shipping']) 
+			{
 				$weight += $this->weight->convert($product['weight'], $product['weight_class_id'], $this->config->get('config_weight_class_id'));
 			}
 		}
-
 		return $weight;
 	}
+	//end
+	//
 
 	public function getSubTotal() {
 		$total = 0;
