@@ -284,10 +284,17 @@ class ControllerProductProduct extends Controller {
 
 			//Nguyen add query sql
 			//$data['weight'] = $product_info['weight'];
-			$data['weight'] = number_format($product_info['weight'], 2) ;
+			$data['weight'] = number_format($product_info['weight'], 0, '.' , ',') ;
 			$tablewunit = $this->db->query("SELECT wcd.unit FROM " . DB_PREFIX . "weight_class_description wcd WHERE (wcd.weight_class_id = " . $product_info['weight_class_id'] . ") AND wcd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 			$data['weightunit'] = $tablewunit->row['unit'];
-			// var_dump($tablewunit);
+			//string number_format ( float $number , int $decimals = 0 , string $dec_point = '.' , string $thousands_sep = ',' )
+			//$number        = 123457;
+			//$format_number = number_format($number, 2, '.', ',');
+			if( !empty($product_info['weight']) && (int)$product_info['weight'] > 1000 && strtoupper($data['weightunit']) =='ML' )
+			{
+				$data['weightunit'] = strtoupper('L');
+			}
+			// 1,234.57
 			//end
 
 
